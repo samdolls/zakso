@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+ /* 메인 Nav bar */
+.mainNav {
+  width: 100vw;
+  height: 3.4375rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.logoImg {
+  flex-shrink: 0;
+  margin-left: 1.3rem;
+}
+.searchImgBox {
+  position: relative;
+}
+.searchImg {
+  flex-shrink: 0;
+  margin-left: 13rem;
+}
+.noticeImg {
+  margin-left: 1.4rem;
+}
+.redDotImg {
+  position: absolute;
+  top: -0.2rem;
+  right: -0.2rem;
+  display: none;
+}
+.hamburgerImg {
+  margin-left: 1.4rem;
+}
+
+/* banner */
+.bannerBox {
+  width: 100vw;
+  height: 11.4375rem;
+  flex-shrink: 0;
+  position: relative;
+}
+.mainBanner {
+  background-color: black;
+  height: 11.4375rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.mainTextBox {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.9rem;
+}
+.subTextBox {
+  width: 9.04063rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+.mainBanner .logoImg {
+  width: 4.0975rem;
+  height: 3.0925rem;
+  flex-shrink: 0;
+  margin: 0;
+}
+.mainBanner .subText {
+  color: white;
+  font-family: pretendard;
+  margin: 0;
+  display: inline-block;
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.dotList {
+  position: absolute;
+  bottom: 1rem;
+  left: 10.69rem;
+  z-index: 1;
+}
+
+
+.subBanner {
+  background-color: orange;
+  height: 11.4375rem;
+  display: none;
+}
