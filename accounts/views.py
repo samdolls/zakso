@@ -4,14 +4,14 @@ from .forms import UserForm
 from django.contrib.auth import login, authenticate, logout
 
 
-# 회원가입
+#회원가입
 def signup(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("accounts:login_view")
+            return redirect('accounts:login_view')
         else:
             errors = form.errors
             print(errors)
