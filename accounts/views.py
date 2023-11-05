@@ -19,7 +19,7 @@ def signup(request):
             print(errors)
     else:
         form = UserForm()
-    return render(request, 'signup.html', {'form':form})
+    return render(request, "signup.html", {"form": form})
 
 # 로그인
 def login_view(request):
@@ -38,17 +38,17 @@ def login_view(request):
             elif stay_login:
                 request.session.set_expiry(1209600)  # 세션 유지 시간을 2주로(자동 로그인한다면)
 
-            return redirect('accounts:home')
+            return redirect('main:mainpage')
         else:
             return render(request, 'login.html', {'error': '이메일 또는 비밀번호가 올바르지 않습니다.'})
     else:
-        return render(request, 'login.html')
+        return render(request, "login.html")
 
 # 로그아웃
 def logout_view(request):
     logout(request)
-    return redirect('accounts:login_view')
+    return redirect("main:mainpage")
+
 
 def home(request):
-    return render(request, 'home.html')
-
+    return render(request, "home.html")

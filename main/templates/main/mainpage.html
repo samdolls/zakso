@@ -3,6 +3,12 @@
 
 {% block content %}
 
-<h1>헤헤</h1>
+<div>
+    <a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a>
+    <a href="{% url 'main:present' %}">선물 펀딩</a>
+    <a href="{% url 'accounts:login_view' %}">로그인</a>
+    <a href="{% url 'accounts:logout_view' %}">로그아웃</a>
+    <a href="{% url 'main:payhistory' %}">결제내역확인</a>
+</div>
 
 {% endblock %}
