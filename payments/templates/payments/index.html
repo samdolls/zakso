@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제위젯 샘플</title>
+    <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+  </head>
+  <body>
+    <input type="number" id="amount" onchange="updatePaymentAmount()" />
+    <div id="payment-method"></div>
+    <button id="payment-request-button"><span id="selected-amount">0</span> 결제하기</button>
+    <script>
+      const customer_key = "{{ user_info.customer_key }}";
+      const customer_name = "{{ user_info.name }}";
+      const funding_name = "{{ funding.title }}";
+         function updatePaymentAmount() {
+        var amount = document.getElementById("amount").value;
+        document.getElementById("selected-amount").textContent = amount;
+        // Render payment methods with the updated amount
+        paymentWidget.renderPaymentMethods("#payment-method", { value: amount });
+      }
+      /*
+       * 결제위젯 SDK를 초기화합니다.
+       * @docs https://docs.tosspayments.com/reference/widget-sdk#sdk-설치-및-초기화
+       */
+      const paymentWidget = PaymentWidget(
+        /*
+         * TODO: 개발자센터에 로그인해서 내 결제위젯 클라이언트 키를 입력하세요
+         * @docs https://docs.tosspayments.com/reference/using-api/api-keys
+         */
+        "test_ck_LlDJaYngro9yobZbgl4m3ezGdRpX", 
+        customer_key
+      );
+
+      /*
+       * 결제창을 렌더링합니다.
+       * @docs https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액
+       */
+      paymentWidget.renderPaymentMethods("#payment-method", { value: document.getElementById("amount").value });
+
+      const paymentRequestButton = document.getElementById(
+        "payment-request-button"
+      );
+      paymentRequestButton.addEventListener("click", () => {
+        const amount = document.getElementById("amount").value;
+        /** 
+         * 결제를 요청합니다.
+         * @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
+         */
+        paymentWidget.requestPayment({
+          orderId: generateRandomString(),
+          orderName: funding_name,
+          successUrl: window.location.origin + `/payments/success`,
+          failUrl: window.location.origin + "/payments/fail",
+          amount: parseInt(amount),
+          customerName: customer_name,
+        });
+      });
+
+      function generateRandomString() {
+        return window.btoa(Math.random()).slice(0, 20);
+      }
+    </script>
+  </body>
+</html>

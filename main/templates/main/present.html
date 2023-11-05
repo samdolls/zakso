@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    {% for present in present_fundings %}
+    <div>
+        <a href="{% url 'main:detail' present.id %}"><img src="{{present.funding_image.url}}" alt="펀딩 이미지" height="100px" width="100px"></a>
+    </div>
+    <div>
+        {{present.title}}
+    </div>
+    <div>
+        총 금액:{{present.total_price}}
+    </div>
+    <div>
+        모인 금액:{{present.accumulation}}
+    </div>
+    <div>
+        {{present.percentage}}%
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
