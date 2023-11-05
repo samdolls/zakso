@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div>
+        <div>
+            {% if funding.image %}
+            <img src="{{funding.funding_image.url}}" alt="펀딩 이미지">
+            {% endif %}
+        </div>
+        <div>
+            <h2>{{funding.title}}</h2>
+            <span>{{funding.start_date}}~{{funding.end_date}}</span>
+        </div>
+        <div>
+            <h3>모인 금액</h3>
+        </div>
+        <div>
+            <p>{{funding.accumulation}}</p>
+            <span>{{funding.percentage}}</span>
+        </div>
+        <div>
+            <p>목표 금액</p>
+            <p>{{funding.total_price}}</p>
+            <span>목표 금액 달성시 {{delievery_date}}에 선물이 배송됩니다.</span>
+        </div>
+        <div>
+            <p>작소펀딩 이야기</p>
+            <p>{{funding.content}}</p>
+        </div>
+        <div>
+            <p>작고 소중한 우리의 선물</p>
+            <p>{{funding.product}}</p>
+            <p>{{encoded_funding_id}}</p>
+        </div>
+        <a href="{% url 'payments:index' %}">펀딩하기</a>
+        <!-- <a href="{% url 'main:update' funding.id %}">수정하기</a> -->
+        <a href="{% url 'main:like' funding.id %}">좋아요</a>
+        <p>{{funding.likes_cnt}}</p>
+        <a href="{% url 'main:delete' funding.id %}">삭제하기</a>
+        <a href="{% url 'main:mainpage' %}">홈으로</a>
+    </div>
+
+{% endblock %}

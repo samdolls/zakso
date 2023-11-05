@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div>
+        <h1>선물 펀딩 만들기</h1>
+        <form action="{% url 'main:choose' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="type" value="PRESENT"> 선물 펀딩
+            <input type="submit" name="type" value="SOSO"> 소소 펀딩
+            <input type="submit" name="type" value="DREAM"> 드림 펀딩
+        </form>
+    </div>
+
+{% endblock %}
