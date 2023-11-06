@@ -19,12 +19,15 @@ body {
   flex-shrink: 0;
   margin-left: 1.3rem;
 }
+.logoText {
+  margin-left: 0.88rem;
+}
 .searchImgBox {
   position: relative;
 }
 .searchImg {
   flex-shrink: 0;
-  margin-left: 13rem;
+  margin-left: 8.3rem;
 }
 .noticeImg {
   margin-left: 1.4rem;
@@ -160,16 +163,16 @@ body {
 }
 
 
-/* ranking */
-.popularPresentRanking {
+/* presentRanking */
+.popularPresentRanking, .popularSmallRanking {
   display: flex;
   flex-direction: row;
   margin-top: 2rem;
 }
-.pinkHeart {
-  margin-left: 1.15rem;
+.pinkHeart, .blueHeart {
+  margin-left: 0.75rem;
 }
-.presentRankingText {
+.presentRankingText, .smallRankingText {
   color: var(--gray, #1F1F1F);
   font-family: Pretendard;
   font-size: 0.8125rem;
@@ -206,16 +209,13 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 0.95rem;
+  position: relative;
 }
 .rankImg > img {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
   width: 6.875rem;
   height: 6.875rem;
   flex-shrink: 0;
-  text-align: center;
-}
-.rankImgBox p {
-  margin: 0;
   margin-left: 0.4rem;
 }
 .rank1Text {
@@ -226,6 +226,8 @@ body {
   font-weight: 500;
   line-height: normal;
   padding-top: 0.75rem;
+  margin: 0;
+  margin-left: 0.4rem;
 }
 .rank1Price {
   color: var(--gray, #1F1F1F);
@@ -234,6 +236,8 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin: 0;
+  margin-left: 0.4rem;
 }
 .rankDetailBox {
   display: flex;
@@ -246,3 +250,62 @@ body {
   flex-shrink: 0;
   cursor: pointer;
 }
+.rankNumberBox {
+  position: relative;
+  width: 1.1875rem;
+  height: 1.1875rem;
+  flex-shrink: 0;
+  position: absolute;
+  top: 1.25rem;
+  left: 0.75rem;
+  z-index: 1;
+}
+.rank1Background {
+  width: 1.1875rem;
+  height: 1.1875rem;
+  flex-shrink: 0;
+}
+.rankNumber {
+  margin: 0;
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFF;
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* footer */
+footer {
+  width: 24.375rem;
+  height: 6.0625rem;
+  flex-shrink: 0;
+  background-color: black;
+}
+.grayLogo {
+  margin-left: 1.25rem;
+  margin-top: 1.05rem;
+}
+.makers, .copyright {
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  margin-left: 1.25rem;
+  margin-top: 1.3rem;
+}
+.makers span {
+  font-weight: 600;
+}
+.copyright {
+  margin-top: 0.3rem;
+}
+
