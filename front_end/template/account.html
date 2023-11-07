@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/front_end/static/css/account.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        <img src="/front_end/static/images/group.png" alt="My Image">
+        <p>회원가입 할 이메일을 입력해주세요.</p><span>
+        <input type='text' name='email' placeholder='ex. zakso@gmail.com'/></span>
+
+        <p>비밀번호를 입력해주세요</p><span><input type ="password"/></span> 
+        <p>비밀번호를 다시 입력해주세요</p><span><input type ="password"/></span> 
+
+        <p>사용하실 닉네임을 입력해주세요.</p><span>
+            <input type='text' name='name' placeholder='2~8자, 영문*한글*숫자 사용 가능'/></span>
+
+        <div class="inputBox">
+             <div id="month">
+                <p>생년월일</p>
+                <input type='text' name='birth' placeholder='YYMMDD'/>
+            </div>
+            <div id="phoneNum">
+                <p>전화번호</p>
+              <input type ="text"/>
+            </div>
+        </div>
+
+
+        <div class="inputCheck">
+            <input type="checkbox" id="check_btn"/>
+            <label for="check_btn"><span>가입하신 이메일로 광고/마케팅 수신을 받으시겠습니까?</span></label>
+        </div>
+
+        <button class="finish">회원가입완료</button>
+   </div>
+</body>
+</html>

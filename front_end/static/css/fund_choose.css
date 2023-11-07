@@ -1,0 +1,95 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+
+header>img{
+    margin-left: -180px;
+    width: 7.5px;
+    height: 14.5px;
+    flex-shrink: 0;
+    stroke-width: 2px;
+    stroke: var(--light_gray, #D6D6D6);
+    }
+    
+    #enter{
+    margin-left: 20px;
+    color: var(--gray, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
+
+    .fundChoose{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1{
+margin-top: 100px;
+ color: var(--gray, #1F1F1F);
+text-align: center;
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 133.333% */
+
+    }
+
+
+    h2{
+margin-top: -10px;
+color: var(--gray, #1F1F1F);
+text-align: center;
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 133.333% */
+    }
+
+
+    .container{
+        display: flex;
+        flex-direction: column;
+   
+    }
+
+    .box{
+margin-top: 20px;
+width: 232px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+border: 1px solid var(--strong_pink, #F33D69);
+color: var(--strong_pink, #F33D69);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+background-color:white;
+
+    }
+
+
+    .non-click {
+        background-color: white;
+      }
+      
+      .click {
+        background: var(--strong_pink, #F33D69);
+        color: var(--white, #FFF);
+
+      }
+
+ 
