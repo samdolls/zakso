@@ -1,7 +1,9 @@
 import base64
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
+from django.http import HttpResponse
 
 from .models import Fundings, History
 
@@ -9,9 +11,9 @@ from .models import Fundings, History
 # Create your views here.
 def mainpage(request):
     popular_presents = Fundings.objects.filter(type="PRESENT").order_by("-likes_cnt")[
-        :2
+        :3
     ]
-    popular_sosos = Fundings.objects.filter(type="SOSO").order_by("-likes_cnt")[:2]
+    popular_sosos = Fundings.objects.filter(type="SOSO").order_by("-likes_cnt")[:3]
     return render(
         request,
         "main/mainpage.html",
@@ -57,7 +59,7 @@ def choose(request):
         elif request.method == "GET":
             return render(request, "main/choose.html")
     else:
-        return redirect("accounts:login")
+        return redirect("accounts:login_view")
 
 
 def detail(request, funding_id):
@@ -133,17 +135,29 @@ def delete(request, funding_id):
         return redirect("main:detail", funding.id)
 
 
-def like(request, funding_id):
-    if request.user.is_authenticated:
-        funding = get_object_or_404(Fundings, pk=funding_id)
-        if request.user in funding.like.all():
-            funding.like.remove(request.user)
-            funding.likes_cnt -= 1
-            funding.save()
+def funding_like_toggle(request):
+    if request.user.is_authenticated:  # 유저가 로그인했으면
+        pk = request.GET["pk"]
+        funding = get_object_or_404(
+            Fundings, pk=pk
+        )  # URL 매핑으로 받은 게시물 아이디에 해당하는 게시물을 담음
+        if (
+            request.user in funding.like.all()
+        ):  # 게시물의 like 안에 있는 모든 유저들 중에 현재 유저가 있는지 판별
+            funding.like.remove(
+                request.user
+            )  # 이미 좋아요가 눌러진 상태라는 것이기에 좋아요를 누르면 like안에 있는 유저들 중 자기를 없앰
+            funding.likes_cnt -= 1  # 좋아요 개수 1개 줄음
+            funding.save()  # 저장
+            result = "like_cancel"
         else:
-            funding.like.add(request.user)
-            funding.likes_cnt += 1
+            funding.like.add(request.user)  # 좋아요를 누르면 like 안에 유저 추가
+            funding.likes_cnt += 1  # 좋아요 1개 추가
             funding.save()
-        return redirect("main:detail", funding.id)
-    else:
-        return redirect("accounts:login")
+            result = "like"
+
+        context = {"likes_cnt": funding.likes_cnt, "result": result}
+
+        return HttpResponse(json.dumps(context), content_type="application/json")
+    # else:
+    #     return render(request, "accounts/no_auth.html")

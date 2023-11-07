@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    {% for soso in soso_fundings %}
+    <div>
+        <a href="{% url 'main:detail' soso.id %}"><img src="{{soso.funding_image.url}}" alt="펀딩 이미지" height="100px" width="100px"></a>
+    </div>
+    <div>
+        {{soso.title}}
+    </div>
+    <div>
+        총 금액:{{soso.total_price}}
+    </div>
+    <div>
+        모인 금액:{{soso.accumulation}}
+    </div>
+    <div>
+        {{soso.percentage}}%
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
