@@ -37,7 +37,7 @@
                         value="{{ form.phone_number.value|default_if_none:' ' }}">
                 </div>
 
-                {% if form.errors %}
+                {% if form.errors %}  <!--사용자에게 입력받는 부분에서 에러 생기면 뜨는 에러 메세지-->
                 <ul class="errorlist">
                     {% for field, errors in form.errors.items %}
                     <li>{{ field }}: {{ errors.0 }}</li>

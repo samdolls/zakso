@@ -59,7 +59,7 @@ def choose(request):
         elif request.method == "GET":
             return render(request, "main/choose.html")
     else:
-        return redirect("accounts:login")
+        return redirect("accounts:login_view")
 
 
 def detail(request, funding_id):
