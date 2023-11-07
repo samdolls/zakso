@@ -10,6 +10,7 @@
   <header>
     <div class="mainNav">
       <span class="logoImg"><a href="#"><img src="/front_end/static/images/logo.svg" alt="logo"></a></span>
+      <span class="logoText"><a href="#"><img src="/front_end/static/images/logoText.svg" alt="logo"></a></span>
       <span class="searchImg"><a href="#"><img src="/front_end/static/images/search.svg" alt="search"></a></span>
       <div class="searchImgBox">
         <span class="noticeImg"><a href="#"><img src="/front_end/static/images/notice.svg" alt="notice"></a></span>
@@ -21,10 +22,10 @@
 
   <!-- banner -->
   <div class="bannerBox">
-    <div class="mainBanner" id="banner1">
+    <div class="slideItem item1" id="banner1">
       <div class="mainTextBox">
         <img src="/front_end/static/images/logo.svg" alt="logo" class="logoImg">
-        <img src="/front_end/static/images/mainBannerText.svg" alt="text" class="mainBannerText">
+        <img src="/front_end/static/images/mainBannerText.svg" alt="mainBannerText" class="mainBannerTextImg">
       </div>
       <div class="subTextBox">
         <img src="/front_end/static/images/heart.svg" alt="heart" class="heartImg">
@@ -32,9 +33,9 @@
         <img src="/front_end/static/images/heart.svg" alt="heart" class="heartImg">
       </div>
     </div>
-    <div class="subBanner" id="banner2"></div>
-    <div class="subBanner" id="banner3"></div>
-    <div class="subBanner" id="banner4"></div>
+    <div class="slideItem item2" id="banner2"></div>
+    <div class="slideItem item3" id="banner3"></div>
+    <div class="slideItem item4" id="banner4"></div>
     <div class="dotList">
       <span><a href="banner1"><img src="/front_end/static/images/circle_gray.svg" alt="circle_gray" class="dot1"></a></span>
       <span><a href="banner2"><img src="/front_end/static/images/circle_gray.svg" alt="circle_gray" class="dot2"></a></span>
@@ -42,5 +43,122 @@
       <span><a href="banner4"><img src="/front_end/static/images/circle_gray.svg" alt="circle_gray" class="dot4"></a></span>
     </div>
   </div>
+
+  <!-- buttons -->
+  <div class="makeButtonBox">
+    <button class="makeButton"><a href="#">나만의 작소펀딩 만들기</a></button>
+  </div>
+  <div class="buttonBox">
+    <button class="presentButton"><a href="#">선물 펀딩</a></button>
+    <button class="smallButton"><a href="#">소소 펀딩</a></button>
+    <button class="dreamButton"><a href="#">드림 펀딩</a></button>
+  </div>
+
+  <!-- ranking -->
+  <section class="prensentRanking">
+    <div class="popularPresentRanking">
+      <img src="/front_end/static/images/pinkHeart.svg" alt="pinkHeart" class="pinkHeart">
+      <p class="presentRankingText">인기 있는 선물 펀딩</p>
+      <p class="moreText"><a href="#">더 보기 ></a></p>
+    </div>
+    <div class="rankImgBox">
+      <div class="rankImg item1">
+        <div class="rankNumberBox">
+          <img src="/front_end/static/images/rank1.svg" alt="rank1" class="rank1Background">
+          <p class="rankNumber number1">1</p>
+        </div>
+        <img src="/front_end/static/images/airpod.png" alt="airpods">
+        <p class="rank1Text">랭킹 1</p>
+        <div class="rankDetailBox">
+          <p class="rank1Price">랭킹 가격</p>
+          <img src="/front_end/static/images/blankHeart.svg" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+        </div>
+      </div>
+      <div class="rankImg item2">
+        <div class="rankNumberBox">
+          <img src="/front_end/static/images/rankOther.svg" alt="rank1" class="rank1Background">
+          <p class="rankNumber number2">2</p>
+        </div>
+        <img src="/front_end/static/images/airpod.png" alt="airpods">
+        <p class="rank1Text">랭킹 1</p>
+        <div class="rankDetailBox">
+          <p class="rank1Price">랭킹 가격</p>
+          <img src="/front_end/static/images/blankHeart.svg" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+        </div>
+      </div>
+      <div class="rankImg item3">
+        <div class="rankNumberBox">
+          <img src="/front_end/static/images/rankOther.svg" alt="rank1" class="rank1Background">
+          <p class="rankNumber number3">3</p>
+        </div>
+        <img src="/front_end/static/images/airpod.png" alt="airpods">
+        <p class="rank1Text">랭킹 1</p>
+        <div class="rankDetailBox">
+          <p class="rank1Price">랭킹 가격</p>
+          <img src="/front_end/static/images/blankHeart.svg" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="smallRanking">
+    <div class="popularSmallRanking">
+      <img src="/front_end/static/images/blueHeart.svg" alt="blueHeart" class="blueHeart">
+      <p class="smallRankingText">인기 있는 소소 펀딩</p>
+      <p class="moreText">더 보기 ></p>
+    </div>
+    <div class="rankImgBox">
+      <div class="rankImg item1">
+        <div class="rankNumberBox">
+          <img src="/front_end/static/images/smallRank1.svg" alt="rank1" class="rank1Background">
+          <p class="rankNumber number1">1</p>
+        </div>
+        <img src="/front_end/static/images/airpod.png" alt="airpods">
+        <p class="rank1Text">랭킹 1</p>
+        <div class="rankDetailBox">
+          <p class="rank1Price">랭킹 가격</p>
+          <img src="/front_end/static/images/blankHeart.svg" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+        </div>
+      </div>
+      <div class="rankImgBox">
+        <div class="rankImg item1">
+          <div class="rankNumberBox">
+            <img src="/front_end/static/images/smallRankOther.svg" alt="rank1" class="rank1Background">
+            <p class="rankNumber number1">2</p>
+          </div>
+          <img src="/front_end/static/images/airpod.png" alt="airpods">
+          <p class="rank1Text">랭킹 1</p>
+          <div class="rankDetailBox">
+            <p class="rank1Price">랭킹 가격</p>
+            <img src="/front_end/static/images/blankHeart.svg" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+          </div>
+        </div>
+        <div class="rankImgBox">
+          <div class="rankImg item1">
+            <div class="rankNumberBox">
+              <img src="/front_end/static/images/smallRankOther.svg" alt="rank1" class="rank1Background">
+              <p class="rankNumber number1">3</p>
+            </div>
+            <img src="/front_end/static/images/airpod.png" alt="airpods">
+            <p class="rank1Text">랭킹 1</p>
+            <div class="rankDetailBox">
+              <p class="rank1Price">랭킹 가격</p>
+              <img src="/front_end/static/images/blankHeart.svg" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+            </div>
+          </div>
+  </section>
+
+  <footer>
+    <img src="/front_end/static/images/grayLogo.svg" alt="grayLogo" class="grayLogo">
+    <p class="makers">
+      <span>PM</span> 박서희  
+      <span>Design</span> 송지연  
+      <span>Front-End</span> 김소담 박제준  
+      <span>Back-End</span> 김민준 김현수
+    </p>
+    <p class="copyright">Copyright 2023. ZAKSO All rights reserved.</p>
+  </footer>
+
+  <script src="/front_end/static/js/mainPage.js"></script>
 </body>
 </html>
