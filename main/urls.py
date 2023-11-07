@@ -14,5 +14,6 @@ urlpatterns = [
     path("dream/", dream, name="dream"),
     path("delete/<int:funding_id>/", delete, name="delete"),
     path("update/<int:funding_id>/", update, name="update"),
-    path("like/<int:funding_id>/", like, name="like"),
+    # path("like/<int:funding_id>/", like, name="like"),
+    path("funding_like_toggle", funding_like_toggle, name="funding_like_toggle"),
 ]
