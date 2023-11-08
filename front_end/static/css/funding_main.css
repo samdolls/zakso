@@ -1,0 +1,270 @@
+
+.share{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 344px;
+  height: 213px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% ,-50%);
+}
+
+#title{
+  display: flex;
+  flex-direction: row;
+   margin-top: -50px;
+   width: 310px;
+
+   justify-content: space-between;
+}
+
+#title>p{
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  
+}
+
+#qr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 130px;
+  margin-left: -170px;
+  margin-top: 30px;
+}
+
+
+
+#link{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 130px;
+  margin-left: -170px;
+  margin-top: 30px;
+}
+
+#qr>button{
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border: none;
+background-color: #FFF;
+
+}
+
+#link>button{
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 15px;
+width: 100px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border: none;
+background-color: #FFF;
+
+}
+
+
+.funding_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+   
+  
+  }
+
+  .divNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+
+  }
+
+  .divNav>p{
+    margin-left: -240px;
+    color: var(--gray, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+.fund_information{
+    display: flex;
+    flex-direction: column;
+}
+
+.first{
+margin-right: 45px;
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 22px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+}
+
+.second{
+color: var(--mid_gray, #9E9E9E);
+font-family: Pretendard;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.name{
+display: flex;
+flex-direction: row;
+align-items: center;
+color: var(--mid_gray, #9E9E9E);
+font-family: Pretendard;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.name>img{
+    width: 55px;
+    margin-right: 20px;
+    border: none;
+}
+
+.coin{
+    display: flex;
+    flex-direction: column;
+    color: var(--gray, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.coin>p{
+    margin-top: -15px;
+}
+
+
+.third{
+margin-right: 250px;
+ color: var(--strong_pink, #F33D69);
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.percent{
+color: var(--strong_pink, #F33D69);
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.target{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    color: var(--gray, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.target>p{
+    margin-top: -10px;
+    margin-bottom: 50px;
+}
+
+.six{
+    margin-left: 50px;
+    color: var(--mid_gray, #9E9E9E);
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    }
+
+    #story>p{
+    margin-bottom: 50px;
+    color: var(--gray, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    }
+
+
+.click{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+
+
+ .custom-button{
+width: 232px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--strong_pink, #F33D69);
+color: var(--white, #FFF);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }
+  
+  .click button {
+    border-radius: 10px;
+    border: none;
+    outline: none; 
+    margin-right: 20px; /* 버튼 사이의 오른쪽 간격 설정 */
+  }
+
+  #openModalBtn{
+display: flex;
+align-items: center;
+justify-content: center;
+  width: 54px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--light_gray2, #F6F6F6);
+  }

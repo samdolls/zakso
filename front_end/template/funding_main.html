@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/front_end/static/css/funding_main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script defer src="../../front_end/static/js/fundmainBlur.js"></script> 
+    <script defer src="../../front_end/static/js/modal.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+      <div class="modal" id="shareModal">
+             
+    <!-- 모달 내용 입력 -->
+     <div class="share">
+       <div id="title">
+            <p>공유하기</p>
+            <img src="/front_end/static/images/x.svg">
+        </div>
+        <div id ="qr">
+           <img src="/front_end/static/images/qr.svg">
+           <button type="button" class="copy-btn" onclick="copyUrl()">QR코드 복사</button>
+        </div>
+        <div id="link">
+          <img src="/front_end/static/images/link.svg">
+          <button type="button" class="copy-btn" onclick="copyUrl()">링크 복사</button>
+        </div>
+    </div>
+</div>
+
+   <div class="funding_main">
+        <header>
+        <div class="divNav">
+            <span class="vectorImg"><a href="#"><img src="/front_end/static/images/Vector.svg" alt="vector"></a></span>
+            <p>선물 펀딩</p>
+            <span class="hamburgerImg"><a href="#"><img src="/front_end/static/images/hamburger.svg" alt="hamburger"></a></span>
+        </div>
+        </header>
+    <img src="/front_end/static/images/mainairpod.svg">
+       <div class="fund_information">
+        <div class="information">
+            <p>
+                <span class="first">서희야 생일 축하해 ✨</span>
+                <span class="second">23.11.01~23.11.11</span>
+           </p> 
+         </div>
+
+         <div class="name">
+            <img src="/front_end/static/images/profile.svg">
+            <span>자두자두졸려</span>
+          </div>
+
+         <div class="coin">
+            <h2>모인 금액</h2>
+            <p>
+                <span class="third">287,200 ₩</span>
+                <span class="percent">80%</span>
+            </p>
+         </div>
+       </div>
+
+
+       <div class="target">
+            <h3>목표금액</h3>
+            <p>
+                <span class="five">359,000 ₩</span>
+                <span class="six">목표 금액 달성 시 11월 13일에 선물이 배송됩니다. </span>
+            </p>
+
+            <div id="story">작소펀딩 이야기
+                <P>서희야 생일축하해!!! 노이즈캔슬링 조차 되지 않는 너를 위해서 내가 준비한 펀딩이야. 지하철 타면서 잘 썼으면 좋겠다! ❤️ </P>
+            </div>
+
+            <div id="story">작고 소중한 우리의 선물
+                <P>AirPods Pro (2세대) </P>
+            </div>
+       </div>
+
+ 
+       <div class="click">
+        <button type="submit">
+            <img src="/front_end/static/images/submit.svg" alt="이미지 설명">
+          </button>
+          <button id="openModalBtn" class="btn btn-primary"><img src="/front_end/static/images/out.svg" alt="이미지 설명"></button>
+          <button class="custom-button">작소펀딩 함께하기</button>
+        </div>
+    </div>
+
+
+     <!-- Bootstrap JS 및 jQuery를 포함합니다 -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
