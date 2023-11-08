@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/front_end/static/css/funding_main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script defer src="../../front_end/static/js/fundmainBlur.js"></script> 
+    <script defer src="../../front_end/static/js/modal.js"></script> 
     <title>Document</title>
 </head>
 <body>
+      <div class="modal" id="shareModal">
+             
+    <!-- 모달 내용 입력 -->
+     <div class="share">
+       <div id="title">
+            <p>공유하기</p>
+            <img src="/front_end/static/images/x.svg">
+        </div>
+        <div id ="qr">
+           <img src="/front_end/static/images/qr.svg">
+           <button type="button" class="copy-btn" onclick="copyUrl()">QR코드 복사</button>
+        </div>
+        <div id="link">
+          <img src="/front_end/static/images/link.svg">
+          <button type="button" class="copy-btn" onclick="copyUrl()">링크 복사</button>
+        </div>
+    </div>
+</div>
+
    <div class="funding_main">
         <header>
         <div class="divNav">
@@ -15,7 +37,7 @@
             <span class="hamburgerImg"><a href="#"><img src="/front_end/static/images/hamburger.svg" alt="hamburger"></a></span>
         </div>
         </header>
-    <img src="/front_end/static/images/airpod.png">
+    <img src="/front_end/static/images/mainairpod.svg">
        <div class="fund_information">
         <div class="information">
             <p>
@@ -60,11 +82,16 @@
         <button type="submit">
             <img src="/front_end/static/images/submit.svg" alt="이미지 설명">
           </button>
-          <button type="out">
-            <img src="/front_end/static/images/out.svg" alt="이미지 설명">
-          </button>
+          <button id="openModalBtn" class="btn btn-primary"><img src="/front_end/static/images/out.svg" alt="이미지 설명"></button>
           <button class="custom-button">작소펀딩 함께하기</button>
         </div>
     </div>
+
+
+     <!-- Bootstrap JS 및 jQuery를 포함합니다 -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>

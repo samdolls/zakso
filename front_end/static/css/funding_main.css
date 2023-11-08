@@ -1,3 +1,86 @@
+
+.share{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 344px;
+  height: 213px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% ,-50%);
+}
+
+#title{
+  display: flex;
+  flex-direction: row;
+   margin-top: -50px;
+   width: 310px;
+
+   justify-content: space-between;
+}
+
+#title>p{
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  
+}
+
+#qr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 130px;
+  margin-left: -170px;
+  margin-top: 30px;
+}
+
+
+
+#link{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 130px;
+  margin-left: -170px;
+  margin-top: 30px;
+}
+
+#qr>button{
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border: none;
+background-color: #FFF;
+
+}
+
+#link>button{
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 15px;
+width: 100px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border: none;
+background-color: #FFF;
+
+}
+
+
 .funding_main{
     display: flex;
     flex-direction: column;
@@ -154,7 +237,7 @@ line-height: normal;
 
 
 
-  .custom-button{
+ .custom-button{
 width: 232px;
 height: 43px;
 flex-shrink: 0;
@@ -173,4 +256,15 @@ line-height: normal;
     border: none;
     outline: none; 
     margin-right: 20px; /* 버튼 사이의 오른쪽 간격 설정 */
+  }
+
+  #openModalBtn{
+display: flex;
+align-items: center;
+justify-content: center;
+  width: 54px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--light_gray2, #F6F6F6);
   }

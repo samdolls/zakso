@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/front_end/static/css/enter_main.css">
+    <script defer src="../../front_end/static/js/enter_main.js"></script> 
     <title>Document</title>
 </head>
 <body>
-    
-    
+    <header>
+        <img src="/front_end/static/images/Vector.svg">
+        <div id="enter">펀딩 참여</div>
+    </header>
+       <div class="enterMain">
+            <div class="fund_name">
+                <p>펀딩 이름</p>
+                <div class="fund_box">
+                    <img src="/front_end/static/images/fundairpod.png">
+                    <div>
+                        <h1>서희야 생일 축하해 🫶</h1>
+                        <h2>펀딩 종류 : 선물 펀딩</h2>
+                        <h3>23.11.01~23.11.11</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fund_input">
+                <p>원하는 펀딩 금액을 입력해주세요.</p>
+                <div class="input_box">
+                    <input type='text' name='name' placeholder='100원 단위로 펀딩이 가능합니다.'/>
+                    <button class="inputBtn">확인</button>
+                </div>
+            </div>
+
+            <div class="choice">
+                <p>펀딩(결제) 방법 선택</p>
+                <div id="checkboxs">
+                <input type='checkbox' name='choice' value='account' onclick='checkOnlyOne(this)'/> 계좌로 직접 입금
+                <input type='checkbox' name='choice' value='easy' onclick='checkOnlyOne(this)'/> 간편결제
+                </div>
+            </div>
+
+          <div class="caution">
+            <p>주의 사항</p>
+            <ul>
+                <li>펀딩은 100원 단위로 가능합니다.</li>
+                <li>선물 펀딩은 추가적인 리워드가 지급되지 않습니다.</li>
+                <li>기한 내에 달성률 100%에 도달하지 못했거나,<br> 펀딩이 취소되는 경우 선택하신 결제 방법으로 영업일 기준 3~5일 이내에 환불<br>처리 됩니다.</li>
+            </ul>
+          </div>
+
+      <button class="go">11,000원 펀딩하기</button>
+
+
+    </div>
 </body>
 </html>
