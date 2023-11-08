@@ -286,6 +286,7 @@ footer {
   height: 6.0625rem;
   flex-shrink: 0;
   background-color: black;
+  margin-top: 3.5rem;
 }
 .grayLogo {
   margin-left: 1.25rem;

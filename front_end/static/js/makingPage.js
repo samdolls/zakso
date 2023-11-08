@@ -40,6 +40,22 @@ document.getElementById('imgUpload').addEventListener('change', function (e) {
   }
 });
 
+// 파일 초기화하기
+function resetFile() {
+  const imgElements = document.querySelectorAll('.imgUploadField img');
+  let basicImg = document.querySelector(".uploadImg");
+  let basicText = document.querySelector(".uploadImgText");
+
+  if (imgElements.length > 0) {
+    for(let i=0; i<imgElements.length-1;i++) {
+      imgElements.forEach(img => {
+        img.remove();
+      });
+    }
+    basicImg.style.display = "inline";
+    basicText.style.display = "block";
+  }
+}
 
 
 

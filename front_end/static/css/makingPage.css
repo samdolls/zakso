@@ -194,4 +194,44 @@ section input:focus, section select:focus {
   margin: 0;
   margin-top: 0.9rem;
 }
-
+.reselectBox {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+.reselectButton {
+  width: 22.125rem;
+  height: 2.1875rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  border: 1px solid var(--light_gray, #D6D6D6);
+  background: var(--white, #FFF);
+  cursor: pointer;
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.nextButtonBox {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+.nextButton {
+  border-radius: 0.625rem;
+  background: var(--strong_pink, #F33D69);
+  width: 22.125rem;
+  height: 2.6875rem;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+.nextButton a {
+  text-decoration: none;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
