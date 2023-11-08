@@ -1,0 +1,14 @@
+{% load static %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    <p>{{request.user.username}}</p>
+    {% for list in pay_lists %}
+        <p>펀딩: {{list.funding.title}}</p>
+        <p>결제 금액:{{list.amount}}원</p>
+        <p>결제 일자:{{list.created_at}}</p>
+    {% endfor %}
+    {% endif %}
+    <a href="{% url 'main:mainpage' %}">홈으로</a>
+
+{% endblock %}

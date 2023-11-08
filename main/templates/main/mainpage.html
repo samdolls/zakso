@@ -2,7 +2,144 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/mainPage.css' %}">
+<div class="bannerBox">
+    <div class="slideItem item1" id="banner1">
+      <div class="mainTextBox">
+        <img src="{% static 'images/logo.svg' %}" alt="logo" class="logoImg">
+        <img src="{% static 'images/mainBannerText.svg' %}" alt="mainBannerText" class="mainBannerTextImg">
+      </div>
+      <div class="subTextBox">
+        <img src="{% static 'images/heart.svg' %}" alt="heart" class="heartImg">
+        <p class="subText">런칭 기념 이벤트</p>
+        <img src="{% static 'images/heart.svg' %}" alt="heart" class="heartImg">
+      </div>
+    </div>
+    <div class="slideItem item2" id="banner2"></div>
+    <div class="slideItem item3" id="banner3"></div>
+    <div class="slideItem item4" id="banner4"></div>
+    <div class="dotList">
+      <span><a href="banner1"><img src="{% static 'images/circle_gray.svg' %}" alt="circle_gray" class="dot1"></a></span>
+      <span><a href="banner2"><img src="{% static 'images/circle_gray.svg' %}" alt="circle_gray" class="dot2"></a></span>
+      <span><a href="banner3"><img src="{% static 'images/circle_gray.svg' %}" alt="circle_gray" class="dot3"></a></span>
+      <span><a href="banner4"><img src="{% static 'images/circle_gray.svg' %}" alt="circle_gray" class="dot4"></a></span>
+    </div>
+  </div>
 
-<h1>헤헤</h1>
+  <!-- buttons -->
+  <div class="makeButtonBox">
+    <button class="makeButton"><a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a></button>
+  </div>
+  <div class="buttonBox">
+    <button class="presentButton"><a href="{% url 'main:present' %}">선물 펀딩</a></button>
+    <button class="smallButton"><a href="{% url 'main:soso' %}">소소 펀딩</a></button>
+    <button class="dreamButton"><a href="#">드림 펀딩</a></button>
+  </div>
+
+  <!-- ranking -->
+  <section class="prensentRanking">
+    <div class="popularPresentRanking">
+      <img src="{% static 'images/pinkHeart.svg' %}" alt="pinkHeart" class="pinkHeart">
+      <p class="presentRankingText">인기 있는 선물 펀딩</p>
+      <p class="moreText"><a href="{% url 'main:present' %}">더 보기 ></a></p>
+    </div>
+    <div class="rankImgBox">
+    {% for present in popular_presents %}
+      <div class="rankImg item1">
+        <div class="rankNumberBox">
+            {% if forloop.counter == 1 %}
+          <img src="{% static 'images/rank1.svg' %}" alt="rank1" class="rank1Background">
+          {% else %}
+          <img src="{% static 'images/rankOther.svg' %}" alt="rank1" class="rank1Background">
+          {% endif %}
+          <p class="rankNumber number1">{{forloop.counter}}</p>
+        </div>
+        <img src="{{present.funding_image.url}}" alt="airpods">
+        <p class="rank1Text">{{present.product}}</p>
+        <div class="rankDetailBox">
+          <p class="rank1Price">{{present.total_price}}</p>
+          <span href="#" class = "like" name="{{present.id}}" value="Like">
+            {% if request.user in present.like.all %}
+                <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
+            {% else %}
+                <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
+            {% endif %}
+        </span>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </section>
+
+  <section class="smallRanking">
+    <div class="popularSmallRanking">
+      <img src="{% static 'images/blueHeart.svg' %}" alt="blueHeart" class="blueHeart"></a>
+      <p class="smallRankingText">인기 있는 소소 펀딩</p>
+      <p class="moreText"><a href="{% url 'main:soso' %}">더 보기 ></a></p>
+    </div>
+    <div class="rankImgBox">
+        {% for soso in popular_sosos %}
+      <div class="rankImg item1">
+        <div class="rankNumberBox">
+            {% if forloop.counter == 1 %}
+          <img src="{% static 'images/smallRank1.svg' %}" alt="rank1" class="rank1Background">
+          {% else %}
+            <img src="{% static 'images/smallRankOther.svg' %}" alt="rank1" class="rank1Background">
+          {% endif %}
+          <p class="rankNumber number1">{{forloop.counter}}</p>
+        </div>
+        <img src="{{soso.funding_image.url}}" alt="airpods">
+        <p class="rank1Text">{{soso.product}}</p>
+        <div class="rankDetailBox">
+          <p class="rank1Price">{{soso.total_price}}</p>
+          <span href="#" class = "like" name="{{soso.id}}" value="Like">
+            {% if request.user in soso.like.all %}
+                <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
+            {% else %}
+                <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
+            {% endif %}
+        </span>
+        </div>
+      </div>
+      {% endfor %}
+          </div>
+  </section>
+  <script src="{% static 'js/mainPage.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+        $(".like").click(function(){
+    var pk = $(this).attr('name')
+    var likeIcon = $(this).find('img');
+    $.ajax({
+        method : 'GET',
+        url:"{% url 'main:funding_like_toggle' %}",
+        data:{'pk':pk, 'csrfmiddlewaretoken':'{{csrf_token}}'},
+        dataType:'json',
+        success:function(response){
+            if(response.likes_cnt == null){
+                alert('로그인이 필요합니다.');
+                window.location.replace('/accounts/login/');
+            }
+            else{
+                if (response.result === 'like') {
+                    likeIcon.attr('src', '{% static "images/fillHeart.svg" %}');  // 좋아요 이미지로 변경
+                } else {
+                    likeIcon.attr('src', '{% static "images/blankHeart.svg" %}');  // 좋아요 취소 이미지로 변경
+                }
+            }
+        },
+        error:function(request, status, error){
+            alert("로그인이 필요합니다.");
+        },
+    })
+})
+    </script>
+<div>
+    <a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a>
+    <a href="{% url 'main:present' %}">선물 펀딩</a>
+    <a href="{% url 'accounts:login_view' %}">로그인</a>
+    <a href="{% url 'accounts:logout_view' %}">로그아웃</a>
+    <a href="{% url 'main:payhistory' %}">결제내역확인</a>
+</div>
 
 {% endblock %}

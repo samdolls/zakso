@@ -1,0 +1,52 @@
+// chekImg 변경
+function checkImg(element) {
+  if (element.src.endsWith("/front_end/static/images/blankCheck.svg")) {
+    element.src = "/front_end/static/images/checked.svg";
+  } 
+  else {
+    element.src = "/front_end/static/images/blankCheck.svg";
+  }
+}
+
+// 업로드 된 파일 보기
+document.getElementById('imgUpload').addEventListener('change', function (e) {
+  const imgField = document.querySelector('.imgUploadField');
+  let basicImg = document.querySelector(".uploadImg");
+  let basicText = document.querySelector(".uploadImgText");
+  basicImg.style.display = "none";
+  basicText.style.display = "none";
+  // imgField.innerHTML = "";
+  imgField.style.flexDirection = 'row';
+  imgField.style.gap = '0.75rem';
+  imgField.style.overflowX = 'scroll';
+  // imgField.style.whiteSpace = 'nowrap';
+
+  const files = e.target.files;
+  const fileCount = Math.min(files.length, 10); // 최대 10개까지만 허용
+  for (let i = 0; i < fileCount; i++) {
+    const file = files[i];
+    const reader = new FileReader();
+    
+    const imgElement = document.createElement('img');
+    imgElement.style.width = '10.125rem'; // 이미지의 너비 설정
+    imgElement.style.height = '10.125em'; // 이미지의 높이 설정
+    imgField.appendChild(imgElement); // 이미지 필드에 이미지 추가
+
+    reader.onload = function (event) {
+      imgElement.src = event.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+

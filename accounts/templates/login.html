@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body> <!--일단 로그인 후 home.html로 연결되게 해두었습니다..!-->
+    <form method="post" action="{% url 'accounts:login_view' %}">
+        {% csrf_token %}
+        <input type="text" id="email" name="email"></input>
+        <input type="password" id="password" name="password"></input>
+
+        <div class="b">
+            <label for="remember_me">아이디 저장</label>
+            <input type="checkbox" name="remember_me" id="remember_me">
+        </div>
+        <div class="b">
+            <label for="stay_login">자동 로그인</label>
+            <input type="checkbox" name="stay_login" id="stay_login">
+        </div>
+        <button type="submit">로그인</button>
+        <div class="signupbtn">
+            <a href="{% url 'accounts:signup' %}">회원가입</a>
+        </div>
+    </form>
+</body>
+</html>

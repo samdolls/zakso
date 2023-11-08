@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div>
+        <div>
+            {% if funding.image %}
+            <img src="{{funding.funding_image.url}}" alt="펀딩 이미지">
+            {% endif %}
+        </div>
+        <div>
+            <h2>{{funding.title}}</h2>
+            <span>{{funding.start_date}}~{{funding.end_date}}</span>
+        </div>
+        <div>
+            <h3>모인 금액</h3>
+        </div>
+        <div>
+            <p>{{funding.accumulation}}</p>
+            <span>{{funding.percentage}}</span>
+        </div>
+        <div>
+            <p>목표 금액</p>
+            <p>{{funding.total_price}}</p>
+            <span>목표 금액 달성시 {{delievery_date}}에 선물이 배송됩니다.</span>
+        </div>
+        <div>
+            <p>작소펀딩 이야기</p>
+            <p>{{funding.content}}</p>
+        </div>
+        <div>
+            <p>작고 소중한 우리의 선물</p>
+            <p>{{funding.product}}</p>
+            <p>{{encoded_funding_id}}</p>
+        </div>
+        <a href="{% url 'payments:index' %}">펀딩하기</a>
+        <!-- <a href="{% url 'main:update' funding.id %}">수정하기</a> -->
+        <span href="#" class = "like" name="{{funding.id}}" value="Like">
+            {% if request.user in funding.like.all %}
+                <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
+            {% else %}
+                <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
+            {% endif %}
+        </span>
+        <a href="{% url 'main:delete' funding.id %}">삭제하기</a>
+        <a href="{% url 'main:mainpage' %}">홈으로</a>
+    </div>
+    <!-- <script src="{% static 'js/like.js' %}"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(".like").click(function(){
+    var pk = $(this).attr('name')
+    var likeIcon = $(this).find('img');
+    $.ajax({
+        method : 'GET',
+        url:"{% url 'main:funding_like_toggle' %}",
+        data:{'pk':pk, 'csrfmiddlewaretoken':'{{csrf_token}}'},
+        dataType:'json',
+        success:function(response){
+            if(response.likes_cnt == null){
+                alert('로그인이 필요합니다.');
+                window.location.replace('/accounts/login/');
+            }
+            else{
+                if (response.result === 'like') {
+                    likeIcon.attr('src', '{% static "images/fillHeart.svg" %}');  // 좋아요 이미지로 변경
+                } else {
+                    likeIcon.attr('src', '{% static "images/blankHeart.svg" %}');  // 좋아요 취소 이미지로 변경
+                }
+            }
+        },
+        error:function(request, status, error){
+            alert("로그인이 필요합니다.");
+        },
+    })
+})
+    </script>
+{% endblock %}
