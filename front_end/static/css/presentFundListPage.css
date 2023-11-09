@@ -172,3 +172,15 @@ article {
   font-weight: 600;
   line-height: normal;
 }
+.progressbarBox {
+  margin-top: 0.45rem;
+  margin-left: 1rem;
+}
+.progress {
+  width: 10.6875rem;
+  height: 0.375rem;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 0.1875rem;
+  border: 1px solid var(--strong_pink, #F33D69);
+}
