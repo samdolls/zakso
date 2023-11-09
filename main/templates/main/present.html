@@ -1,8 +1,149 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/presentFundListPage.css' %}">
+  <header>
+    <div class="presentListNav">
+      <a href="{% url 'main:mainpage' %}"><img src="{% static 'images/back.svg' %}" alt="back" class="backImg"></a>
+      <p class="presentFundText">선물 펀딩</p>
+      <span class="searchImg"><a href="#"><img src="{% static 'images/search.svg' %}" alt="search"></a></span>
+      <div class="noticeImgBox">
+        <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
+        <img src="{% static 'images/redDot.svg' %}" alt="redDot" class="redDotImg">
+      </div>
+      <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    </div>
+  </header>
 
-<div>
+  <section>
+    <div class="listTextBox">
+      <p class="notifyAmountText">총 {{count}}개의 선물 펀딩이 있습니다.</p>
+      <p class="recentText" style="margin-top:0.9rem;">최신순</p>
+      <img src="{% static 'images/down.svg' %}" alt="down" class="downImg">
+    </div>
+    {% for present in present_fundings %}
+    <article>
+      <div class="listBox">
+        <a href="{% url 'main:detail' present.id %}">
+        <div class="itemImgBox">
+          <img src="{{present.funding_image.url}}" alt="itemImg" class="itemImg item1">
+        </div>
+      </a>
+        <div class="aboutItemBox">
+          <div class="aboutItemTextBox">
+            <p class="aboutItemText text1">{{present.title}}</p>
+            <span href="#" class = "like" name="{{present.id}}" value="Like" style="margin-right:1rem;">
+              {% if request.user in present.like.all %}
+                  <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+              {% else %}
+                  <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+              {% endif %}
+          </span>
+          </div>
+          <p class="totalMoneyText">총 <span class="totalMoney totalMoney1">{{present.total_price}}</span>₩</p>
+          <div class="currentProgressBox">
+            <p class="currentPercentText"><span class="currentPercent percent1">{{present.percentage}}</span>%</p>
+            <p class="currentMoneyText"><span class="currentMoney currentMoney1">{{present.accumulation}}</span>₩</p>
+          </div>
+          <div class="progressbarBox">
+            <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar  progressbar bar1" style="width: 75%; background-color: #F33D69;"></div>
+            </div>
+          </div>
+      </div>
+    </article>
+    {% endfor %}
+    <div class="makeMyFundButtonBox">
+      <button class="makeMyFundButton"><a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a></button>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/presentFundList.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'css/presentFundListPage.css' %}">
+  <header>
+    <div class="presentListNav">
+      <a href="#"><img src="{% static 'images/back.svg' %}" alt="back" class="backImg"></a>
+      <p class="presentFundText">선물 펀딩</p>
+      <span class="searchImg"><a href="#"><img src="{% static 'images/search.svg' %}" alt="search"></a></span>
+      <div class="noticeImgBox">
+        <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
+        <img src="{% static 'images/redDot.svg' %}" alt="redDot" class="redDotImg">
+      </div>
+      <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="listTextBox">
+      <p class="notifyAmountText">총 15개의 선물 펀딩이 있습니다.</p>
+      <p class="recentText">최신순</p>
+      <img src="{% static 'images/down.svg' %}" alt="down" class="downImg">
+    </div>
+    {% for present in present_fundings %}
+    <article>
+      <div class="listBox">
+    <a href="{% url 'main:detail' present.id %}">
+        <div class="itemImgBox">
+            <img src="{{present.funding_image.url}}" alt="itemImg" class="itemImg item1" style="width:85%; height:85%;">
+        </div>
+    </a>
+        <div class="aboutItemBox">
+          <div class="aboutItemTextBox">
+            <p class="aboutItemText">{{present.title}}</p>
+            <span href="#" class = "like" name="{{present.id}}" value="Like" style="margin-right:1rem;">
+                {% if request.user in present.like.all %}
+                    <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+                {% else %}
+                    <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+                {% endif %}
+            </span>
+          </div>
+          <p class="totalMoneyText">총 <span class="totalMoney totalMoney1">{{present.total_price}}</span>₩</p>
+          <div class="currentProgressBox">
+            <p class="currentPercentText"><span class="currentPercent">{{present.percentage}}</span>%</p>
+            <p class="currentMoneyText"><span class="currentMoney currentMoney1">{{present.accumulation}}</span>₩</p>
+          </div>
+          <div class="progressbarBox"></div>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </section> -->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    $(".like").click(function(){
+    var pk = $(this).attr('name')
+    var likeIcon = $(this).find('img');
+    $.ajax({
+        method : 'GET',
+        url:"{% url 'main:funding_like_toggle' %}",
+        data:{'pk':pk, 'csrfmiddlewaretoken':'{{csrf_token}}'},
+        dataType:'json',
+        success:function(response){
+            if(response.likes_cnt == null){
+                alert('로그인이 필요합니다.');
+                window.location.replace('/accounts/login/');
+            }
+            else{
+                if (response.result === 'like') {
+                    likeIcon.attr('src', '{% static "images/fillHeart.svg" %}');  // 좋아요 이미지로 변경
+                } else {
+                    likeIcon.attr('src', '{% static "images/blankHeart.svg" %}');  // 좋아요 취소 이미지로 변경
+                }
+            }
+        },
+        error:function(request, status, error){
+            alert("로그인이 필요합니다.");
+        },
+    })
+})
+    </script>
+
+
+<!-- <div>
     {% for present in present_fundings %}
     <div>
         <a href="{% url 'main:detail' present.id %}"><img src="{{present.funding_image.url}}" alt="펀딩 이미지" height="100px" width="100px"></a>
@@ -20,6 +161,6 @@
         {{present.percentage}}%
     </div>
     {% endfor %}
-</div>
+</div> -->
 
 {% endblock %}

@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 390px;
+}
+
+/* header */
+header {
+  height: 3.75rem;
+}
+
+input[type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.makingNav {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  align-items: center;
+}
+.goBack {
+  margin-left: 1.2rem;
+  cursor: pointer;
+}
+.makeFund {
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 1.1rem;
+}
+.hamburger {
+  margin-left: 11.11rem;
+}
+
+/* 입력 창 */
+.fundNameBox {
+  margin-left: 1.2rem;
+  margin-top: 2rem;
+}
+.fundNameText, .setPriceText, .setDateText, .productNameText, .storyText, .setOpenRangeText, .uploadText {
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+.fundNameField, .setPriceField, .productNameField {
+  width: 22.125rem;
+  height: 2.4375rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--light_gray2, #F6F6F6);  
+  border: none;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+section input:focus, section select:focus {
+  outline: none;
+}
+.settingPriceBox, .setDateBox {
+  margin-top: 1.2rem;
+  margin-left: 1.2rem;
+}
+.setDateField {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+#setYear {
+  width: 7.375rem;
+  height: 2.4375rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--light_gray2, #F6F6F6);
+  border: none;
+  /* margin-top: 0.5rem; */
+  -webkit-appearance: none;
+  appearance: none;
+  padding-left: 1rem;
+}
+.setYearBox {
+  position: relative;
+  width: 7.375rem;
+  height: 2.4375rem;
+}
+.dropdownImg {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.yearText, .monthText, .dayText {
+  margin: 0;
+  margin-left: 0.35rem;
+  margin-right: 0.75rem;
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  /* display: inline-block; */
+}
+.setMonthBox, .setDayBox {
+  width: 4.3125rem;
+  height: 2.4375rem;
+  flex-shrink: 0;
+  position: relative;
+}
+#setMonth, #setDay {
+  width: 4.3125rem;
+  height: 2.4375rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--light_gray2, #F6F6F6);
+  -webkit-appearance: none;
+  appearance: none;
+  padding-left: 1rem;
+  border: none;
+}
+.productNameBox {
+  margin-left: 1.2rem;
+  margin-top: 1.1rem;
+}
+.storyBox {
+  margin-top: 1.44rem;
+  margin-left: 1.2rem;
+}
+.storyField {
+  width: 22.125rem;
+  height: 12.5rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--light_gray2, #F6F6F6);
+  border: none;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+.setOpenRangeBox {
+  margin-top: 1.3rem;
+  margin-left: 1.2rem;
+}
+.allOpenText, .friendOpenText {
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+.allOpenBox, .friendOpenBox {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.selectRangeBox {
+  margin-top: 1rem;
+  display: flex;
+  gap: 3.5rem;
+}
+.imgUploadBox {
+  margin-top: 1.44rem;
+  margin-left: 1.2rem;
+}
+.imgUpload {
+  display: none;
+}
+.imgUploadField {
+  width: 22rem;
+  height: 10.125rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  border: 1px solid var(--light_gray, #D6D6D6);
+  background: var(--white, #FFF);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.9rem;
+}
+.uploadImgText {
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  margin-top: 0.9rem;
+}
+.reselectBox {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+.reselectButton {
+  width: 22.125rem;
+  height: 2.1875rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  border: 1px solid var(--light_gray, #D6D6D6);
+  background: var(--white, #FFF);
+  cursor: pointer;
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.nextButtonBox {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+.nextButton {
+  border-radius: 0.625rem;
+  background: var(--strong_pink, #F33D69);
+  width: 22.125rem;
+  height: 2.6875rem;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+.nextButton a {
+  text-decoration: none;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
