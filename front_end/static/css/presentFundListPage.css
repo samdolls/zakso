@@ -184,3 +184,26 @@ article {
   border-radius: 0.1875rem;
   border: 1px solid var(--strong_pink, #F33D69);
 }
+
+/* makeMyFundButton */
+.makeMyFundButtonBox {
+  margin-top: 4.5rem;
+  text-align: center;
+}
+.makeMyFundButton {
+  width: 22.125rem;
+  height: 2.6875rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--strong_pink, #F33D69);
+  border: none;
+}
+.makeMyFundButton a {
+  text-decoration: none;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
