@@ -66,7 +66,9 @@
           {% endif %}
           <p class="rankNumber number1">{{forloop.counter}}</p>
         </div>
+        <a href="{% url 'main:detail' present.id %}">
         <img src="{{present.funding_image.url}}" alt="airpods">
+      </a>
         <p class="rank1Text">{{present.product}}</p>
         <div class="rankDetailBox">
           <p class="rank1Price">{{present.total_price}}</p>
@@ -100,7 +102,9 @@
           {% endif %}
           <p class="rankNumber number1">{{forloop.counter}}</p>
         </div>
+        <a href="{% url 'main:detail' soso.id %}">
         <img src="{{soso.funding_image.url}}" alt="airpods">
+      </a>
         <p class="rank1Text">{{soso.product}}</p>
         <div class="rankDetailBox">
           <p class="rank1Price">{{soso.total_price}}</p>

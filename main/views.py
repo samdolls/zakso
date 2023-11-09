@@ -1,8 +1,10 @@
 import base64
 import json
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 from django.http import HttpResponse, JsonResponse
 from django.db.models import F
 
@@ -38,25 +40,29 @@ def before_create(request):
         if request.method == "POST":
             type = request.POST["type"]
             title = request.POST["fundName"]
-            writer = request.user
             product = request.POST["productName"]
             total_price = request.POST["setPrice"]
             content = request.POST["fundStory"]
             year = int(request.POST["setYear"])
             month = int(request.POST["setMonth"])
             day = int(request.POST["setDay"])
-            end_date = date(year, month, day)
             funding_image = request.FILES.get("img")
+            print(funding_image)
+            if funding_image:
+                fs = FileSystemStorage(location="media/fundings/")
+                filename = fs.save(funding_image.name, funding_image)
+                funding_image_path = fs.url(filename)
             is_private = request.POST.get("is_private", False)
             request.session["post_info"] = {
                 "type": type,
                 "title": title,
-                "writer": writer,
                 "product": product,
                 "total_price": total_price,
                 "content": content,
-                "end_date": end_date,
-                "funding_image": funding_image,
+                "setYear": year,
+                "setMonth": month,
+                "setDay": day,
+                "funding_image": funding_image_path,
                 "is_private": is_private,
             }
             return redirect("main:create")
@@ -65,23 +71,29 @@ def before_create(request):
 
 def create(request):
     post_info = request.session.get("post_info", None)
-    if request.user == post_info["writer"]:
+    print(post_info["funding_image"])
+    if request.user.is_authenticated:
         if request.method == "POST":
             new_fundings = Fundings()
             new_fundings.type = post_info["type"]
-            new_fundings.title = post_info["fundName"]
+            new_fundings.title = post_info["title"]
             new_fundings.writer = request.user
-            new_fundings.product = post_info["productName"]
-            new_fundings.total_price = post_info["setPrice"]
-            new_fundings.content = post_info["fundStory"]
+            new_fundings.product = post_info["product"]
+            new_fundings.total_price = post_info["total_price"]
+            new_fundings.content = post_info["content"]
             new_fundings.start_date = timezone.now()
             year = int(post_info["setYear"])
             month = int(post_info["setMonth"])
             day = int(post_info["setDay"])
             end_date = date(year, month, day)
             new_fundings.end_date = end_date
-            new_fundings.funding_image = post_info["funding_image"]
+            funding_image_path = post_info["funding_image"].replace(
+                settings.MEDIA_URL, "fundings/"
+            )
+            new_fundings.funding_image = funding_image_path
             new_fundings.is_private = post_info.get("is_private", False)
+            new_fundings.account_num = request.POST["account_num"]
+            new_fundings.delievery = request.POST["delievery"]
             # new_fundings.qr_image = request.FILES.get("qr_image")
             new_fundings.save()
             return redirect("main:detail", new_fundings.id)
