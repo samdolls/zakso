@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  width: 390px;
+}
+
+/* headerNav */
+.presentListNav {
+  width: 100%;
+  height: 3.4375rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.backImg {
+  margin-left: 1.2rem;
+  flex-shrink: 0;
+}
+.presentFundText {
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  margin-left: 1.1rem;
+}
+.searchImg {
+  flex-shrink: 0;
+  margin-left: 8.3rem;
+}
+.noticeImgBox {
+  position: relative;
+}
+.noticeImg {
+  margin-left: 1.4rem;
+}
+.redDotImg {
+  position: absolute;
+  top: -0.2rem;
+  right: -0.2rem;
+  display: none;
+}
+.hamburgerImg {
+  margin-left: 1.4rem;
+}
+
+/* 목록 */
+.listTextBox {
+  display: flex;
+  margin-top: 1.15rem;
+  align-items: center;
+}
+.listTextBox p {
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.notifyAmountText {
+  margin: 0;
+  margin-left: 1.2rem;
+}
+.recentText {
+  margin: 0;
+  margin-left: 8.44rem
+}
+.downImg {
+  margin-left: 0.5rem;
+}
+/* 목록 중 하나의 아이템 박스 */
+article:first-child {
+  width: 22.125rem;
+  height: 9.1875rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  background: #FFF;
+  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.10);
+  margin-top: 1.2rem;
+  margin-left: 1.12rem;
+}
+article {
+  width: 22.125rem;
+  height: 9.1875rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  background: #FFF;
+  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.10);
+  margin-top: 0.7rem;
+  margin-left: 1.12rem;
+}
+.listBox {
+  display: flex;
+}
+.itemImgBox {
+  width: 9.3125rem;
+  height: 9.1875rem;
+  border-radius: 0.4375rem 0rem 0rem 0.4375rem;
+  background: #FAFAFA;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+}
+.aboutItemBox {
+  display: flex;
+  flex-direction: column;
+}
+.aboutItemTextBox {
+  width: 12.81rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1rem;
+  position: relative;
+  margin-top: 0.8rem;
+}
+.aboutItemText {
+  margin: 0;
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.blankHeart {
+  position: absolute;
+  right: 1rem;
+}
+.totalMoneyText {
+  margin: 0;
+  color: var(--mid_gray, #9E9E9E);
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 0.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 1.12rem;
+  margin-top: 3.55rem;
+}
+.currentProgressBox {
+  display: flex;
+  margin-top: 0.15rem;
+  position: relative;
+}
+.currentPercentText {
+  margin: 0;
+  margin-left: 1rem;
+  color: var(--strong_pink, #F33D69);
+  font-family: Pretendard;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.currentMoneyText {
+  margin: 0;
+  position: absolute;
+  right: 1.12rem;
+  color: var(--gray, #1F1F1F);
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.progressbarBox {
+  margin-top: 0.45rem;
+  margin-left: 1rem;
+}
+.progress {
+  width: 10.6875rem;
+  height: 0.375rem;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 0.1875rem;
+  border: 1px solid var(--strong_pink, #F33D69);
+}
+
+/* makeMyFundButton */
+.makeMyFundButtonBox {
+  margin-top: 4.5rem;
+  text-align: center;
+}
+.makeMyFundButton {
+  width: 22.125rem;
+  height: 2.6875rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: var(--strong_pink, #F33D69);
+  border: none;
+}
+.makeMyFundButton a {
+  text-decoration: none;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

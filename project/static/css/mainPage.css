@@ -22,7 +22,7 @@ body {
 .logoText {
   margin-left: 0.88rem;
 }
-.searchImgBox {
+.noticeImgBox {
   position: relative;
 }
 .searchImg {
@@ -175,7 +175,7 @@ body {
 .presentRankingText, .smallRankingText {
   color: var(--gray, #1F1F1F);
   font-family: Pretendard;
-  font-size: 0.8125rem;
+  font-size: 0.81rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -185,7 +185,7 @@ body {
 .moreText {
   color: var(--mid_gray, #9E9E9E);
   font-family: Pretendard;
-  font-size: 0.5625rem;
+  font-size: 0.555rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

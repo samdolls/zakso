@@ -1,27 +1,28 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/enter_fund.css' %}">
+    <header>
+        <img src="{% static 'images/Vector.svg' %}">
+        <div id="enter">펀딩 참여</div>
+    </header>
+    <div class="fundEnter">
+        <h2>{{request.user.username}}님</h2>
+        <h3>선물 펀딩이 실패했습니다.<br>다시 한 번 시도해주시기 바랍니다. </h3>
+        <button class="enter_btn" onclick="location.href='{% url 'main:mainpage' %}'">메인 화면으로 돌아가기</button>
 
-    <title>결제위젯 샘플페이지-결제 실패</title>
-  </head>
-
-  <body>
-    <div>
-      <h2 style="margin-top: 10px; padding: 20px 0px 10px 0px">
-        <img
-          width="45px"
-          src="https://static.toss.im/3d-emojis/u1F975-apng.png"
-        />
-        결제 실패
-      </h2>
-
-      <div>
-        <p>에러메시지 : <%=@code%></p>
-        <p>에러코드: <%=@message%></p>
-      </div>
     </div>
-  </body>
-</html>
+    <script>
+      // JSON 문자열을 파싱하여 JavaScript 객체로 변환
+      console.log();
+      const resData = JSON.parse(`${res}`);
+      console.log(resData);
+
+      // totalAmount 값을 추출
+      const totalAmount = resData.totalAmount;
+
+      // totalAmount를 표시할 요소를 찾아서 표시
+      const totalAmountDisplay = document.getElementById("totalAmountDisplay");
+      totalAmountDisplay.innerHTML = `totalAmount: ${totalAmount}원`;
+    </script>
+{% endblock %}
