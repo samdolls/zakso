@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/makingPage.css' %}">
+  <header>
+    <div class="makingNav">
+      <a href="#"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack"></a>
+      <p class="makeFund">{{selected_type}} 만들기</p>
+      <a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" class="hamburger"></a>
+    </div>
+  </header>
+  
+  <!-- 설정하기 -->
+  <section>
+    <form action="{% url 'main:create' %}" method = "POST" class="forMaking" enctype="multipart/form-data">
+      <div class="fundNameBox">
+        <label for="fundName"><p class="fundNameText">펀딩 이름</p></label>
+        <input type="text" name="fundName" class="fundNameField" id="fundNameField" placeholder="나만의 멋진 펀딩 이름을 작성해주세요!">
+      </div>
+      <div class="settingPriceBox">
+        <label for="setPrice"><p class="setPriceText">목표 금액 설정</p></label>
+        <input type="text" name="setPrice" class="setPriceField" id="setPriceField" placeholder="펀딩 금액은 얼마로 할까요?">
+      </div>
+      <div class="setDateBox">
+        <p class="setDateText">기한 설정</p>
+        <div class="setDateField">
+          <div class="setYearBox">
+            <select name="setYear" id="setYear"></select>
+            <img src="{% static 'images/dropdown.svg' %}" alt="dropdown" class="dropdownImg">
+          </div>
+          <p class="yearText">년</p>
+          <div class="setMonthBox">
+            <select name="setMonth" id="setMonth"></select>
+            <img src="{% static 'images/dropdown.svg' %}" alt="dropdown" class="dropdownImg">
+          </div>
+          <p class="monthText">월</p>
+          <div class="setDayBox">
+            <select name="setDay" id="setDay"></select>
+            <img src="{% static 'images/dropdown.svg' %}" alt="dropdown" class="dropdownImg">
+          </div>
+          <p class="dayText">일 까지</p>
+        </div>
+      </div>
+      <div class="separateBox" style="width: 24.375rem; height: 0.25rem; background: var(--light_gray2, #F6F6F6); margin-top: 1.5rem"></div>
+      <div class="productNameBox">
+        <label for="productName"><p class="productNameText">상품 이름</p></label>
+        <input type="text" name="productName" class="productNameField" id="productNameField" placeholder="상품을 적어주세요!">
+      </div>
+      <div class="storyBox">
+        <p class="storyText">작소펀딩 이야기</p>
+        <textarea name="fundStory" id="storyField" class="storyField" placeholder="나만의 작소펀딩 이야기를 작성해주세요!" cols="30" rows="10"></textarea>
+      </div>
+      <div class="setOpenRangeBox">
+        <p class="setOpenRangeText">공개 범위 설정</p>
+        <div class="selectRangeBox">
+          <div class="allOpenBox">
+            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
+            <p class="allOpenText">전체 공개</p>
+          </div>
+          <div class="friendOpenBox">
+            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
+            <p class="friendOpenText">친구 공개</p>
+          </div>
+        </div>
+      </div>
+      <div class="imgUploadBox">
+        <label for="imgUpload"><p class="uploadText">사진 업로드</p></label>
+        <input type="file" name="img" multiple accept=".png, .jpg, .jpeg" class="imgUpload" id="imgUpload">
+        <div class="imgUploadField">
+          <label for="imgUpload"><img src="{% static 'images/upload.svg' %}" alt="upload" class="uploadImg"></label>
+          <label for="imgUpload"><p class="uploadImgText">최대 10장까지 추가 가능</p></label>
+        </div>
+      </div>
+      <div class="reselectBox">
+        <button type="button" class="reselectButton" onclick="resetFile()">사진 다시 선택하기</button>
+      </div>
+      <div class="nextButtonBox">
+        <button type="submit" class="nextButton"><a href="#">다음으로</a></button>
+      </div>
+    </form>
+  </section>
+
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="{% static 'js/map.js' %}"></script>
+  <script src="{% static 'js/setDate.js' %}"></script>
+  <script src="{% static 'js/makingPage.js' %}"></script>
+<!-- 
+    <div>
+        <h1>선물 펀딩 만들기</h1>
+        <form action="{% url 'main:create' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="{{ selected_type }}">
+            <input type="text" name="writer">
+            <h3>펀딩 이름</h3>
+            <input type="text" name="title">
+            <h3>목표 금액 설정</h3>
+            <input type="number" name="total_price">
+            <h3>기한 설정</h3>
+            <input type="date" name="end_date">
+            <h3>상품 이름</h3>
+            <input type="text" name="product">
+            <h3>작소펀딩 이야기</h3>
+            <textarea name="content" cols="30" rows="10"></textarea>
+            <h3>공개범위 설정</h3>
+            <label for="public">전체 공개</label>
+            <input type="radio" id="public" name="is_private" value="False">
+            <label for="private">친구 공개</label>
+            <input type="radio" id="private" name="is_private" value="True">
+            <input type="file" name="funding_image">
+            <button type="submit">펀딩 만들기</button>
+        </form>
+    </div> -->
+
+{% endblock %}

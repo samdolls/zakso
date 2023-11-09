@@ -3,6 +3,18 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/mainPage.css' %}">
+<header>
+  <div class="mainNav">
+    <span class="logoImg"><a href="{% url 'main:mainpage' %}"><img src="{% static 'images/logo.svg' %}" alt="logo"></a></span>
+    <span class="logoText"><a href="{% url 'main:mainpage' %}"><img src="{% static 'images/logoText.svg' %}" alt="logo"></a></span>
+    <span class="searchImg"><a href="#"><img src="{% static 'images/search.svg' %}" alt="search"></a></span>
+    <div class="searchImgBox">
+      <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
+      <img src="{% static 'images/redDot.svg' %}" alt="redDot" class="redDotImg">
+    </div>
+    <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+  </div>
+</header>
 <div class="bannerBox">
     <div class="slideItem item1" id="banner1">
       <div class="mainTextBox">
@@ -102,8 +114,25 @@
         </div>
       </div>
       {% endfor %}
+      <!-- <p>{{request.build_absolute_uri}}</p> -->
           </div>
+          
   </section>
+  <div>
+    <a href="{% url 'accounts:login_view' %}">로그인</a>
+    <a href="{% url 'accounts:logout_view' %}">로그아웃</a>
+</div>
+  <footer>
+    <img src="{% static 'images/grayLogo.svg' %}" alt="grayLogo" class="grayLogo">
+    <p class="makers">
+      <span>PM</span> 박서희  
+      <span>Design</span> 송지연  
+      <span>Front-End</span> 김소담 박제준  
+      <span>Back-End</span> 김민준 김현수
+    </p>
+    <p class="copyright">Copyright 2023. ZAKSO All rights reserved.</p>
+</footer>
+
   <script src="{% static 'js/mainPage.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
@@ -134,12 +163,5 @@
     })
 })
     </script>
-<div>
-    <a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a>
-    <a href="{% url 'main:present' %}">선물 펀딩</a>
-    <a href="{% url 'accounts:login_view' %}">로그인</a>
-    <a href="{% url 'accounts:logout_view' %}">로그아웃</a>
-    <a href="{% url 'main:payhistory' %}">결제내역확인</a>
-</div>
 
 {% endblock %}

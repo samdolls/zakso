@@ -30,7 +30,7 @@ def success(request):
     encoded_funding_id = request.session.get("encoded_funding_id")
     funding_id = base64.b64decode(encoded_funding_id).decode()
     funding = get_object_or_404(Fundings, pk=funding_id)
-    if funding.total_price <= funding.accumulation + int(amount):
+    if funding.total_price < funding.accumulation + int(amount):
         return render(
             request,
             "payments/fail.html",
