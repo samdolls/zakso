@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="{% url 'main:create' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="account_num" placeholder="계좌번호">
+    <input type="text" name="delievery" placeholder="배송지">
+    <button type="submit">제출하기</button>
+</form>
+
+
+{% endblock %}

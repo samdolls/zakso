@@ -14,6 +14,8 @@
   <!-- 설정하기 -->
   <section>
     <form action="{% url 'main:before_create' %}" method = "POST" class="forMaking" enctype="multipart/form-data">
+      <input type="hidden" name="type" value="{{ selected_type }}">
+      {% csrf_token %}
       <div class="fundNameBox">
         <label for="fundName"><p class="fundNameText">펀딩 이름</p></label>
         <input type="text" name="fundName" class="fundNameField" id="fundNameField" placeholder="나만의 멋진 펀딩 이름을 작성해주세요!">
@@ -78,7 +80,7 @@
         <button type="button" class="reselectButton" onclick="resetFile()">사진 다시 선택하기</button>
       </div>
       <div class="nextButtonBox">
-        <button type="submit" class="nextButton"><a href="#">다음으로</a></button>
+        <button type="submit" class="nextButton"><a>다음으로</a></button>
       </div>
     </form>
   </section>
