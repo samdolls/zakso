@@ -22,7 +22,7 @@
 
         </div>
     </div>
-</div>
+<section>
 <div style="padding:19px;">
    <div class="funding_main">
         <header>
@@ -80,7 +80,7 @@
        </div>
 
  
-       <div class="click">
+       <div class="click" style="box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.05);">
         <span href="#" class="like" name="{{funding.id}}" value="Like">
                 {% if request.user in funding.like.all %}
                     <img src="{% static 'images/submit.svg' %}" alt="blankHeart" class = "blankHeart">
@@ -97,7 +97,8 @@
           <button class="custom-button" onclick="location.href='{% url 'payments:index' %}'">작소펀딩 함께하기</button>
         </div>
     </div>
-</div>  
+</div>
+</section>  
 
 
      <!-- Bootstrap JS 및 jQuery를 포함합니다 -->
