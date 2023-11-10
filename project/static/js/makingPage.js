@@ -1,11 +1,24 @@
 // chekImg 변경
-function checkImg(element) {
-  if (element.src.endsWith("/front_end/static/images/blankCheck.svg")) {
-    element.src = "/front_end/static/images/checked.svg";
-  } 
-  else {
-    element.src = "/front_end/static/images/blankCheck.svg";
-  }
+// function checkImg(element) {
+//   if (element.src.endsWith("/static/images/blankCheck.svg")) {
+//     element.src = "/static/images/checked.svg";
+//   } 
+//   else {
+//     element.src = "/static/images/blankCheck.svg";
+//   }
+// }
+
+function checkImg(radioId) {
+  const radio = document.getElementById(radioId);
+  // 모든 이미지 초기화
+  const checkImgs = document.querySelectorAll('.checkImg');
+  checkImgs.forEach(img => {
+    img.src = "/static/images/blankCheck.svg";
+  });
+  radio.checked = !radio.checked;
+  // 현재 이미지 선택
+  const img = document.querySelector(`#${radioId} + .checkImg`);
+  img.src = "/static/images/checked.svg";
 }
 
 // 업로드 된 파일 보기
@@ -56,13 +69,3 @@ function resetFile() {
     basicText.style.display = "block";
   }
 }
-
-
-
-
-
-
-
-
-
-

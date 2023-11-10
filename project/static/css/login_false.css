@@ -1,186 +1,186 @@
 .wrap {
    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+}
+
+.wrap>p{
+  margin-left: -300px;
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: normal;
+
+}
+
+input{
+  width: 354px;
+  height: 43px;
+  border-radius: 10px;
+  border: 1px solid var(--strong_pink, #F33D69);
+  background: var(--white, #FFF);
   
-  }
+}
 
-  .wrap>p{
-    margin-left: -300px;
-    color: var(--gray, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 550;
-    line-height: normal;
-
-  }
-
-  input{
-    width: 354px;
-    height: 43px;
-    border-radius: 10px;
-    border: 1px solid var(--strong_pink, #F33D69);
-    background: var(--white, #FFF);
-    
-  }
-
-  input::placeholder {
-    color: var(--strong_pink, #F33D69);
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+input::placeholder {
+  color: var(--strong_pink, #F33D69);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 
 
 
-  }
+}
 
 
 
 .btn{
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
- 
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+
 }
 
 
 input#check_btn{
-    display:none;
-    }
-  
-  
-  input#check_btn + label > span{
-    vertical-align: middle;
-    padding-left: 10px;
-    color: var(--gray, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-   }
-  
-  /* label:before에 체크하기 전 상태 CSS */
-  input#check_btn+ label:before{
-    content:"";
-    display:inline-block;
-    width:17px;
-    height:17px;
-    border:2px solid #F33D69;
-    border-radius: 4px;
-    vertical-align:middle;
-    }
-    
-  /* label:before에 체크 된 상태 CSS */  
-  input#check_btn:checked + label:before{
-    content:"";
-    background-color:#F33D69;
-    border-color:#F33D69;
-    background-image: url('/front_end/static/images/check_btn.png');
-    background-repeat: no-repeat;
-    }
+  display:none;
+  }
 
-    .check_wrap2{
-        margin-left: 20px;
-    }
 
-    
- input#check_btn2{
-    display:none;
+input#check_btn + label > span{
+  vertical-align: middle;
+  padding-left: 10px;
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
  }
+
+/* label:before에 체크하기 전 상태 CSS */
+input#check_btn+ label:before{
+  content:"";
+  display:inline-block;
+  width:17px;
+  height:17px;
+  border:2px solid #F33D69;
+  border-radius: 4px;
+  vertical-align:middle;
+  }
   
+/* label:before에 체크 된 상태 CSS */  
+input#check_btn:checked + label:before{
+  content:"";
+  background-color:#F33D69;
+  border-color:#F33D69;
+  background-image: url('/static/images/check_btn.png');
+  background-repeat: no-repeat;
+  }
 
-    input#check_btn2 + label > span{
-        vertical-align: middle;
-        padding-left: 10px;
-        color: var(--gray, #1F1F1F);
-        font-family: Pretendard;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        
-       }
-      
-
-      /* label:before에 체크하기 전 상태 CSS */
-  input#check_btn2+ label:before{
-    content:"";
-    display:inline-block;
-    width:17px;
-    height:17px;
-    border:2px solid #F33D69;
-    border-radius: 4px;
-    vertical-align:middle;
-    }
-    
-  /* label:before에 체크 된 상태 CSS */  
-  input#check_btn2:checked + label:before{
-    content:"";
-    background-color:#F33D69;
-    border-color:#F33D69;
-    background-image: url('/front_end/static/images/check_btn.png');
-    background-repeat: no-repeat;
-   
-    }
-
-
-   .login{
-    margin-top: 30px;
-    width: 354px;
-    height: 43px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: var(--strong_pink, #F33D69);
-    border: none;
-    color: var(--white, #FFF);
-    font-family: Pretendard;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    } 
-
-
-    .search{
-        display: flex;
-        flex-direction: row;
-        margin-top: 10px;
-        align-items: center;
-        justify-content: center;
-        color: var(--mid_gray, #9E9E9E);
-        font-family: Pretendard;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-    }
-
-    .search>p{
+  .check_wrap2{
       margin-left: 20px;
-    }
+  }
+
+  
+input#check_btn2{
+  display:none;
+}
 
 
-    .sign{
-    margin-top: 50px;
-   align-items: center;
-   justify-content: center;
-    background-color: #FFF;
-    width: 93px;
-    height: 28px;
-    flex-shrink: 0;
-    border-radius: 16.5px;
-    border: 1px solid var(--strong_pink, #F33D69);
-    color: var(--strong_pink, #F33D69);
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    }
+  input#check_btn2 + label > span{
+      vertical-align: middle;
+      padding-left: 10px;
+      color: var(--gray, #1F1F1F);
+      font-family: Pretendard;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      
+     }
+    
+
+    /* label:before에 체크하기 전 상태 CSS */
+input#check_btn2+ label:before{
+  content:"";
+  display:inline-block;
+  width:17px;
+  height:17px;
+  border:2px solid #F33D69;
+  border-radius: 4px;
+  vertical-align:middle;
+  }
+  
+/* label:before에 체크 된 상태 CSS */  
+input#check_btn2:checked + label:before{
+  content:"";
+  background-color:#F33D69;
+  border-color:#F33D69;
+  background-image: url('/static/images/check_btn.png');
+  background-repeat: no-repeat;
+ 
+  }
+
+
+ .login{
+  margin-top: 30px;
+  width: 354px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--strong_pink, #F33D69);
+  border: none;
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  } 
+
+
+  .search{
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid_gray, #9E9E9E);
+      font-family: Pretendard;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+  }
+
+  .search>p{
+    margin-left: 20px;
+  }
+
+
+  .sign{
+  margin-top: 50px;
+ align-items: center;
+ justify-content: center;
+  background-color: #FFF;
+  width: 93px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 16.5px;
+  border: 1px solid var(--strong_pink, #F33D69);
+  color: var(--strong_pink, #F33D69);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  }

@@ -24,7 +24,6 @@ section{
   flex-direction: row;
    margin-top: -50px;
    width: 310px;
-
    justify-content: space-between;
 }
 
@@ -89,7 +88,6 @@ background-color: #FFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 0;
    
   
@@ -99,8 +97,7 @@ background-color: #FFF;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    width: 400px;
+    width: 100%;
 
   }
 
@@ -121,7 +118,6 @@ background-color: #FFF;
 }
 
 .first{
-margin-right: 45px;
 color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 22px;
@@ -162,9 +158,10 @@ line-height: normal;
     display: flex;
     flex-direction: column;
     color: var(--gray, #1F1F1F);
+    margin: 15.16px 0px 0px 15.16px;
     font-family: Pretendard;
     font-size: 13px;
-    font-style: normal;
+    font-style: bold;
     font-weight: 700;
     line-height: normal;
 }
@@ -172,13 +169,13 @@ line-height: normal;
   font-size:13px;
   margin-left: -15px;
 
-.coin>p{
-    margin-top: -15px;
 }
+/* .coin>p{
+    margin-top: -15px;
+} */
 
 
 .third{
-margin-right: 250px;
  color: var(--strong_pink, #F33D69);
 font-family: Pretendard;
 font-size: 20px;
@@ -188,6 +185,7 @@ line-height: normal;
 }
 
 .percent{
+float:right;
 color: var(--strong_pink, #F33D69);
 font-family: Pretendard;
 font-size: 20px;
@@ -207,25 +205,26 @@ line-height: normal;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    padding-top: 27px;
 }
 
 .target>p{
-    margin-top: -10px;
     margin-bottom: 50px;
 }
 
 .six{
-    margin-left: 50px;
+    padding-left:20px;
     color: var(--mid_gray, #9E9E9E);
     font-family: Pretendard;
-    font-size: 12px;
+    font-size: 11px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     }
 
     #story>p{
-    margin-bottom: 50px;
+    margin-top:10px;
+    margin-bottom: 31px;
     color: var(--gray, #1F1F1F);
     font-family: Pretendard;
     font-size: 13px;
@@ -284,16 +283,17 @@ line-height: normal;
     border-radius: 10px;
     border: none;
     outline: none; 
-    margin-right: 20px; /* 버튼 사이의 오른쪽 간격 설정 */
+    padding: 0px; /* 버튼 사이의 오른쪽 간격 설정 */
   }
 
   #openModalBtn{
 display: flex;
 align-items: center;
 justify-content: center;
+
   width: 54px;
 height: 43px;
 flex-shrink: 0;
-border-radius: 10px;
+border-radius: 5px;
 background: var(--light_gray2, #F6F6F6);
   }

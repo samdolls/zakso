@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Search Results for "{{ query }}"</h2>
+
+    <form method="get" action="{% url 'main:search' %}">
+        <input type="text" name="q" value="{{ query }}">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if results %}
+        <ul>
+            {% for item in results %}
+                <li>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.content }}</p>
+                    <!-- 다른 필드들도 출력할 수 있습니다. -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for "{{ query }}".</p>
+    {% endif %}
+{% endblock %}

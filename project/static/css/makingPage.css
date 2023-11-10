@@ -11,6 +11,7 @@ body {
 header {
   height: 3.75rem;
 }
+
 .makingNav {
   display: flex;
   width: 100%;
@@ -24,7 +25,7 @@ header {
 .makeFund {
   color: var(--gray, #1F1F1F);
   font-family: Pretendard;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
