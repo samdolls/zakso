@@ -97,8 +97,7 @@ background-color: #FFF;
 
   }
 
-  .divNav>p{
-    margin-left: -240px;
+  .divNavP{
     color: var(--gray, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
@@ -106,6 +105,7 @@ background-color: #FFF;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    padding-left:17.5px;
   }
 
 .fund_information{
@@ -163,7 +163,6 @@ line-height: normal;
 }
 .coin_sum{
   font-size:13px;
-  margin-top:15.16px;
   margin-left: -15px;
 
 }
@@ -233,11 +232,33 @@ line-height: normal;
 
 
 .click{
-    display: flex;
-    flex-direction: row;
-    width:100%;
+  position: fixed;
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  padding: 19px 19px 0px 19px;
+  background-color: white;
+  display:flex; 
+  flex-direction: row; 
+  justify-content: space-between;
 }
 
+.editButton{
+  margin-left:auto;
+  width: 87px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: var(--strong_pink, #F33D69);
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  font-style: normal;
+}
 
 
  .custom-button{

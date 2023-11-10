@@ -3,8 +3,13 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/fund_choose.css' %}">
    <header>
+    <div style="display:flex; flex-direction: row;">
+    <a href="#" onclick="goBack()" style="padding-top:5px;">
     <img src="{% static 'images/Vector.svg' %}">
+</a>
         <div id="enter">작소 펀딩 만들기</div>
+    </div>
+    <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" style="padding-right:16.5px;"></a></span>
    </header>
     <div class="fundChoose">
         <h1>만들고자 하는 작소 펀딩을</h1>
@@ -18,7 +23,11 @@
         </div>
         </form>
     </div>
-
+    <script>
+        function goBack() {
+                window.history.back();
+            }
+      </script>
     <script defer src="{% static 'js/fund_choose.js' %}"></script> 
 
     <!-- <div>

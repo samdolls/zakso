@@ -12,23 +12,25 @@
   </head>
   <body>
     <header>
+      <a href="#" onclick="goBack()">
         <img src="{% static 'images/Vector.svg' %}">
-        <div id="enter">펀딩 참여</div>
+      </a>
+        <div id="enter" style="padding-left:17.5px;">펀딩 참여</div>
     </header>
        <div class="enterMain">
             <div class="fund_name">
-                <p>펀딩 이름</p>
+                <div class="fundTitle">펀딩 이름</div>
                 <div class="fund_box">
                     <img src="{{funding.funding_image.url}}">
                     <div>
-                        <h1>{{funding.title}}</h1>
+                        <div style="padding-left:20px; padding-bottom:8px; font-size: 18px; font-weight:600; line-height:21.48px;">{{funding.title}}</div>
                         <h2>펀딩 종류 : {{funding.type}}</h2>
                         <h3>{{funding.start_date|date:"y.m.d"}}~{{funding.end_date|date:"y.m.d"}}</h3>
                     </div>
                 </div>
             </div>
 
-            <div class="fund_input">
+            <div class="fund_input" style="padding-top:23px;">
                 <p>원하는 펀딩 금액을 입력해주세요.</p>
                 <div class="input_box">
                     <input type='text' name='name' id="amount" onchange="updatePaymentAmount()" placeholder='100원 단위로 펀딩이 가능합니다.'/>
@@ -53,6 +55,11 @@
 
 
     </div>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
     <script>
       const customer_key = "{{ user_info.customer_key }}";
       const customer_name = "{{ user_info.name }}";
