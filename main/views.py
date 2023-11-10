@@ -206,30 +206,50 @@ def update(request, funding_id):
 
 
 def present(request):
-    present_fundings = Fundings.objects.filter(
-        type="선물 펀딩", accumulation__lt=F("total_price")
+    current_time = timezone.now()
+
+    past_fundings = Fundings.objects.filter(
+        type="선물 펀딩", accumulation__lt=F("total_price"), end_date__lt=current_time
     ).order_by("-created_at")
-    count = present_fundings.count()
+
+    future_fundings = Fundings.objects.filter(
+        type="선물 펀딩", accumulation__lt=F("total_price"), end_date__gte=current_time
+    ).order_by("-created_at")
+
+    past_count = past_fundings.count()
+    future_count = future_fundings.count()
+    count = past_count + future_count
     return render(
         request,
         "main/present.html",
         {
-            "present_fundings": present_fundings,
+            "past_fundings": past_fundings,
+            "future_fundings": future_fundings,
             "count": count,
         },
     )
 
 
 def soso(request):
-    soso_fundings = Fundings.objects.filter(
-        type="소소 펀딩", accumulation__lt=F("total_price")
+    current_time = timezone.now()
+
+    past_fundings = Fundings.objects.filter(
+        type="소소 펀딩", accumulation__lt=F("total_price"), end_date__lt=current_time
     ).order_by("-created_at")
-    count = soso_fundings.count()
+
+    future_fundings = Fundings.objects.filter(
+        type="소소 펀딩", accumulation__lt=F("total_price"), end_date__gte=current_time
+    ).order_by("-created_at")
+
+    past_count = past_fundings.count()
+    future_count = future_fundings.count()
+    count = past_count + future_count
     return render(
         request,
         "main/soso.html",
         {
-            "soso_fundings": soso_fundings,
+            "past_fundings": past_fundings,
+            "future_fundings": future_fundings,
             "count": count,
         },
     )

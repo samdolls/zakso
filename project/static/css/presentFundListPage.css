@@ -51,6 +51,7 @@ body {
 /* 목록 */
 section {
   overflow: scroll;
+  padding-bottom: 85px;
 }
 
 .listTextBox {
