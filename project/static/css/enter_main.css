@@ -1,7 +1,6 @@
 header{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     color: var(--gray, #1F1F1F);
     font-family: Pretendard;
@@ -51,6 +50,18 @@ flex-shrink: 0;
     flex-direction: column;
 }
 
+.fundTitle{
+    padding-top:33px;
+    padding-bottom:11px;
+    margin-left:-50px;
+    color: var(--gray, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15.51px;
+}
+
 h1{
 color: var(--gray, #1F1F1F);
 font-family: Pretendard;
@@ -61,19 +72,21 @@ line-height: normal;
 }
 
 h2{
-margin-top: -5px;
-margin-left: 20px;
-color: var(--mid_gray, #9E9E9E);
-font-family: Pretendard;
-font-size: 12px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    margin:0 auto;
+    padding-left:20px;
+    padding-top:8px;
+    padding-bottom:8px;
+    color: var(--mid_gray, #9E9E9E);
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 h3{
-    margin-top: -5px;
-    margin-left: 25px;
+    margin:0 auto;
+    padding-left:20px;
     color: var(--mid_gray, #9E9E9E);
     font-family: Pretendard;
     font-size: 12px;

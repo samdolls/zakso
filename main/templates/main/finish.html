@@ -10,7 +10,7 @@
         <h3 style="font-size:13px; margin-bottom:70px;">“내가 올린 펀딩"에서 확인할 수 있습니다. </h3>
         <div class="btns">
         <button class="finish-btn" onclick="location.href='{% url 'main:mainpage' %}'">메인화면으로 돌아가기</button>
-        <button class="check-btn" onclick="location.href='{% url 'main:detail' funding.id %}'">펀딩 게시글 확인하기</button>
+        <button class="check-btn" onclick="location.href='{% url 'main:after_create' funding.id %}'">펀딩 게시글 확인하기</button>
         </div>
     </div>
 {% endblock %}
