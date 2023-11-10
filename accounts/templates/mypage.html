@@ -23,7 +23,7 @@
   <section>
     <div class="myProfileBox">
       <div class="myProfileImgBox">
-        <img src="{% static 'images/defaultProfile.svg' %}" alt="profile" class="myProfile">
+        <img src="{% static 'images/cha.png' %}" alt="profile" class="myProfile">
       </div>
       <div class="myProfileSettingBox">
         <div class="myProfileTextBox">
@@ -54,7 +54,9 @@
       {% for post in user_post %}
         <div class="listBox">
           <div class="itemImgBox">
-            <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image" class="itemImg item1">
+            <a href="{% url 'main:detail' post.id %}">
+                <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image" class="itemImg item1">
+            </a>
           </div>
           <div class="aboutItemBox">
             <div class="aboutItemTextBox">
@@ -83,7 +85,9 @@
         {% for post in user_like_post %}
           <div class="listBox">
             <div class="itemImgBox">
-              <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image" class="itemImg item1">
+                <a href="{% url 'main:detail' post.id %}">
+                    <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image" class="itemImg item1">
+                </a>
             </div>
             <div class="aboutItemBox">
               <div class="aboutItemTextBox">

@@ -12,7 +12,11 @@
         <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
         <img src="{% static 'images/redDot.svg' %}" alt="redDot" class="redDotImg">
       </div>
-      <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    {% if user.is_authenticated %}
+      <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    {% else %}
+      <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    {% endif %}
     </div>
   </header>
 
