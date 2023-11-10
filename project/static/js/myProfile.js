@@ -8,7 +8,6 @@ function showMyFund() {
   wishlistFundButton.style.color = "#1F1F1F";
   myPostFundButton.style.border = "1px solid #F33D69";
   myPostFundButton.style.color = "#F33D69";
-  wishText.style.display = "none";
 
   document.querySelectorAll(".myPostFund").forEach(article => {
     article.style.visibility = "visible";
@@ -32,13 +31,12 @@ function showWishFund() {
   myPostFundButton.style.color = "#1F1F1F";
   wishlistFundButton.style.border = "1px solid #F33D69";
   wishlistFundButton.style.color = "#F33D69";
-  noFundText.style.display = "none";
 
   document.querySelectorAll(".wishlistFund").forEach(article => {
-    article.style.display = "flex";
+    article.style.visibility = "visible";
   });
   document.querySelectorAll(".myPostFund").forEach(article => {
-    article.style.display = "none";
+    article.style.visibility = "hidden";
   });
   if (document.querySelector(".wishlistFund:visible")) {
     wishText.style.display = "none";

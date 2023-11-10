@@ -32,8 +32,10 @@
                 </a>
             </div>
           <div>
-              <img src="{% static 'images/pen.svg' %}">
-              <p>소소펀딩</p>
+            <a href="{% url 'main:soso' %}">
+                <img src="{% static 'images/pen.svg' %}">
+                <p>소소펀딩</p>
+            </a>
           </div>
           <div>
               <img src="{% static 'images/star.svg' %}">
@@ -55,7 +57,7 @@
           <ul>
               <li>환불 계좌 관리</li>
               <li>배송지 관리</li>
-              <li>펀딩 참여 내역</li>
+              <li><a href="{% url 'main:payhistory' %}">펀딩 참여 내역</a></li>
           </ul>
 <hr>
           <h1>게시판</h1>

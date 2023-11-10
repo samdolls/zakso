@@ -7,7 +7,11 @@
     <div class="makingNav">
       <a href="#"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack"></a>
       <p class="makeFund">{{selected_type}} 만들기</p>
-      <a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" class="hamburger"></a>
+      {% if user.is_authenticated %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+      {% else %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+      {% endif %}
     </div>
   </header>
   
