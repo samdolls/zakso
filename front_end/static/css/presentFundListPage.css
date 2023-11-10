@@ -49,6 +49,9 @@ body {
 }
 
 /* 목록 */
+section {
+  overflow: scroll;
+}
 .listTextBox {
   display: flex;
   margin-top: 1.15rem;
@@ -186,8 +189,19 @@ article {
 }
 
 /* makeMyFundButton */
+footer {
+  width: 24.375rem;
+  height: 5.3125rem;
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .makeMyFundButtonBox {
-  margin-top: 4.5rem;
   text-align: center;
 }
 .makeMyFundButton {
