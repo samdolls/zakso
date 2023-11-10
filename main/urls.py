@@ -19,4 +19,5 @@ urlpatterns = [
     path("after_create/<int:funding_id>/", after_create, name="after_create"),
     # path("like/<int:funding_id>/", like, name="like"),
     path("funding_like_toggle", funding_like_toggle, name="funding_like_toggle"),
+    path("search/", search, name="search"),
 ]

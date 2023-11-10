@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from datetime import timedelta, date, datetime
 from django.http import HttpResponse, JsonResponse
-from django.db.models import F
+from django.db.models import F, Q
 
 from .models import Fundings, History
 
@@ -57,7 +57,12 @@ def before_create(request):
                 fs = FileSystemStorage(location="media/fundings/")
                 filename = fs.save(funding_image.name, funding_image)
                 funding_image_path = fs.url(filename)
-            is_private = request.POST.get("is_private", False)
+            is_private = request.POST.get("is_private")
+            if is_private == "True":
+                is_private = True
+            elif is_private == "False":
+                is_private = False
+            print(is_private)
             request.session["post_info"] = {
                 "type": type,
                 "title": title,
@@ -71,7 +76,10 @@ def before_create(request):
                 "is_private": is_private,
             }
             return redirect("main:create")
-    return render(request, "main/before_create.html")
+        elif request.method == "GET":
+            return render(request, "main/before_create.html")
+    else:
+        return redirect("accounts:login_view")
 
 
 def create(request):
@@ -178,6 +186,11 @@ def before_update(request, funding_id):
                     },
                 )
             funding.end_date = date(year, month, day)
+            is_private = request.POST.get("is_private")
+            if is_private == "True":
+                funding.is_private = True
+            elif is_private == "False":
+                funding.is_private = False
             funding.funding_image = request.FILES.get("img", funding.funding_image)
             funding.save()
             return redirect("main:update", funding.id)
@@ -209,11 +222,17 @@ def present(request):
     current_time = timezone.now()
 
     past_fundings = Fundings.objects.filter(
-        type="선물 펀딩", accumulation__lt=F("total_price"), end_date__lt=current_time
+        type="선물 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__lt=current_time,
+        is_private=False,
     ).order_by("-created_at")
 
     future_fundings = Fundings.objects.filter(
-        type="선물 펀딩", accumulation__lt=F("total_price"), end_date__gte=current_time
+        type="선물 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__gte=current_time,
+        is_private=False,
     ).order_by("-created_at")
 
     past_count = past_fundings.count()
@@ -234,11 +253,17 @@ def soso(request):
     current_time = timezone.now()
 
     past_fundings = Fundings.objects.filter(
-        type="소소 펀딩", accumulation__lt=F("total_price"), end_date__lt=current_time
+        type="소소 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__lt=current_time,
+        is_private=False,
     ).order_by("-created_at")
 
     future_fundings = Fundings.objects.filter(
-        type="소소 펀딩", accumulation__lt=F("total_price"), end_date__gte=current_time
+        type="소소 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__gte=current_time,
+        is_private=False,
     ).order_by("-created_at")
 
     past_count = past_fundings.count()
@@ -301,3 +326,22 @@ def funding_like_toggle(request):
         return HttpResponse(json.dumps(context), content_type="application/json")
     # else:
     #     return render(request, "accounts/no_auth.html")
+
+
+def search(request):
+    query = request.GET.get("q", "")
+
+    # 검색어가 제공되면 필터링을 수행합니다.
+    if query:
+        results = Fundings.objects.filter(
+            Q(title__icontains=query)
+            | Q(content__icontains=query)
+            # 다른 필드들도 포함할 수 있습니다.
+        )
+        return render(
+            request,
+            "main/search.html",
+            {"results": results, "query": query},
+        )
+    else:
+        return render(request, "main/search.html")

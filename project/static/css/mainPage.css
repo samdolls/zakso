@@ -175,7 +175,7 @@ body {
 .presentRankingText, .smallRankingText {
   color: var(--gray, #1F1F1F);
   font-family: Pretendard;
-  font-size: 0.8125rem;
+  font-size: 0.81rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -185,7 +185,7 @@ body {
 .moreText {
   color: var(--mid_gray, #9E9E9E);
   font-family: Pretendard;
-  font-size: 0.5625rem;
+  font-size: 0.555rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -286,7 +286,6 @@ footer {
   height: 6.0625rem;
   flex-shrink: 0;
   background-color: black;
-  margin-top: 3.5rem;
 }
 .grayLogo {
   margin-left: 1.25rem;
@@ -309,4 +308,3 @@ footer {
 .copyright {
   margin-top: 0.3rem;
 }
-
