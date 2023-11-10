@@ -25,6 +25,7 @@ stroke: #1F1F1F;;
 }
 
 .fund_name>p{
+margin-left: -20px;
 color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 13px;
@@ -97,7 +98,7 @@ h3{
 
 .fund_input>p{
 
-
+margin-left: -20px;
  color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 13px;
@@ -142,7 +143,6 @@ line-height: normal;
 }
 
 .choice>p{
-margin-left: -40px;
 color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 13px;
@@ -152,23 +152,26 @@ line-height: normal;
 }
 
 
-#checkboxs{
-    margin-left: -30px;
-}
-.choice>input{
- 
-    color: var(--gray, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
 
-}
+ .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; }
+
+  .box {
+    width: 170px;
+    height: 41px;
+    flex-shrink: 0;
+    background: #D9D9D9;
+  }
+
+
+
 
 
 .caution>p{
-margin-left: 40px;
+margin-left: 20px;
+
  color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 13px;
@@ -206,4 +209,13 @@ li{
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+hr{
+margin-top: 40px;
+border: none;
+width: 390px;
+height: 4px;
+flex-shrink: 0;
+background: var(--light_gray2, #F6F6F6);
 }

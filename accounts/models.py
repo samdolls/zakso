@@ -59,4 +59,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name = 'custom_user'
         verbose_name_plural = 'custom_user'
 
+#mypage
+class UserProfile(models.Model):
+    user=models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100, default='')
+
+    def save(self, *args, **kwargs):
+        if not self.username:
+            self.username=self.user.username
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.username
+
 
