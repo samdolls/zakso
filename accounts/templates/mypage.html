@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>이름: {{ user_profile.user.username }}</h1><br>
+    <button><a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a></button><br>
+    <h2>내가 올린 펀딩:</h2>
+    {% for post in user_post %}
+        <div>
+            <p>제목: {{ post.title }}</p>
+            <p>좋아요: {{ post.likes_cnt }}</p>
+            <p>%: {{ post.percentage }}%</p>
+            <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image">
+        </div>
+    {% endfor %}
+
+    <h2>찜한 펀딩:</h2>
+    {% for post in user_like_post %}
+        <div>
+            <p>제목: {{ post.title }}</p>
+            <p>좋아요: {{ post.likes_cnt }}</p>
+            <p>%: {{ post.percentage }}%</p>
+            <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image">
+        </div>
+    {% endfor %}
+</body>
+</html>
+
+
+

@@ -1,16 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/enter_main.css' %}">
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>결제위젯 샘플</title>
+    <script defer src="{% static 'js/enter_main.js' %}"></script> 
     <script src="https://js.tosspayments.com/v1/payment-widget"></script>
   </head>
   <body>
-    <input type="number" id="amount" onchange="updatePaymentAmount()" />
-    <div id="payment-method"></div>
-    <button id="payment-request-button"><span id="selected-amount">0</span> 결제하기</button>
+    <header>
+        <img src="{% static 'images/Vector.svg' %}">
+        <div id="enter">펀딩 참여</div>
+    </header>
+       <div class="enterMain">
+            <div class="fund_name">
+                <p>펀딩 이름</p>
+                <div class="fund_box">
+                    <img src="{{funding.funding_image.url}}">
+                    <div>
+                        <h1>{{funding.title}}</h1>
+                        <h2>펀딩 종류 : {{funding.type}}</h2>
+                        <h3>{{funding.start_date|date:"y.m.d"}}~{{funding.end_date|date:"y.m.d"}}</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fund_input">
+                <p>원하는 펀딩 금액을 입력해주세요.</p>
+                <div class="input_box">
+                    <input type='text' name='name' id="amount" onchange="updatePaymentAmount()" placeholder='100원 단위로 펀딩이 가능합니다.'/>
+                    <button class="inputBtn">확인</button>
+                </div>
+            </div>
+
+            <div class="choice">
+                <div id="payment-method"></div>
+            </div>
+
+          <div class="caution">
+            <p>주의 사항</p>
+            <ul>
+                <li>펀딩은 100원 단위로 가능합니다.</li>
+                <li>선물 펀딩은 추가적인 리워드가 지급되지 않습니다.</li>
+                <li>기한 내에 달성률 100%에 도달하지 못했거나,<br> 펀딩이 취소되는 경우 선택하신 결제 방법으로 영업일 기준 3~5일 이내에 환불<br>처리 됩니다.</li>
+            </ul>
+          </div>
+
+      <button id="payment-request-button" class="go"><span id="selected-amount">0</span>원 펀딩하기</button>
+
+
+    </div>
     <script>
       const customer_key = "{{ user_info.customer_key }}";
       const customer_name = "{{ user_info.name }}";

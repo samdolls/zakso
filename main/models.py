@@ -9,22 +9,24 @@ from accounts.models import CustomUser
 
 class Fundings(models.Model):
     TYPE_CHOICES = (
-        ("PRESENT", _("선물 펀딩")),
-        ("SOSO", _("소소 펀딩")),
-        ("DREAM", _("드림 펀딩")),
+        ("선물 펀딩", _("선물 펀딩")),
+        ("소소 펀딩", _("소소 펀딩")),
+        ("드림 펀딩", _("드림 펀딩")),
     )
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default="PRESENT")
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default="선물 펀딩")
     title = models.CharField(max_length=50)
     writer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.CharField(max_length=50)
     total_price = models.IntegerField()
     accumulation = models.IntegerField(default=0)
-    percentage = models.DecimalField(default=0, max_digits=5, decimal_places=2)
+    percentage = models.IntegerField(default=0)
     content = models.TextField()
     start_date = models.DateField()
     end_date = models.DateField()
     funding_image = models.ImageField(upload_to="fundings/", blank=False, null=False)
     qr_image = models.ImageField(upload_to="qr/", blank=True, null=True)
+    account_num = models.CharField(max_length=50, default="", blank=False, null=False)
+    delievery = models.CharField(max_length=50, default="", blank=False, null=False)
     like = models.ManyToManyField(CustomUser, related_name="likes", blank=True)
     likes_cnt = models.IntegerField(default=0)
     is_private = models.BooleanField(default=False)
@@ -45,7 +47,7 @@ def update_percentage(sender, instance, **kwargs):
         accumulation = 0
 
     if total_price > 0:
-        calculated_percentage = round((accumulation / total_price) * 100, 2)
+        calculated_percentage = round((accumulation / total_price) * 100)
         print(calculated_percentage)
     else:
         calculated_percentage = 0

@@ -1,0 +1,91 @@
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+header>img{
+margin-left: -250px;
+width: 7.5px;
+height: 14.5px;
+flex-shrink: 0;
+stroke-width: 2px;
+stroke: var(--light_gray, #D6D6D6);
+}
+
+#enter{
+margin-left: 15px;
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.fundEnter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fundEnter>img{
+margin-top: 100px;
+width: 119px;
+height: 95px;
+flex-shrink: 0;
+
+}
+
+h1{
+    color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+h2{
+margin-top: -10px;
+margin-left: -10px;
+ color: var(--strong_pink, #F33D69);
+text-align: center;
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 700;
+line-height: 20px; 
+}
+
+h3{
+color: var(--mid_gray, #9E9E9E);
+text-align: center;
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 153.846% */
+}
+
+
+.enter_btn{
+margin-top: 30px;
+border: none;
+width: 354px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--strong_pink, #F33D69);
+color: var(--white, #FFF);
+text-align: center;
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}

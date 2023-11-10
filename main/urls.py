@@ -5,6 +5,7 @@ app_name = "main"
 urlpatterns = [
     path("", mainpage, name="mainpage"),
     path("choose/", choose, name="choose"),
+    path("before_create/", before_create, name="before_create"),
     path("create/", create, name="create"),
     path("<int:funding_id>/", detail, name="detail"),
     path("payhistory/", payhistory, name="payhistory"),

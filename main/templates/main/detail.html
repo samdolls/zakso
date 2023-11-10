@@ -1,51 +1,101 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-    <div>
-        <div>
-            {% if funding.image %}
-            <img src="{{funding.funding_image.url}}" alt="펀딩 이미지">
-            {% endif %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/funding_main.css' %}">
+      <div class="modal" id="shareModal">
+             
+    <!-- 모달 내용 입력 -->
+    <div class="share">
+       <div id="title">
+            <p>공유하기</p>
+            <img src="{% static 'images/x.svg' %}">
         </div>
-        <div>
-            <h2>{{funding.title}}</h2>
-            <span>{{funding.start_date}}~{{funding.end_date}}</span>
+        <div id ="qr">
+           <img src="{% static 'images/qr.svg' %}">
+           <button type="button" class="copy-btn" onclick="copyUrl()">QR코드 복사</button>
         </div>
-        <div>
-            <h3>모인 금액</h3>
+        <div id="link">
+          <img src="{% static 'images/link.svg' %}">
+          <button type="button" class="copy-btn" onclick="copyUrl()">링크 복사</button>
         </div>
-        <div>
-            <p>{{funding.accumulation}}</p>
-            <span>{{funding.percentage}}</span>
-        </div>
-        <div>
-            <p>목표 금액</p>
-            <p>{{funding.total_price}}</p>
-            <span>목표 금액 달성시 {{delievery_date}}에 선물이 배송됩니다.</span>
-        </div>
-        <div>
-            <p>작소펀딩 이야기</p>
-            <p>{{funding.content}}</p>
-        </div>
-        <div>
-            <p>작고 소중한 우리의 선물</p>
-            <p>{{funding.product}}</p>
-            <p>{{encoded_funding_id}}</p>
-        </div>
-        <a href="{% url 'payments:index' %}">펀딩하기</a>
-        <!-- <a href="{% url 'main:update' funding.id %}">수정하기</a> -->
-        <span href="#" class = "like" name="{{funding.id}}" value="Like">
-            {% if request.user in funding.like.all %}
-                <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
-            {% else %}
-                <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
-            {% endif %}
-        </span>
-        <a href="{% url 'main:delete' funding.id %}">삭제하기</a>
-        <a href="{% url 'main:mainpage' %}">홈으로</a>
     </div>
-    <!-- <script src="{% static 'js/like.js' %}"></script> -->
+</div>
+<div style="padding:19px;">
+   <div class="funding_main">
+        <header>
+        <div class="divNav">
+            <span class="vectorImg"><a href="#"><img src="{% static 'images/Vector.svg' %}" alt="vector"></a></span>
+            <p style="padding-left:36.5px;">{{funding.type}}</p>
+            <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" style="padding-right:16.5px;"></a></span>
+        </div>
+        </header>
+    <img src="{{funding.funding_image.url}}" style="width: 100%; height: 100%; padding: 0px 50px 40px 50px;">
+       <div class="fund_information" style="width:100%;">
+        <div class="information">
+            <p>
+                <span class="first">{{funding.title}}</span>
+                <span class="second" style="float:right; padding-right:18px; align-items:center;">{{funding.start_date|date:"y.m.d"}}~{{funding.end_date|date:"y.m.d"}}</span>
+           </p> 
+         </div>
+
+         <div class="name">
+            <img src="{% static 'images/profile.svg' %}" style="height:26.84px; width:26.84px;">
+            <span>{{funding.writer.username}}</span>
+          </div>
+
+         <div class="coin">
+            <div class="coin_sum">모인 금액
+            <div style="display:flex; justify-content:space-between; flex-direction:row; padding-bottom:23px; padding-top:8px;">
+                <div class="third">{{funding.accumulation}} ₩</div>
+                <div class="percent">{{funding.percentage}}%</div>
+            </div>
+        </div>
+         </div>
+       </div>
+
+
+       <div class="target" style="border-top:2px solid;">
+        <div style="display:flex; flex-direction:column; font-size:13px;">목표금액
+            <div style="margin-bottom: 31px; display:flex; flex-direction:row;">
+                <div style="margin-top:10px;">{{funding.total_price}} ₩</div>
+                <div class="six" style="margin-top:10px;">목표 금액 달성 시 {{delievery_date|date:"m월 d"}}일에 선물이 배송됩니다. </div>
+            </div>
+        </div>
+
+            <div id="story">작소펀딩 이야기
+                <P>{{funding.content}}</P>
+            </div>
+
+            <div id="story">작고 소중한 우리의 선물
+                <P>{{funding.product}} </P>
+            </div>
+       </div>
+
+ 
+       <div class="click">
+        <button type="submit">
+            <div style="padding-right:7px;">
+            <img src="{% static 'images/submit.svg' %}" alt="이미지 설명">
+            </div>
+          </button>
+          <button id="openModalBtn" class="btn btn-primary" style="padding-right:7px;">
+            <div style="padding-right:7px;">
+            <img src="{% static 'images/out.svg' %}" alt="이미지 설명">
+        </div>
+        </button>
+            
+          <button class="custom-button" onclick="location.href='{% url 'payments:index' %}'">작소펀딩 함께하기</button>
+        </div>
+    </div>
+</div>  
+
+
+     <!-- Bootstrap JS 및 jQuery를 포함합니다 -->
+    <script src="{% static 'js/fundmainBlur.js' %}"></script> 
+    <script src="{% static 'js/modal.js' %}"></script> 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
         $(".like").click(function(){

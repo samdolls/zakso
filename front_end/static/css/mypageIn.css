@@ -1,0 +1,142 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.mainMy{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mypage{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.mypage>img{
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.my-box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 50px;
+    color: var(--gray, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.my-box>button{
+width: 110px;
+height: 25px;
+color: var(--mid_gray, #9E9E9E);
+font-family: Pretendard;
+font-size: 10px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border: none;
+background-color: white;
+margin-left: -30px;
+}
+
+#setbox{
+    display: flex;
+    flex-direction: row;
+    margin-left: -5px;
+}
+
+
+#setbox>img{
+width: 30px;
+height: 25px;
+flex-shrink: 0;
+border-radius: 12.5px;
+background: var(--light_gray2, #F6F6F6);
+margin-top: 23px;
+margin-left: 50px;
+}
+
+.jaksoFund>p{
+margin-top: 60px;
+margin-left: 30px;
+color: var(--mid_gray, #9E9E9E);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.jaksoImg{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.jaksoImg>div{
+    margin-left: 30px;
+
+}
+
+.jaksoImg>div>p{
+
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+h1{
+ color: var(--mid_gray, #9E9E9E);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin-left: 30px;
+}
+
+
+.list{
+    margin-top: 40px;
+}
+
+ul{
+list-style:none;
+  margin-left: -10px;
+
+
+}
+
+li{
+color: var(--gray, #1F1F1F);
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+hr{
+ background: var(--light_gray2, #F6F6F6);
+width: 390px;
+height: 4px;
+flex-shrink: 0;
+border: none;
+}
