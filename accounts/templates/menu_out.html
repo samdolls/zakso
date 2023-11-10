@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/mypageIn.css' %}">
+    <header>
+      
+        <span class="logoImg"><a href="{% url 'main:mainpage' %}"><img src="{% static 'images/logo.svg' %}" alt="logo"></a></span>
+      <div class="nav">
+        <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
+        <span class="noticeImg"><a href="#" onclick="goBack()"><img src="{% static 'images/cancel.svg' %}" alt="notice"></a></span>
+      </div>
+  </header>
+     <div class="mainMy">
+      <div class="mypage">
+          <img src="{% static 'images/profile.svg' %}">
+          <div class="my-box">
+            <div id="setbox">
+              <p>로그인을 해주세요</p>
+              <img src="{% static 'images/setting.svg' %}">
+            </div>
+                <button><a href="{% url 'accounts:login' %}">로그인/회원가입</a></button>
+          </div>
+      </div>
+
+      <div class="jaksoFund">
+          <p>작소펀딩</p>
+          <div class="jaksoImg">
+            <div>
+                <a href="{% url 'main:present' %}">
+                    <img src="{% static 'images/present.svg' %}">
+                    <p>선물펀딩</p>
+                </a>
+            </div>
+          <div>
+            <a href="{% url 'main:soso' %}">
+                <img src="{% static 'images/pen.svg' %}">
+                <p>소소펀딩</p>
+            </a>
+          </div>
+          <div>
+              <img src="{% static 'images/star.svg' %}">
+              <p>드림펀딩</p>
+          </div>
+         
+      </div>
+
+  
+      <div class="list">
+          <h1>펀딩 순위</h1>
+          <ul>
+              <li>선물 펀딩 순위 보기</li>
+              <li>소소 펀딩 순위 보기</li>
+              <li>드림 펀딩 순위 보기</li>
+          </ul>
+<hr>
+          <h1>개인 정보 관리</h1>
+          <ul>
+              <li>환불 계좌 관리</li>
+              <li>배송지 관리</li>
+              <li>펀딩 참여 내역</li>
+          </ul>
+<hr>
+          <h1>게시판</h1>
+          <ul>
+              <li>공지사항</li>
+              <li>자주하는 질문</li>
+              <li>Q&A 게시판</li>
+          </ul>
+      </div>
+  </div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+    
+{% endblock%}

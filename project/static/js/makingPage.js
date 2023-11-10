@@ -8,15 +8,17 @@
 //   }
 // }
 
-function checkImg(element) {
+function checkImg(radioId) {
+  const radio = document.getElementById(radioId);
   // 모든 이미지 초기화
   const checkImgs = document.querySelectorAll('.checkImg');
   checkImgs.forEach(img => {
     img.src = "/static/images/blankCheck.svg";
   });
-
+  radio.checked = !radio.checked;
   // 현재 이미지 선택
-  element.src = "/static/images/checked.svg";
+  const img = document.querySelector(`#${radioId} + .checkImg`);
+  img.src = "/static/images/checked.svg";
 }
 
 // 업로드 된 파일 보기
@@ -67,14 +69,3 @@ function resetFile() {
     basicText.style.display = "block";
   }
 }
-
-
-
-
-
-
-
-
-
-
-

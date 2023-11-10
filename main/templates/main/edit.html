@@ -5,22 +5,24 @@
 <link rel="stylesheet" href="{% static 'css/makingPage.css' %}">
   <header>
     <div class="makingNav">
-      <a href="#"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack"></a>
-      <p class="makeFund">{{selected_type}} 만들기</p>
+      <a href="#" onclick="goBack()"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack"></a>
+      <p class="makeFund">{{funding.type}} 만들기</p>
       <a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" class="hamburger"></a>
     </div>
   </header>
   
   <!-- 설정하기 -->
   <section>
-    <form action="{% url 'main:create' %}" method = "POST" class="forMaking" enctype="multipart/form-data">
+    <form action="{% url 'main:before_update' funding.id %}" method = "POST" class="forMaking" enctype="multipart/form-data">
+      <input type="hidden" name="type" value="{{ selected_type }}">
+      {% csrf_token %}
       <div class="fundNameBox">
         <label for="fundName"><p class="fundNameText">펀딩 이름</p></label>
-        <input type="text" name="fundName" class="fundNameField" id="fundNameField" placeholder="나만의 멋진 펀딩 이름을 작성해주세요!">
+        <input type="text" name="fundName" class="fundNameField" id="fundNameField" placeholder="나만의 멋진 펀딩 이름을 작성해주세요!" value="{{funding.title}}">
       </div>
       <div class="settingPriceBox">
         <label for="setPrice"><p class="setPriceText">목표 금액 설정</p></label>
-        <input type="text" name="setPrice" class="setPriceField" id="setPriceField" placeholder="펀딩 금액은 얼마로 할까요?">
+        <input type="text" name="setPrice" class="setPriceField" id="setPriceField" placeholder="펀딩 금액은 얼마로 할까요?" value="{{funding.total_price}}">
       </div>
       <div class="setDateBox">
         <p class="setDateText">기한 설정</p>
@@ -45,30 +47,38 @@
       <div class="separateBox" style="width: 24.375rem; height: 0.25rem; background: var(--light_gray2, #F6F6F6); margin-top: 1.5rem"></div>
       <div class="productNameBox">
         <label for="productName"><p class="productNameText">상품 이름</p></label>
-        <input type="text" name="productName" class="productNameField" id="productNameField" placeholder="상품을 적어주세요!">
+        <input type="text" name="productName" class="productNameField" id="productNameField" placeholder="상품을 적어주세요!" value="{{funding.product}}">
       </div>
       <div class="storyBox">
         <p class="storyText">작소펀딩 이야기</p>
-        <textarea name="fundStory" id="storyField" class="storyField" placeholder="나만의 작소펀딩 이야기를 작성해주세요!" cols="30" rows="10"></textarea>
+        <textarea name="fundStory" id="storyField" class="storyField" placeholder="나만의 작소펀딩 이야기를 작성해주세요!" cols="30" rows="10">{{funding.content}}</textarea>
       </div>
       <div class="setOpenRangeBox">
         <p class="setOpenRangeText">공개 범위 설정</p>
         <div class="selectRangeBox">
-          <div class="allOpenBox">
-            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
-            <p class="allOpenText">전체 공개</p>
+            <div class="allOpenBox">
+              <input type="radio" name="is_private" id ="allRadio" value="False" class="checkImg" hidden>
+              <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg('allRadio')">
+              <p class="allOpenText">전체 공개</p>
+            </div>
+            <div class="friendOpenBox">
+              <input type="radio" name="is_private" id="friendRadio" value="True" class="checkImg" hidden>
+              <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg('friendRadio')">
+              <p class="friendOpenText">친구 공개</p>
+            </div>
           </div>
-          <div class="friendOpenBox">
-            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
-            <p class="friendOpenText">친구 공개</p>
-          </div>
-        </div>
       </div>
       <div class="imgUploadBox">
         <label for="imgUpload"><p class="uploadText">사진 업로드</p></label>
         <input type="file" name="img" multiple accept=".png, .jpg, .jpeg" class="imgUpload" id="imgUpload">
         <div class="imgUploadField">
-          <label for="imgUpload"><img src="{% static 'images/upload.svg' %}" alt="upload" class="uploadImg"></label>
+          <label for="imgUpload">
+            {% if funding.funding_image %}
+                <img src="{{funding.funding_image.url}}" alt="upload" class="uploadImg">
+            {% else %}
+                <img src="{% static 'images/upload.svg' %}" alt="upload" class="uploadImg">
+            {% endif %}
+        </label>
           <label for="imgUpload"><p class="uploadImgText">최대 10장까지 추가 가능</p></label>
         </div>
       </div>
@@ -76,11 +86,15 @@
         <button type="button" class="reselectButton" onclick="resetFile()">사진 다시 선택하기</button>
       </div>
       <div class="nextButtonBox">
-        <button type="submit" class="nextButton"><a href="#">다음으로</a></button>
+        <button type="submit" class="nextButton"><a>다음으로</a></button>
       </div>
     </form>
   </section>
-
+  <script>
+    function goBack() {
+            window.history.back();
+        }
+  </script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="{% static 'js/map.js' %}"></script>
   <script src="{% static 'js/setDate.js' %}"></script>

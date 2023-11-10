@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from datetime import timedelta, date, datetime
 from django.http import HttpResponse, JsonResponse
-from django.db.models import F
+from django.db.models import F, Q
 
 from .models import Fundings, History
 
@@ -46,13 +46,23 @@ def before_create(request):
             year = int(request.POST["setYear"])
             month = int(request.POST["setMonth"])
             day = int(request.POST["setDay"])
+            if date(year, month, day) < date.today():
+                return render(
+                    request,
+                    "main/before_create.html",
+                    {"error": "마감일은 오늘 이후로 설정해주세요."},
+                )
             funding_image = request.FILES.get("img")
-            print(funding_image)
             if funding_image:
                 fs = FileSystemStorage(location="media/fundings/")
                 filename = fs.save(funding_image.name, funding_image)
                 funding_image_path = fs.url(filename)
-            is_private = request.POST.get("is_private", False)
+            is_private = request.POST.get("is_private")
+            if is_private == "True":
+                is_private = True
+            elif is_private == "False":
+                is_private = False
+            print(is_private)
             request.session["post_info"] = {
                 "type": type,
                 "title": title,
@@ -66,12 +76,14 @@ def before_create(request):
                 "is_private": is_private,
             }
             return redirect("main:create")
-    return render(request, "main/before_create.html")
+        elif request.method == "GET":
+            return render(request, "main/before_create.html")
+    else:
+        return redirect("accounts:login_view")
 
 
 def create(request):
     post_info = request.session.get("post_info", None)
-    print(post_info["funding_image"])
     if request.user.is_authenticated:
         if request.method == "POST":
             new_fundings = Fundings()
@@ -92,11 +104,15 @@ def create(request):
             )
             new_fundings.funding_image = funding_image_path
             new_fundings.is_private = post_info.get("is_private", False)
-            new_fundings.account_num = request.POST["account_num"]
-            new_fundings.delievery = request.POST["delievery"]
+            new_fundings.account_bank = request.POST["selecters"]
+            new_fundings.account_num = request.POST["st_name"]
+            road_address = request.POST["road_address"]
+            detail_address = request.POST["detail_address"]
+            address = f"{road_address} {detail_address}"
+            new_fundings.delievery = address
             # new_fundings.qr_image = request.FILES.get("qr_image")
             new_fundings.save()
-            return redirect("main:detail", new_fundings.id)
+            return redirect("main:finish", new_fundings.id)
         elif request.method == "GET":
             return render(request, "main/create.html")
 
@@ -114,6 +130,11 @@ def choose(request):
         return redirect("accounts:login_view")
 
 
+def finish(request, funding_id):
+    funding = get_object_or_404(Fundings, pk=funding_id)
+    return render(request, "main/finish.html", {"funding": funding})
+
+
 def detail(request, funding_id):
     funding = get_object_or_404(Fundings, pk=funding_id)
     encoded_funding_id = base64.b64encode(str(funding.id).encode()).decode()
@@ -129,47 +150,131 @@ def detail(request, funding_id):
     )
 
 
-def update(request, funding_id):
+def after_create(request, funding_id):
+    funding = get_object_or_404(Fundings, pk=funding_id)
+    encoded_funding_id = base64.b64encode(str(funding.id).encode()).decode()
+    delievery_date = funding.end_date + timedelta(days=2)
+    request.session["encoded_funding_id"] = encoded_funding_id
+    return render(
+        request,
+        "main/after_create.html",
+        {
+            "funding": funding,
+            "delievery_date": delievery_date,
+        },
+    )
+
+
+def before_update(request, funding_id):
     funding = get_object_or_404(Fundings, pk=funding_id)
     if request.user == funding.writer:
         if request.method == "POST":
-            funding.title = request.POST["title"]
-            funding.content = request.POST["content"]
-            funding.funding_image = request.FILES.get("funding_image")
-            funding.qr_image = request.FILES.get("qr_image")
+            funding.title = request.POST["fundName"]
+            funding.product = request.POST["productName"]
+            funding.total_price = request.POST["setPrice"]
+            funding.content = request.POST["fundStory"]
+            year = int(request.POST["setYear"])
+            month = int(request.POST["setMonth"])
+            day = int(request.POST["setDay"])
+            if date(year, month, day) < date.today():
+                return render(
+                    request,
+                    "main/edit.html",
+                    {
+                        "funding",
+                        funding,
+                    },
+                )
+            funding.end_date = date(year, month, day)
+            is_private = request.POST.get("is_private")
+            if is_private == "True":
+                funding.is_private = True
+            elif is_private == "False":
+                funding.is_private = False
+            funding.funding_image = request.FILES.get("img", funding.funding_image)
             funding.save()
-            return redirect("main:detail", funding.id)
+            return redirect("main:update", funding.id)
         elif request.method == "GET":
             return render(request, "main/edit.html", {"funding": funding})
     else:
         return redirect("main:detail", funding.id)
 
 
+def update(request, funding_id):
+    funding = get_object_or_404(Fundings, pk=funding_id)
+    if request.user == funding.writer:
+        if request.method == "POST":
+            funding.account_bank = request.POST["selecters"]
+            funding.account_num = request.POST["st_name"]
+            road_address = request.POST["road_address"]
+            detail_address = request.POST["detail_address"]
+            address = f"{road_address} {detail_address}"
+            funding.delievery = address
+            funding.save()
+            return redirect("main:finish", funding.id)
+        elif request.method == "GET":
+            return render(request, "main/update.html", {"funding": funding})
+    else:
+        return redirect("main:detail", funding.id)
+
+
 def present(request):
-    present_fundings = Fundings.objects.filter(
-        type="선물 펀딩", accumulation__lt=F("total_price")
+    current_time = timezone.now()
+
+    past_fundings = Fundings.objects.filter(
+        type="선물 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__lt=current_time,
+        is_private=False,
     ).order_by("-created_at")
-    count = present_fundings.count()
+
+    future_fundings = Fundings.objects.filter(
+        type="선물 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__gte=current_time,
+        is_private=False,
+    ).order_by("-created_at")
+
+    past_count = past_fundings.count()
+    future_count = future_fundings.count()
+    count = past_count + future_count
     return render(
         request,
         "main/present.html",
         {
-            "present_fundings": present_fundings,
+            "past_fundings": past_fundings,
+            "future_fundings": future_fundings,
             "count": count,
         },
     )
 
 
 def soso(request):
-    soso_fundings = Fundings.objects.filter(
-        type="소소 펀딩", accumulation__lt=F("total_price")
+    current_time = timezone.now()
+
+    past_fundings = Fundings.objects.filter(
+        type="소소 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__lt=current_time,
+        is_private=False,
     ).order_by("-created_at")
-    count = soso_fundings.count()
+
+    future_fundings = Fundings.objects.filter(
+        type="소소 펀딩",
+        accumulation__lt=F("total_price"),
+        end_date__gte=current_time,
+        is_private=False,
+    ).order_by("-created_at")
+
+    past_count = past_fundings.count()
+    future_count = future_fundings.count()
+    count = past_count + future_count
     return render(
         request,
         "main/soso.html",
         {
-            "soso_fundings": soso_fundings,
+            "past_fundings": past_fundings,
+            "future_fundings": future_fundings,
             "count": count,
         },
     )
@@ -221,3 +326,22 @@ def funding_like_toggle(request):
         return HttpResponse(json.dumps(context), content_type="application/json")
     # else:
     #     return render(request, "accounts/no_auth.html")
+
+
+def search(request):
+    query = request.GET.get("q", "")
+
+    # 검색어가 제공되면 필터링을 수행합니다.
+    if query:
+        results = Fundings.objects.filter(
+            Q(title__icontains=query)
+            | Q(content__icontains=query)
+            # 다른 필드들도 포함할 수 있습니다.
+        )
+        return render(
+            request,
+            "main/search.html",
+            {"results": results, "query": query},
+        )
+    else:
+        return render(request, "main/search.html")

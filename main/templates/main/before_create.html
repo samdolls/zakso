@@ -5,9 +5,13 @@
 <link rel="stylesheet" href="{% static 'css/makingPage.css' %}">
   <header>
     <div class="makingNav">
-      <a href="#"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack"></a>
+      <a href="#" onclick="goBack()"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack" style="padding-top:7px;"></a>
       <p class="makeFund">{{selected_type}} 만들기</p>
-      <a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" class="hamburger"></a>
+      {% if user.is_authenticated %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+      {% else %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+      {% endif %}
     </div>
   </header>
   
@@ -41,7 +45,7 @@
             <select name="setDay" id="setDay"></select>
             <img src="{% static 'images/dropdown.svg' %}" alt="dropdown" class="dropdownImg">
           </div>
-          <p class="dayText">일 까지</p>
+          <p class="dayText" style="margin-right:0px;">일 까지</p>
         </div>
       </div>
       <div class="separateBox" style="width: 24.375rem; height: 0.25rem; background: var(--light_gray2, #F6F6F6); margin-top: 1.5rem"></div>
@@ -57,13 +61,13 @@
         <p class="setOpenRangeText">공개 범위 설정</p>
         <div class="selectRangeBox">
           <div class="allOpenBox">
-            <input type="radio" name="is_private" value="False" class="checkImg" onclick="checkImg(this)">
-            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
+            <input type="radio" name="is_private" id ="allRadio" value="False" class="checkImg" hidden>
+            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg('allRadio')">
             <p class="allOpenText">전체 공개</p>
           </div>
           <div class="friendOpenBox">
-            <input type="radio" name="is_private" value="True" class="checkImg" onclick="checkImg(this)">
-            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
+            <input type="radio" name="is_private" id="friendRadio" value="True" class="checkImg" hidden>
+            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg('friendRadio')">
             <p class="friendOpenText">친구 공개</p>
           </div>
         </div>
@@ -85,8 +89,13 @@
     </form>
   </section>
 
+  <script>
+    function goBack() {
+            window.history.back();
+        }
+  </script>
+
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="{% static 'js/map.js' %}"></script>
   <script src="{% static 'js/setDate.js' %}"></script>
   <script src="{% static 'js/makingPage.js' %}"></script>
 <!-- 

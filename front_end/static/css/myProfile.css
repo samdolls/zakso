@@ -10,6 +10,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* headerNav */
@@ -331,6 +332,11 @@ article {
 }
 
 /* functionBox */
+.functionBoxSection {
+  z-index: 1;
+  position: absolute;
+  bottom: 7.5rem;
+}
 .functionBox {
   width: 24.375rem;
   height: 23.75rem;
@@ -338,7 +344,6 @@ article {
   border-radius: 1.25rem 1.25rem 0rem 0rem;
   background: rgba(246, 246, 246, 0.90);
   box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.10);
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -361,16 +366,11 @@ article {
   gap: 1.6rem;
   margin-top: 0.9rem;
 }
-.functionBox button:first-child {
+.modifyButtonBox .modifyButton {
   margin-top: 1.2rem;
 }
-.functionBox button:last-child {
+.functionBox .trashButton {
   color: var(--strong_pink, #F33D69);
-  font-family: Pretendard;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
 }
 .functionBox button img {
   margin-left: 1.5rem;

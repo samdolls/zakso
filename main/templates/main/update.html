@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/fund_make.css' %}">
+    <header>
+      <div class="nav">
+        <span class="noticeImg"><a href="#" onclick="goBack()"><img src="{% static 'images/Vector.svg' %}" alt="notice"></a></span>
+        <p>{{funding.type}} 만들기</p>
+      </div>
+      <span class="logoImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="logo"></a></span>
+  </header>
+  <form action="{% url 'main:update' funding.id %}" method="POST">
+    {% csrf_token %}
+  <div class="finish">
+    <p>펀딩받을 계좌</p>
+    <div class="choice">
+        <select name="selecters">
+            <option value="" selected>은행 선택</option>
+            <option value="저축은행">저축은행</option>
+            <option value="농협은행">농협은행</option>
+            <option value="우리은행">우리은행</option>
+            <option value="기업은행">기업은행</option>
+            <option value="국민은행">국민은행</option>
+            <option value="신한은행">신한은행</option>
+            <option value="하나은행">하나은행</option>
+            <option value="외환은행">외환은행</option>
+            <option value="씨티은행">씨티은행</option>
+            <option value="부산은행">부산은행</option>
+            <option value="대구은행">대구은행</option>
+            <option value="전북은행">전북은행</option>
+            <option value="경남은행">경남은행</option>
+            <option value="제주은행">제주은행</option>
+            <option value="우체국">우체국</option>
+            <option value="새마을금고">새마을금고</option>
+        </select>
+        <input type="text" name="st_name" placeholder="계좌번호">
+    </div>
+       
+    <p>선물 받을 배송지</p>
+    <div class="shipping">
+        <p>
+            <input type="text" id="zip-code" placeholder="우편번호">
+            <input type="button" onclick="execDaumPostcode()" value="우편번호 검색하기">
+        </p>
+        <p>
+        <input type="text" name="road_address" id="num" placeholder="도로명주소">
+        </p>
+        <input type="text" name="detail_address" id="detail" placeholder="상세주소">
+    </div>
+
+
+    <div class="chbox">
+        <label><input type="checkbox" name="agree" value=""> 기본 계좌/배송지로 설정</label>
+         <ul>
+            한 번 입금되면 다음 내용은 수정할 수 없어요!
+            <li>입금 계좌</li>
+            <li>목표 금액</li>
+            <li>상품 이름</li>
+         </ul>
+    </div>
+
+    <button type="submit">작소 펀딩 올리기</button>
+</form>
+  </div>
+  <script>
+    function goBack() {
+            window.history.back();
+        }
+  </script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script defer src="{% static 'js/fund_make.js' %}"></script> 
+
+
+{% endblock %}
