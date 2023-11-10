@@ -1,31 +1,146 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-    <h1>이름: {{ user_profile.user.username }}</h1><br>
-    <button><a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a></button><br>
-    <h2>내가 올린 펀딩:</h2>
-    {% for post in user_post %}
-        <div>
-            <p>제목: {{ post.title }}</p>
-            <p>좋아요: {{ post.likes_cnt }}</p>
-            <p>%: {{ post.percentage }}%</p>
-            <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image">
-        </div>
-    {% endfor %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/myProfile.css' %}">
+  <header>
+    <div class="myProfileNav">
+      <a href="{% url 'main:mainpage' %}"><img src="{% static 'images/back.svg' %}" alt="back" class="backImg"></a>
+      <p class="myProfileText">내 프로필</p>
+      <div class="noticeImgBox">
+        <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
+        <img src="{% static 'images/redDot.svg' %}" alt="redDot" class="redDotImg">
+      </div>
+      {% if user.is_authenticated %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+      {% else %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+      {% endif %}
+    </div>
+  </header>
+  
 
-    <h2>찜한 펀딩:</h2>
-    {% for post in user_like_post %}
-        <div>
-            <p>제목: {{ post.title }}</p>
-            <p>좋아요: {{ post.likes_cnt }}</p>
-            <p>%: {{ post.percentage }}%</p>
-            <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image">
+  <section>
+    <div class="myProfileBox">
+      <div class="myProfileImgBox">
+        <img src="{% static 'images/defaultProfile.svg' %}" alt="profile" class="myProfile">
+      </div>
+      <div class="myProfileSettingBox">
+        <div class="myProfileTextBox">
+          <p class="logInText">{{ user_profile.user.username }}</p>
+          <div class="settingImgBox">
+            <a href="#"><img src="{% static 'images/setting.svg' %}" alt="setting" class="settingImg"></a>
+          </div>
         </div>
-    {% endfor %}
-</body>
-</html>
+        <div class="manageTextBox">
+          <a href="#"><p class="manageText">친구 보기/관리 <span class="frontVector"><img src="{% static 'images/frontVector.svg' %}" alt="frontVector"></span></p></a>
+        </div>
+      </div>
+    </div>
+    <div class="makeMyFundButtonBox">
+      <button class="makeMyFundButton"><a href="{% url 'main:choose' %}">나만의 작소펀딩 만들기</a></button>
+    </div>
+  </section>
+
+  <section class="forList">
+    <div class="myFundListBox">
+      <div class="selectListFundButtonBox">
+        <button class="myPostFund" onclick="showMyFund()">내가 올린 펀딩</button>
+        <button class="wishlistFund" onclick="showWishFund()">찜한 펀딩</button>
+      </div>
+    </div>
+
+    <article class="myPostFund">
+      {% for post in user_post %}
+        <div class="listBox">
+          <div class="itemImgBox">
+            <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image" class="itemImg item1">
+          </div>
+          <div class="aboutItemBox">
+            <div class="aboutItemTextBox">
+              <p class="aboutItemText text1">{{ post.title }}</p>
+              <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+            </div>
+            <div class="optionImgBox">
+              <img src="{% static 'images/optionImg.svg' %}" alt="optionImg" class="optionImg" onclick="showFunctionBox(this)">
+            </div>
+            <p class="totalMoneyText">총 <span class="totalMoney totalMoney1">{{ post.total_price }}</span>₩</p>
+            <div class="currentProgressBox">
+              <p class="currentPercentText"><span class="currentPercent percent1">{{ post.percentage }}</span>%</p>
+              <p class="currentMoneyText"><span class="currentMoney currentMoney1">{{ post.accumulation }}</span>₩</p>
+            </div>
+            <div class="progressbarBox">
+              <div class="progress" role="progressbar" aria-valuenow="{{ post.percentage }}" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progressbar bar1" style="width: '{{ post.percentage }}%'; background-color: #F33D69;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </article>
+
+    <article class="wishlistFund">
+        {% for post in user_like_post %}
+          <div class="listBox">
+            <div class="itemImgBox">
+              <img src="{{ post.funding_image.url }}" alt="{{ post.title }} Image" class="itemImg item1">
+            </div>
+            <div class="aboutItemBox">
+              <div class="aboutItemTextBox">
+                <p class="aboutItemText text1">{{ post.title }}</p>
+                <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+              </div>
+              <div class="optionImgBox">
+                <img src="{% static 'images/optionImg.svg' %}" alt="optionImg" class="optionImg" onclick="showFunctionBox(this)">
+              </div>
+              <p class="totalMoneyText">총 <span class="totalMoney totalMoney1">{{ post.total_price }}</span>₩</p>
+              <div class="currentProgressBox">
+                <p class="currentPercentText"><span class="currentPercent percent1">{{ post.percentage }}</span>%</p>
+                <p class="currentMoneyText"><span class="currentMoney currentMoney1">{{ post.accumulation }}</span>₩</p>
+              </div>
+              <div class="progressbarBox">
+                <div class="progress" role="progressbar" aria-valuenow="{{ post.percentage }}" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar progressbar bar1" style="width: '{{ post.percentage }}%'; background-color: #F33D69;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </article>
+
+    <div class="noFundTextBox">
+      <p class="noFundText">내가 만든 작소펀딩이 없어요!</p>
+    </div>
+
+    <div class="noWishTextBox">
+      <p class="noWishText">내가 찜한 작소펀딩이 없어요!</p>
+    </div>
+  </section>
+
+  <section class="functionBoxSection">
+    <div class="functionBox">
+      <div class="modifyButtonBox">
+        <button class="modifyButton"><img src="{% static 'images/modify.svg' %}" alt="modify" class="modfiyImg">펀딩 내용 수정하기</button>
+      </div>
+      <div class="shareButtonBox">
+        <button class="shareButton"><img src="{% static 'images/share.svg' %}" alt="share" class="shareImg">펀딩 공유하기</button>
+      </div>
+      <div class="setRangeButtonBox">
+        <button class="setRangeButton"><img src="{% static 'images/setRange.svg' %}" alt="setRange" class="setRangeImg">펀딩 공개 범위 설정하기</button>
+      </div>
+      <div class="setQRButtonBox">
+        <button class="setQRButton"><img src="{% static 'images/qr.svg' %}" alt="qr" class="QqrImg">해당 펀딩 QR코드 설정하기</button>
+      </div>
+      <div class="trashButtonBox">
+        <button class="trashButton"><img src="{% static 'images/trash.svg' %}" alt="trash" class="trashImg">해당 펀딩 삭제하기</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/presentFundList.js' %}"></script>
+  <script src="{% static 'js/myProfile.js' %}"></script>
+  {% endblock%}
 
 
 

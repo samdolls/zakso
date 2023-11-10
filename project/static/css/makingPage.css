@@ -11,12 +11,6 @@ body {
 header {
   height: 3.75rem;
 }
-
-input[type="radio"] {
-  position: absolute;
-  left: -9999px;
-}
-
 .makingNav {
   display: flex;
   width: 100%;
@@ -30,7 +24,7 @@ input[type="radio"] {
 .makeFund {
   color: var(--gray, #1F1F1F);
   font-family: Pretendard;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

@@ -66,3 +66,11 @@ def mypage_view(request):
     user_post = Fundings.objects.filter(writer=request.user)
     user_like_post = Fundings.objects.filter(writer=request.user)
     return render(request, 'mypage.html', {'user_profile':user_profile, 'user_post':user_post, 'user_like_post':user_like_post})
+
+@login_required
+def menu_log(request):
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+    return render(request, "menu_log.html", {'user_profile':user_profile})
+
+def menu_out(request):
+    return render(request, "menu_out.html") 

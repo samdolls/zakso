@@ -82,7 +82,7 @@ input#check_btn{
     content:"";
     background-color:#F33D69;
     border-color:#F33D69;
-    background-image: url('/static/images/check_btn.png');
+    background-image: url('/front_end/static/images/check_btn.png');
     background-repeat: no-repeat;
     }
 
@@ -125,7 +125,7 @@ input#check_btn{
     content:"";
     background-color:#F33D69;
     border-color:#F33D69;
-    background-image: url('/static/images/check_btn.png');
+    background-image: url('/front_end/static/images/check_btn.png');
     background-repeat: no-repeat;
    
     }

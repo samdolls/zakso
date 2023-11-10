@@ -1,22 +1,24 @@
 // progressbar 진행상황
 document.addEventListener("DOMContentLoaded", function() {
-  // 반복되는 요소들에 대한 NodeList를 가져옵니다.
-  let presentElements = document.querySelectorAll('.listBox');
-
-  // NodeList를 배열로 변환하여 반복합니다.
-  presentElements.forEach(function(presentElement, index) {
-    let totalMoney = parseInt(presentElement.querySelector('.totalMoney1').textContent);
-    let currentMoney = parseInt(presentElement.querySelector('.currentMoney1').textContent);
-    let progress = (currentMoney / totalMoney) * 100;
-    
-    // 각 요소에 대한 식별자를 사용하여 업데이트합니다.
-    let progressBar = presentElement.querySelector('.bar1');
-    progressBar.style.width = progress + '%';
-    progressBar.setAttribute('aria-valuenow', progress);
-
-    let currentPercent = presentElement.querySelector('.currentPercent');
+  for(let i = 1; i<=4; i++) {
+    let price = parseInt(document.querySelector(`.totalMoney${i}`).textContent);
+    console.log(price);
+    let currentMoney = parseInt(document.querySelector(`.currentMoney${i}`).textContent);
+    let progress = (currentMoney / price) * 100;
+    let currentProgress = document.querySelector(`.bar${i}`);
+    currentProgress.style.width = progress + "%";
+    currentProgress.setAttribute("aria-valuenow", progress);
+    let currentPercent = document.querySelector(`.percent${i}`);
     currentPercent.innerText = Math.round(progress);
-  });
+  }
 });
 
-
+// 찜하기
+function toggleImg(element) {
+  if(element.src.endsWith("blankHeart.svg")) {
+    element.src = "/front_end/static/images/fillHeart.svg";
+  }
+  else {
+    element.src = "/front_end/static/images/blankHeart.svg";
+  }
+}
