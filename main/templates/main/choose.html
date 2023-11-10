@@ -1,15 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/fund_choose.css' %}">
+   <header>
+    <img src="{% static 'images/Vector.svg' %}">
+        <div id="enter">작소 펀딩 만들기</div>
+   </header>
+    <div class="fundChoose">
+        <h1>만들고자 하는 작소 펀딩을</h1>
+        <h2>선택해주세요.</h2>
+        <form action="{% url 'main:choose' %}" method="POST">
+            {% csrf_token %}
+        <div class="container">
+            <button type="submit" name="type" class="box non-click" id="first" value="선물 펀딩">선물펀딩</button>
+            <button type="submit" name="type" class="box non-click" id="second" value="소소 펀딩">소소펀딩</button>
+            <button type="submit" name="type" class="box non-click" id="third" value="드림 펀딩">드림펀딩</button>
+        </div>
+        </form>
+    </div>
 
-    <div>
+    <script defer src="{% static 'js/fund_choose.js' %}"></script> 
+
+    <!-- <div>
         <h1>선물 펀딩 만들기</h1>
         <form action="{% url 'main:choose' %}" method="POST">
             {% csrf_token %}
-            <input type="submit" name="type" value="PRESENT"> 선물 펀딩
-            <input type="submit" name="type" value="SOSO"> 소소 펀딩
-            <input type="submit" name="type" value="DREAM"> 드림 펀딩
+            <input type="submit" name="type" value="선물 펀딩"> 선물 펀딩
+            <input type="submit" name="type" value="소소 펀딩"> 소소 펀딩
+            <input type="submit" name="type" value="드림 펀딩"> 드림 펀딩
         </form>
-    </div>
+    </div> -->
 
 {% endblock %}

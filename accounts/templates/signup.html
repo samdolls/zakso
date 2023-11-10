@@ -1,4 +1,44 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <form method="post" action="{% url 'accounts:signup' %}">
+        {%csrf_token %}
+    <div class="form">
+        <img src="{% static 'images/group.png' %}" alt="My Image">
+        <p>회원가입 할 이메일을 입력해주세요.</p><span>
+        <input type='text' name='email' placeholder='ex. zakso@gmail.com'/></span>
+
+        <p>비밀번호를 입력해주세요</p><span><input type ="password" name="password1"/></span> 
+        <p>비밀번호를 다시 입력해주세요</p><span><input type ="password" name="password2"/></span> 
+
+        <p>사용하실 닉네임을 입력해주세요.</p><span>
+            <input type='text' name='username' placeholder='2~8자, 영문*한글*숫자 사용 가능'/></span>
+
+        <div class="inputBox">
+             <div id="month">
+                <p>생년월일</p>
+                <input type='text' name='birth_date' placeholder='YYMMDD'/>
+            </div>
+            <div id="phoneNum">
+                <p>전화번호</p>
+              <input type ="text" name="phone_number"/>
+            </div>
+        </div>
+
+
+        <div class="inputCheck">
+            <input type="checkbox" id="check_btn"/>
+            <label for="check_btn"><span>가입하신 이메일로 광고/마케팅 수신을 받으시겠습니까?</span></label>
+        </div>
+
+        <button type="submit" class="finish">회원가입완료</button>
+    
+   </div>
+</form>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
 <html>
     <head>
     </head>
@@ -38,7 +78,7 @@
                 </div>
 
                 {% if form.errors %}  <!--사용자에게 입력받는 부분에서 에러 생기면 뜨는 에러 메세지-->
-                <ul class="errorlist">
+                <!-- <ul class="errorlist">
                     {% for field, errors in form.errors.items %}
                     <li>{{ field }}: {{ errors.0 }}</li>
                     {% endfor %}
@@ -48,4 +88,4 @@
             </form>
         </div>
     </body>
-</html>
+</html> -->

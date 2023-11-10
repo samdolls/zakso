@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/login_false.css' %}">
+    <div class="wrap">
+    <form method="post" action="{% url 'accounts:login_view' %}">
+        {% csrf_token %}
+    <div class="wrap">
+        <img src="{% static 'images/group.png' %}" alt="My Image">
+        <p>아이디</p><span><input type ="text" name="email" placeholder='아이디 또는 비밀번호를 다시 한 번 확인해주세요!'/></span> 
+        <p>비밀번호</p><span><input type ="password" name="password"/></span> 
+
+           <div class="btn">
+            <div class="check_wrap">
+                <input type="checkbox"name="remember_me" id="check_btn"/>
+                <label for="check_btn"><span>아이디 저장</span></label>
+            </div>
+            <div class="check_wrap2">
+                <input type="checkbox" name="stay_login" id="check_btn2"/>
+                <label for="check_btn2"><span>자동 로그인</span></label>
+            </div>
+          </div>
+       
+       <button type="submit" class="login">로그인</button>
+          <div class="search">
+            <p>아이디 찾기</p>
+            <p>비밀번호 찾기</p>
+          </div>
+        </div>
+    </form>
+    <button class="sign" onclick="location.href='{% url 'accounts:signup' %}'">회원가입 하기</button>
+</div>
+
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head></head>
+<body> <!--일단 로그인 후 home.html로 연결되게 해두었습니다..!-->
+    <!-- <form method="post" action="{% url 'accounts:login_view' %}">
+        {% csrf_token %}
+        <input type="text" id="email" name="email"></input>
+        <input type="password" id="password" name="password"></input>
+
+        <div class="b">
+            <label for="remember_me">아이디 저장</label>
+            <input type="checkbox" name="remember_me" id="remember_me">
+        </div>
+        <div class="b">
+            <label for="stay_login">자동 로그인</label>
+            <input type="checkbox" name="stay_login" id="stay_login">
+        </div>
+        <button type="submit">로그인</button>
+        <div class="signupbtn">
+            <a href="{% url 'accounts:signup' %}">회원가입</a>
+        </div>
+    </form>
+</body>
+</html> --> -->
