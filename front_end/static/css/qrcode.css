@@ -26,7 +26,6 @@ header{
 
 h1{
 width: 400px;
-background-color: aqua;
 color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 13px;
@@ -67,7 +66,7 @@ margin-top: 5px;
 }
 
 .qrtext{
-    margin-left: -40px;
+    margin-left: -10px;
     margin-top: 40px;
 }
 
@@ -158,4 +157,31 @@ line-height: normal;
     line-height: normal;
     margin: 0;
     margin-top: 0.9rem;
+  }
+
+  h4{
+margin-left: 20px;
+margin-bottom: 150px;
+color: var(--mid_gray, #9E9E9E);
+font-family: Pretendard;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 18px; /* 138.462% */
+  }
+
+  .qrbtn{
+color: var(--white, #FFF);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+border: none;
+width: 354px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--strong_pink, #F33D69);
+
   }
