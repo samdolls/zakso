@@ -74,7 +74,7 @@ body {
   margin-left: 0.5rem;
 }
 /* 목록 중 하나의 아이템 박스 */
-article:first-child {
+article:first-of-type {
   width: 22.125rem;
   height: 9.1875rem;
   flex-shrink: 0;
