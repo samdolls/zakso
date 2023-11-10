@@ -20,7 +20,6 @@
   flex-direction: row;
    margin-top: -50px;
    width: 310px;
-
    justify-content: space-between;
 }
 
@@ -115,7 +114,6 @@ background-color: #FFF;
 }
 
 .first{
-margin-right: 45px;
 color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 22px;
