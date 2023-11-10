@@ -50,3 +50,13 @@ function showWishFund() {
   });
 }
 
+// 세팅 눌렀을 시 
+function showFunctionBox() {
+  let bodyElement = document.body;
+  let functionBox = document.querySelector(".functionBoxSection");
+  if(functionBox.style.display === "none") {
+    functionBox.style.display = "flex";
+    bodyElement.background = "rgba(49, 49, 49, 0.50)";
+    bodyElement.style.backdropFilter = 'blur(10px)';
+  }
+}

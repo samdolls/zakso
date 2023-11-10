@@ -10,6 +10,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* headerNav */
@@ -331,6 +332,12 @@ article {
 }
 
 /* functionBox */
+.functionBoxSection {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  bottom: 7.5rem;
+}
 .functionBox {
   width: 24.375rem;
   height: 23.75rem;
@@ -338,7 +345,6 @@ article {
   border-radius: 1.25rem 1.25rem 0rem 0rem;
   background: rgba(246, 246, 246, 0.90);
   box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.10);
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
