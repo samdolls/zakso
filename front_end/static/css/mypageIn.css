@@ -21,6 +21,12 @@ header{
     justify-content: center;
 }
 
+.mypage>img{
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
 .my-box{
     display: flex;
     flex-direction: column;
@@ -37,18 +43,33 @@ header{
 .my-box>button{
 width: 110px;
 height: 25px;
-flex-shrink: 0;
-border-radius: 12.5px;
-border: 1px solid var(--light_gray, #D6D6D6);
 color: var(--mid_gray, #9E9E9E);
 font-family: Pretendard;
 font-size: 10px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
+border: none;
+background-color: white;
+margin-left: -30px;
+}
+
+#setbox{
+    display: flex;
+    flex-direction: row;
+    margin-left: -5px;
 }
 
 
+#setbox>img{
+width: 30px;
+height: 25px;
+flex-shrink: 0;
+border-radius: 12.5px;
+background: var(--light_gray2, #F6F6F6);
+margin-top: 23px;
+margin-left: 50px;
+}
 
 .jaksoFund>p{
 margin-top: 60px;
@@ -117,4 +138,5 @@ hr{
 width: 390px;
 height: 4px;
 flex-shrink: 0;
+border: none;
 }
