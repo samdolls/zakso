@@ -10,6 +10,8 @@ def index(request):
             "name": request.user.username,
             "customer_key": request.user.customer_key,
         }
+    else:
+        return redirect("accounts:login_view")
     encoded_funding_id = request.session.get("encoded_funding_id")
     funding_id = base64.b64decode(encoded_funding_id).decode()
     funding = get_object_or_404(Fundings, pk=funding_id)
