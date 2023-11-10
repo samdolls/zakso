@@ -42,14 +42,12 @@
     </div>
   </section>
 
+  <div class="myFundListBox">
+    <div class="selectListFundButtonBox">
+      <button class="myPostFund" onclick="showMyFund()">내가 올린 펀딩</button>
+      <button class="wishlistFund" onclick="showWishFund()">찜한 펀딩</button>
+  </div>
   <section class="forList">
-    <div class="myFundListBox">
-      <div class="selectListFundButtonBox">
-        <button class="myPostFund" onclick="showMyFund()">내가 올린 펀딩</button>
-        <button class="wishlistFund" onclick="showWishFund()">찜한 펀딩</button>
-      </div>
-    </div>
-
     <article class="myPostFund">
       {% for post in user_post %}
         <div class="listBox">

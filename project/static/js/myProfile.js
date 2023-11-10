@@ -10,18 +10,20 @@ function showMyFund() {
   myPostFundButton.style.color = "#F33D69";
 
   document.querySelectorAll(".myPostFund").forEach(article => {
-    article.style.visibility = "visible";
+    article.style.display = "block";
   });
   document.querySelectorAll(".wishlistFund").forEach(article => {
-    article.style.visibility = "hidden";
+    article.style.display = "none";
   });
 
-  if (document.querySelector(".myPostFund:visible")) {
-    noFundText.style.display = "none";
-  } else {
+  if (document.querySelector(".myPostFund:empty")) {
     noFundText.style.display = "block";
+  } else {
+    noFundText.style.display = "none";
   }
+  wishText.style.display = "none";
 }
+
 function showWishFund() {
   let myPostFundButton = document.querySelector(".myPostFund");
   let wishlistFundButton = document.querySelector(".wishlistFund");
@@ -33,16 +35,18 @@ function showWishFund() {
   wishlistFundButton.style.color = "#F33D69";
 
   document.querySelectorAll(".wishlistFund").forEach(article => {
-    article.style.visibility = "visible";
+    article.style.display = "block";
   });
   document.querySelectorAll(".myPostFund").forEach(article => {
-    article.style.visibility = "hidden";
+    article.style.display = "none";
   });
-  if (document.querySelector(".wishlistFund:visible")) {
-    wishText.style.display = "none";
-  } else {
+
+  if (document.querySelector(".wishlistFund:empty")) {
     wishText.style.display = "block";
+  } else {
+    wishText.style.display = "none";
   }
+  noFundText.style.display = "none";
 }
 
 // 세팅 눌렀을 시

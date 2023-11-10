@@ -186,8 +186,10 @@ body {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  align-items: center;
+  justify-content: center; 
 }
-.selectListFundButtonBox .myPostFund{
+.selectListFundButtonBox .myPostFund, .selectListFundButtonBox .wishlistFund{
   border: 1px solid var(--strong_pink, #F33D69);
   color: var(--strong_pink, #F33D69);
   text-align: center;
