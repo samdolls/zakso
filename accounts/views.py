@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import CustomUser,UserProfile
+from .models import CustomUser, UserProfile
 from .forms import UserForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
@@ -8,19 +8,24 @@ from main.models import Fundings
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
+
 @csrf_protect
 
 # 회원가입
 def signup(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect("accounts:login_view")
+        agree = request.POST.get("agree")
+        if agree == "on":
+            form = UserForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                login(request, user)
+                return redirect("accounts:login_view")
+            else:
+                errors = form.errors
+                print(errors)
         else:
-            errors = form.errors
-            print(errors)
+            return render(request, "signup.html", {"error": "약관에 동의해주세요."})
     else:
         form = UserForm()
     return render(request, "signup.html", {"form": form})
@@ -61,6 +66,7 @@ def logout_view(request):
 def home(request):
     return render(request, "home.html")
 
+
 @login_required
 def mypage_view(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
@@ -89,7 +95,8 @@ def funding_like_toggle(request):
 @login_required
 def menu_log(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-    return render(request, "menu_log.html", {'user_profile':user_profile})
+    return render(request, "menu_log.html", {"user_profile": user_profile})
+
 
 def menu_out(request):
-    return render(request, "menu_out.html") 
+    return render(request, "menu_out.html")

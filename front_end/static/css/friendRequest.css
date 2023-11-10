@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  width: 390px;
+}
+
+/* header */ 
+.manageFriendNav {
+  display: flex;
+  width: 100%;
+  height: 3.75rem;
+  align-items: center;
+}
+.backImg {
+  margin-left: 1.2rem;
+  cursor: pointer;
+}
+.manageFriendText {
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 1.1rem;
+}
+/* section */
+.selectButtonBox {
+  display: flex;
+  justify-content: space-around;
+}
+.selectButtonBox button {
+  margin-top: 2.8rem;
+  width: 10.5rem;
+  height: 2.375rem;
+  flex-shrink: 0;
+  border-radius: 1.1875rem;
+  border: 1px solid var(--light_gray, #D6D6D6);
+  background: #FFF;
+  color: var(--gray, #1F1F1F);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.selectButtonBox .requestFriendButton {
+  border: 1px solid #F33D69;
+  color: #F33D69;
+  font-weight: 600;
+}
+.idSearchBox {
+  margin-top: 2.06rem;
+}
+.idSearchText {
+  margin: 0;
+  margin-left: 1.44rem;
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.idSearchFieldBox {
+  margin-left: 1.13rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+.idSearchField {
+  width: 16.5625rem;
+  height: 2.4375rem;
+  border-radius: 0.625rem;
+  background: var(--light_gray2, #F6F6F6);
+  padding: 1.27rem;
+  border: none;
+}
+.idSearchField:focus {
+  outline: none;
+}
+.searchButton {
+  width: 4.625rem;
+  height: 2.4375rem;
+  background-image: url(/front_end/static/images/buttonBackground.svg);
+  border: none;
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.hr {
+  margin-top: 1.55rem;
+  margin-bottom: 1.55rem;
+  width: 24.375rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background: var(--light_gray2, #F6F6F6);
+}

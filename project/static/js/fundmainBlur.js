@@ -6,6 +6,3 @@ function copyUrl(){
 	  alert("주소가 복사되었습니다!");
 	})
 }
-
-
-

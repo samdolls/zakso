@@ -56,17 +56,17 @@
       <div class="setOpenRangeBox">
         <p class="setOpenRangeText">공개 범위 설정</p>
         <div class="selectRangeBox">
-          <div class="allOpenBox">
-            <input type="radio" name="is_private" value="False" class="checkImg" onclick="checkImg(this)">
-            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
-            <p class="allOpenText">전체 공개</p>
+            <div class="allOpenBox">
+              <input type="radio" name="is_private" id ="allRadio" value="False" class="checkImg" hidden>
+              <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg('allRadio')">
+              <p class="allOpenText">전체 공개</p>
+            </div>
+            <div class="friendOpenBox">
+              <input type="radio" name="is_private" id="friendRadio" value="True" class="checkImg" hidden>
+              <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg('friendRadio')">
+              <p class="friendOpenText">친구 공개</p>
+            </div>
           </div>
-          <div class="friendOpenBox">
-            <input type="radio" name="is_private" value="True" class="checkImg" onclick="checkImg(this)">
-            <img src="{% static 'images/blankCheck.svg' %}" alt="blankCheck" class="checkImg" onclick="checkImg(this)">
-            <p class="friendOpenText">친구 공개</p>
-          </div>
-        </div>
       </div>
       <div class="imgUploadBox">
         <label for="imgUpload"><p class="uploadText">사진 업로드</p></label>

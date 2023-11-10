@@ -1,19 +1,19 @@
 
 .form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-  
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 
-  img{
-    margin-bottom: 40px;
-  }
+}
 
-  p{
+
+img{
+  margin-bottom: 40px;
+}
+
+p{
 
 width: 350px;
 color: var(--gray, #1F1F1F);
@@ -22,7 +22,7 @@ font-size: 12px;
 font-style: normal;
 font-weight: 540;
 line-height: normal;
-  }
+}
 
 input{
 width: 354px;
@@ -37,111 +37,105 @@ font-size: 12px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
-  }
-
-
-  .inputBox{
-    display: flex;
-    flex-direction: row;
-    width: 700px;
-  }
-
-  #month { 
-    display: flex;
-    flex-direction: column;
-    margin-left: 170px;
-   
-  }
-
-  #phoneNum{
-    display: flex;
-    flex-direction: column;
-    margin-left: -200px;
-  }
-  .inputBox>p{
-    color: var(--gray, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-
-  div#month input {
-    width: 106px;
-    height: 43px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    border: 1px solid var(--light_gray, #D6D6D6);
-    background: var(--white, #FFF);
-  }
-
-  div#phoneNum input {
-    width: 210px;
-    height: 43px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    border: 1px solid var(--light_gray, #D6D6D6);
-    background: var(--white, #FFF);
-  }
-.inputCheck{
-    margin-top: 40px;
-   width: 360px;
 }
 
-  input#check_btn{
-    display:none;
-    }
+
+.inputBox{
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+}
+
+#month { 
+  display: flex;
+  flex-direction: column;
+  margin-left: 170px;
+ 
+}
+
+#phoneNum{
+  display: flex;
+  flex-direction: column;
+  margin-left: -200px;
+}
+.inputBox>p{
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+div#month input {
+  width: 106px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--light_gray, #D6D6D6);
+  background: var(--white, #FFF);
+}
+
+div#phoneNum input {
+  width: 210px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--light_gray, #D6D6D6);
+  background: var(--white, #FFF);
+}
+.inputCheck{
+  margin-top: 40px;
+ width: 360px;
+}
+
+input#check_btn{
+  display:none;
+  }
+
+input#check_btn + label > span{
+  vertical-align: middle;
+  padding-left: 10px;
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+ }
+
+/* label:before에 체크하기 전 상태 CSS */
+input#check_btn+ label:before{
+  content:"";
+  display:inline-block;
+  width:17px;
+  height:17px;
+  border:2px solid #F33D69;
+  border-radius: 4px;
+  vertical-align:middle;
+  }
   
-  input#check_btn + label > span{
-    vertical-align: middle;
-    padding-left: 10px;
-    color: var(--gray, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-   }
-  
-  /* label:before에 체크하기 전 상태 CSS */
-  input#check_btn+ label:before{
-    content:"";
-    display:inline-block;
-    width:17px;
-    height:17px;
-    border:2px solid #F33D69;
-    border-radius: 4px;
-    vertical-align:middle;
-    }
-    
-  /* label:before에 체크 된 상태 CSS */  
-  input#check_btn:checked + label:before{
-    content:"";
-    background-color:#F33D69;
-    border-color:#F33D69;
-    background-image: url('/front_end/static/images/check_btn.png');
-    background-repeat: no-repeat;
-    }
+/* label:before에 체크 된 상태 CSS */  
+input#check_btn:checked + label:before{
+  content:"";
+  background-color:#F33D69;
+  border-color:#F33D69;
+  background-image: url('/static/images/check_btn.png');
+  background-repeat: no-repeat;
+  }
 
-    .finish{
-        margin-top: 40px;
-        width: 370px;
-    height: 43px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: var(--strong_pink, #F33D69);
-    color: var(--white, #FFF);
-    font-family: Pretendard;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border: none;
-        }
-
-
-
-
-
-
+  .finish{
+      margin-top: 40px;
+      width: 370px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--strong_pink, #F33D69);
+  color: var(--white, #FFF);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border: none;
+      }
