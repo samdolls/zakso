@@ -93,3 +93,6 @@ def menu_log(request):
 
 def menu_out(request):
     return render(request, "menu_out.html") 
+
+def qrcode(request):
+    return render(request, 'qrcode.html')

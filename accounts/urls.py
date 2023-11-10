@@ -12,4 +12,5 @@ urlpatterns = [
     path('mypage/',views.mypage_view, name='mypage_view'),
     path('menu_log/', views.menu_log, name='menu_log'),
     path('menu_out/', views.menu_out, name='menu_out'),
+    path('qrcode/', views.qrcode, name='qrcode'),
 ]
