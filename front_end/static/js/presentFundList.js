@@ -12,3 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
     currentPercent.innerText = Math.round(progress);
   }
 });
+
+// 찜하기
+function toggleImg(element) {
+  if(element.src.endsWith("blankHeart.svg")) {
+    element.src = "/front_end/static/images/fillHeart.svg";
+  }
+  else {
+    element.src = "/front_end/static/images/blankHeart.svg";
+  }
+}
