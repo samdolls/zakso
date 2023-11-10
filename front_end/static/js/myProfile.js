@@ -50,13 +50,19 @@ function showWishFund() {
   });
 }
 
-// 세팅 눌렀을 시 
+// 세팅 눌렀을 시
+let functionBox = document.querySelector(".functionBoxSection");
+functionBox.style.display = "none"; 
 function showFunctionBox() {
   let bodyElement = document.body;
-  let functionBox = document.querySelector(".functionBoxSection");
+  let allElementsExceptFunctionBox = document.querySelectorAll("body > *:not(.functionBoxSection)")
   if(functionBox.style.display === "none") {
-    functionBox.style.display = "flex";
-    bodyElement.background = "rgba(49, 49, 49, 0.50)";
+    functionBox.style.display = "block";
+    allElementsExceptFunctionBox.forEach(element => {
+      element.style.filter = 'blur(10px)';
+      element.style.backgroundColor = "rgba(49, 49, 49, 0.50)";
+    });
+    bodyElement.style.backgroundColor = "rgba(49, 49, 49, 0.50)";
     bodyElement.style.backdropFilter = 'blur(10px)';
   }
 }
