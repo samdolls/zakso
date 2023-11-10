@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.sessions.models import Session
 from main.models import Fundings
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 @csrf_protect
 
@@ -64,9 +65,27 @@ def home(request):
 def mypage_view(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
     user_post = Fundings.objects.filter(writer=request.user)
-    user_like_post = Fundings.objects.filter(writer=request.user)
+    user_like_post = Fundings.objects.filter(like=request.user)
     return render(request, 'mypage.html', {'user_profile':user_profile, 'user_post':user_post, 'user_like_post':user_like_post})
 
+@require_POST
+@login_required
+def funding_like_toggle(request):
+    pk = request.POST.get('pk', None)
+    funding = Funding.objects.get(pk=pk)
+    user = request.user
+
+    if funding.like.filter(id=user.id).exists():
+        funding.like.remove(user)
+        result = 'unlike'
+    else:
+        funding.like.add(user)
+        result = 'like'
+
+    likes_cnt = funding.like.count()
+    
+    return JsonResponse({'result': result, 'likes_cnt': likes_cnt})
+    
 @login_required
 def menu_log(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
