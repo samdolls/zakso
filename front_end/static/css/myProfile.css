@@ -361,16 +361,11 @@ article {
   gap: 1.6rem;
   margin-top: 0.9rem;
 }
-.functionBox button:first-child {
+.modifyButtonBox .modifyButton {
   margin-top: 1.2rem;
 }
-.functionBox button:last-child {
+.functionBox .trashButton {
   color: var(--strong_pink, #F33D69);
-  font-family: Pretendard;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
 }
 .functionBox button img {
   margin-left: 1.5rem;
