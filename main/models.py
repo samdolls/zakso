@@ -13,6 +13,24 @@ class Fundings(models.Model):
         ("소소 펀딩", _("소소 펀딩")),
         ("드림 펀딩", _("드림 펀딩")),
     )
+    BANK_CHOICES = (
+        ("저축은행", _("저축은행")),
+        ("농협은행", _("농협은행")),
+        ("우리은행", _("우리은행")),
+        ("기업은행", _("기업은행")),
+        ("국민은행", _("국민은행")),
+        ("신한은행", _("신한은행")),
+        ("하나은행", _("하나은행")),
+        ("외환은행", _("외환은행")),
+        ("씨티은행", _("씨티은행")),
+        ("부산은행", _("부산은행")),
+        ("대구은행", _("대구은행")),
+        ("전북은행", _("전북은행")),
+        ("경남은행", _("경남은행")),
+        ("제주은행", _("제주은행")),
+        ("우체국", _("우체국")),
+        ("새마을금고", _("새마을금고")),
+    )
     type = models.CharField(max_length=10, choices=TYPE_CHOICES, default="선물 펀딩")
     title = models.CharField(max_length=50)
     writer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -25,6 +43,9 @@ class Fundings(models.Model):
     end_date = models.DateField()
     funding_image = models.ImageField(upload_to="fundings/", blank=False, null=False)
     qr_image = models.ImageField(upload_to="qr/", blank=True, null=True)
+    account_bank = models.CharField(
+        max_length=50, default="", choices=BANK_CHOICES, blank=False, null=False
+    )
     account_num = models.CharField(max_length=50, default="", blank=False, null=False)
     delievery = models.CharField(max_length=50, default="", blank=False, null=False)
     like = models.ManyToManyField(CustomUser, related_name="likes", blank=True)
