@@ -3,4 +3,3 @@
 document.getElementById('openModalBtn').addEventListener('click', function () {
     $('#shareModal').modal('show'); // 모달 열기
 });
-

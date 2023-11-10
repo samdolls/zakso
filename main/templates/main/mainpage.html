@@ -7,7 +7,7 @@
   <div class="mainNav">
     <span class="logoImg"><a href="{% url 'main:mainpage' %}"><img src="{% static 'images/logo.svg' %}" alt="logo"></a></span>
     <span class="logoText"><a href="{% url 'main:mainpage' %}"><img src="{% static 'images/logoText.svg' %}" alt="logo"></a></span>
-    <span class="searchImg"><a href="#"><img src="{% static 'images/search.svg' %}" alt="search"></a></span>
+    <span class="searchImg"><a href="{% url 'main:search' %}"><img src="{% static 'images/search.svg' %}" alt="search"></a></span>
     <div class="searchImgBox">
       <span class="noticeImg"><a href="#"><img src="{% static 'images/notice.svg' %}" alt="notice"></a></span>
       <img src="{% static 'images/redDot.svg' %}" alt="redDot" class="redDotImg">
