@@ -5,15 +5,11 @@
     <header>
       <div class="nav">
         <span class="noticeImg"><a href="#" onclick="goBack()"><img src="{% static 'images/Vector.svg' %}" alt="notice"></a></span>
-        <p>선물 펀딩 만들기</p>
+        <p>{{funding.type}} 만들기</p>
       </div>
-    {% if user.is_authenticated %}
-      <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
-    {% else %}
-      <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
-    {% endif %}
+      <span class="logoImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="logo"></a></span>
   </header>
-  <form action="{% url 'main:create' %}" method="POST">
+  <form action="{% url 'main:update' funding.id %}" method="POST">
     {% csrf_token %}
   <div class="finish">
     <p>펀딩받을 계좌</p>

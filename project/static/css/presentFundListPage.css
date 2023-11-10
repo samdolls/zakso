@@ -51,10 +51,12 @@ body {
 /* 목록 */
 section {
   overflow: scroll;
+  padding-bottom: 85px;
 }
+
 .listTextBox {
   display: flex;
-  margin-top: 1.15rem;
+  margin-right: 1.12rem;
   align-items: center;
 }
 .listTextBox p {
@@ -94,8 +96,7 @@ article {
   border-radius: 0.4375rem;
   background: #FFF;
   box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.10);
-  margin-top: 0.7rem;
-  margin-left: 1.12rem;
+  margin: 0rem 1.12rem 1.2rem 1.12rem;
 }
 .listBox {
   display: flex;
@@ -186,6 +187,19 @@ article {
   background-color: white;
   border-radius: 0.1875rem;
   border: 1px solid var(--strong_pink, #F33D69);
+}
+
+footer {
+  width: 24.375rem;
+  height: 5.3125rem;
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* makeMyFundButton */

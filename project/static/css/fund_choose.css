@@ -1,7 +1,7 @@
 header{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 0;
 }
@@ -17,7 +17,7 @@ header>img{
     }
     
     #enter{
-    margin-left: 20px;
+    padding-left: 17.5px;
     color: var(--gray, #1F1F1F);
     font-family: Pretendard;
     font-size: 20px;

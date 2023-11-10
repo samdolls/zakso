@@ -100,7 +100,7 @@ section input:focus, section select:focus {
   margin-right: 0.75rem;
   color: var(--mid_gray, #9E9E9E);
   font-family: Pretendard;
-  font-size: 0.75rem;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

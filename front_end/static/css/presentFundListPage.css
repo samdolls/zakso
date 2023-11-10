@@ -52,6 +52,7 @@ body {
 section {
   overflow: scroll;
 }
+
 .listTextBox {
   display: flex;
   margin-top: 1.15rem;
@@ -201,6 +202,7 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
 .makeMyFundButtonBox {
   text-align: center;
 }

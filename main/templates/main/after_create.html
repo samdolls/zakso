@@ -22,13 +22,13 @@
 
         </div>
     </div>
-<section>
+</div>
 <div style="padding:19px;">
    <div class="funding_main">
         <header>
         <div class="divNav">
             <div style="display:flex; flex-direction: row;">
-            <a href="#" onclick="goBack()"><span class="vectorImg"><img src="{% static 'images/Vector.svg' %}" alt="vector"></span></a>
+            <a href="{% url 'main:mainpage' %}"><span class="vectorImg"><img src="{% static 'images/Vector.svg' %}" alt="vector"></span></a>
             <div class="divNavP">{{funding.type}}</div>
         </div>
             <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" style="padding-right:16.5px;"></a></span>
@@ -80,7 +80,7 @@
        </div>
 
  
-       <div class="click" style="box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.05);">
+       <div class="click">
         <span href="#" class="like" name="{{funding.id}}" value="Like">
                 {% if request.user in funding.like.all %}
                     <img src="{% static 'images/submit.svg' %}" alt="blankHeart" class = "blankHeart">
@@ -97,8 +97,7 @@
           <button class="custom-button" onclick="location.href='{% url 'payments:index' %}'">작소펀딩 함께하기</button>
         </div>
     </div>
-</div>
-</section>  
+</div>  
 
 
      <!-- Bootstrap JS 및 jQuery를 포함합니다 -->
