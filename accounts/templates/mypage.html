@@ -28,7 +28,7 @@
       <div class="myProfileSettingBox">
         <div class="myProfileTextBox">
           <p class="logInText">{{ user_profile.user.username }}</p>
-          <div class="settingImgBox">
+          <div class="settingImgBox" id="settingImgBox">
             <a href="#"><img src="{% static 'images/setting.svg' %}" alt="setting" class="settingImg"></a>
           </div>
         </div>
@@ -131,7 +131,9 @@
         <button class="setRangeButton"><img src="{% static 'images/setRange.svg' %}" alt="setRange" class="setRangeImg">펀딩 공개 범위 설정하기</button>
       </div>
       <div class="setQRButtonBox">
-        <button class="setQRButton"><img src="{% static 'images/qr.svg' %}" alt="qr" class="QqrImg">해당 펀딩 QR코드 설정하기</button>
+        <button class="setQRButton" onclick="redirectToQRCodePage()">
+          <img src="{% static 'images/qr.svg' %}" alt="qr" class="QqrImg">해당 펀딩 QR코드 설정하기
+        </button>      
       </div>
       <div class="trashButtonBox">
         <button class="trashButton"><img src="{% static 'images/trash.svg' %}" alt="trash" class="trashImg">해당 펀딩 삭제하기</button>
@@ -142,6 +144,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{% static 'js/presentFundList.js' %}"></script>
   <script src="{% static 'js/myProfile.js' %}"></script>
+  <script>
+    function redirectToQRCodePage() {
+      window.location.href = "{% url 'accounts:qrcode' %}";
+    }
+    </script>
   {% endblock%}
 
 
