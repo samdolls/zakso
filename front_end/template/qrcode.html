@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/front_end/static/css/qrcode.css">
+    <script defer src="../../front_end/static/js/qrcode.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="nav">
+          <span class="noticeImg"><a href="#"><img src="/front_end/static/images/Vector.svg" alt="notice"></a></span>
+          <p>QR코드 설정하기</p>
+        </div>
+        <span class="logoImg"><a href="#"><img src="/front_end/static/images/hamburger.svg" alt="logo"></a></span>
+    </header>
+
+  <div class="container">
+    <h1>펀딩 링크</h1>
+    <div class="box">
+        <input type="text" id = "ShareUrl">
+        <div class="btn-type1">
+            <button OnClick="javascript:CopyUrlToClipboard()">복사</button>
+        </div>
+    </div>
+
+    <div class="qrtext">
+        <h2>[추천] QR코드 디자인 사이트: My QR CODE</h2>
+        <p>위의 펀딩 링크를 복사하여 나만의 QR코드를 만들어보세요!<br>
+            로그인만 하면 무료로 다양한 QR코드 디자인을 만들 수 있어요.</p>
+        <button>QR코드 제작 페이지로 이동 </button>
+    </div>
+<hr>
+    <div class="upload">
+        <h3>QR코드 업로드</h3>
+        <div class="imgUploadBox">
+            <input type="file" name="img" multiple accept=".png, .jpg, .jpeg" class="imgUpload" id="imgUpload">
+            <div class="imgUploadField">
+              <label for="imgUpload"><img src="/front_end/static/images/upload.svg" alt="upload" class="uploadImg"></label>
+              <label for="imgUpload"><p class="uploadImgText">제작한 QR코드 이미지를 업로드해주세요.</p></label>
+            </div>
+          </div>
+        <h4>이미지를 제작하지 않아도 기본적으로 QR코드는 제공됩니다.</h4>
+    </div>
+
+<button class="qrbtn">QR코드 등록하기</button>
+</div>
+</body>
+</html>

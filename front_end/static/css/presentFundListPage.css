@@ -49,6 +49,9 @@ body {
 }
 
 /* 목록 */
+section {
+  overflow: scroll;
+}
 .listTextBox {
   display: flex;
   margin-top: 1.15rem;
@@ -74,7 +77,7 @@ body {
   margin-left: 0.5rem;
 }
 /* 목록 중 하나의 아이템 박스 */
-article:first-child {
+article:first-of-type {
   width: 22.125rem;
   height: 9.1875rem;
   flex-shrink: 0;
@@ -186,8 +189,19 @@ article {
 }
 
 /* makeMyFundButton */
+footer {
+  width: 24.375rem;
+  height: 5.3125rem;
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .makeMyFundButtonBox {
-  margin-top: 4.5rem;
   text-align: center;
 }
 .makeMyFundButton {
