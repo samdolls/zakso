@@ -92,11 +92,15 @@ def create(request):
             )
             new_fundings.funding_image = funding_image_path
             new_fundings.is_private = post_info.get("is_private", False)
-            new_fundings.account_num = request.POST["account_num"]
-            new_fundings.delievery = request.POST["delievery"]
+            new_fundings.account_bank = request.POST["selecters"]
+            new_fundings.account_num = request.POST["st_name"]
+            road_address = request.POST["road_address"]
+            detail_address = request.POST["detail_address"]
+            address = f"{road_address} {detail_address}"
+            new_fundings.delievery = address
             # new_fundings.qr_image = request.FILES.get("qr_image")
             new_fundings.save()
-            return redirect("main:detail", new_fundings.id)
+            return redirect("main:finish", new_fundings.id)
         elif request.method == "GET":
             return render(request, "main/create.html")
 
@@ -112,6 +116,11 @@ def choose(request):
             return render(request, "main/choose.html")
     else:
         return redirect("accounts:login_view")
+
+
+def finish(request, funding_id):
+    funding = get_object_or_404(Fundings, pk=funding_id)
+    return render(request, "main/finish.html", {"funding": funding})
 
 
 def detail(request, funding_id):

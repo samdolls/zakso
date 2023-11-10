@@ -8,6 +8,7 @@ urlpatterns = [
     path("before_create/", before_create, name="before_create"),
     path("create/", create, name="create"),
     path("<int:funding_id>/", detail, name="detail"),
+    path("finish/<int:funding_id>/", finish, name="finish"),
     path("payhistory/", payhistory, name="payhistory"),
     # path("edit/<int:fundings_id>/", update, name="edit"),
     path("present/", present, name="present"),
