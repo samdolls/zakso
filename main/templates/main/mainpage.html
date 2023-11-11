@@ -77,7 +77,7 @@
       </a>
         <p class="rank1Text">{{present.product}}</p>
         <div class="rankDetailBox">
-          <p class="rank1Price">{{present.total_price}}</p>
+          <p class="rank1Price">{{present.total_price}} ₩</p>
           <span href="#" class = "like" name="{{present.id}}" value="Like">
             {% if request.user in present.like.all %}
                 <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
@@ -114,7 +114,7 @@
       </a>
         <p class="rank1Text">{{soso.product}}</p>
         <div class="rankDetailBox">
-          <p class="rank1Price">{{soso.total_price}}</p>
+          <p class="rank1Price">{{soso.total_price}} ₩</p>
           <span href="#" class = "like" name="{{soso.id}}" value="Like">
             {% if request.user in soso.like.all %}
                 <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-bottom:0.3rem;">
