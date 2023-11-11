@@ -71,11 +71,8 @@ def home(request):
 def mypage_view(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
     user_post = Fundings.objects.filter(writer=request.user)
-    user_like_post = Fundings.objects.filter(
-        Q(like=request.user)|
-        ~Q(writer=request.user)
-    )
-    print(user_like_post)
+    user_liked_post = Fundings.objects.filter(like=request.user)
+    user_like_post=user_liked_post.exclude(writer=request.user)
     return render(request, 'mypage.html', {'user_profile':user_profile, 'user_post':user_post, 'user_like_post':user_like_post})
 
 @require_POST
