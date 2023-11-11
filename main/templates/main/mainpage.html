@@ -3,6 +3,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/mainPage.css' %}">
+<section style="padding-bottom:20px;">
 <header>
   <div class="mainNav">
     <span class="logoImg"><a href="{% url 'main:mainpage' %}"><img src="{% static 'images/logo.svg' %}" alt="logo"></a></span>
@@ -128,6 +129,7 @@
           </div>
           
   </section>
+</section>
   <!--
   <div>
     <a href="{% url 'accounts:login_view' %}">로그인</a>
