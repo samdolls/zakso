@@ -48,8 +48,8 @@
       <button class="wishlistFund" onclick="showWishFund()">찜한 펀딩</button>
   </div>
   <section class="forList">
+    {% for post in user_post %}
     <article class="myPostFund">
-      {% for post in user_post %}
         <div class="listBox">
           <div class="itemImgBox">
             <a href="{% url 'main:detail' post.id %}">
@@ -59,7 +59,13 @@
           <div class="aboutItemBox">
             <div class="aboutItemTextBox">
               <p class="aboutItemText text1">{{ post.title }}</p>
-              <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
+              <span href="#" class = "like" name="{{post.id}}" value="Like" style="margin-right:1rem;">
+                {% if request.user in post.like.all %}
+                    <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+                {% else %}
+                    <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+                {% endif %}
+              </span>
             </div>
             <div class="optionImgBox">
               <img src="{% static 'images/optionImg.svg' %}" alt="optionImg" class="optionImg" onclick="showFunctionBox(this)">
@@ -76,11 +82,11 @@
             </div>
           </div>
         </div>
-      {% endfor %}
     </article>
+    {% endfor %}
 
+  {% for post in user_like_post %}
     <article class="wishlistFund">
-        {% for post in user_like_post %}
           <div class="listBox">
             <div class="itemImgBox">
                 <a href="{% url 'main:detail' post.id %}">
@@ -90,11 +96,13 @@
             <div class="aboutItemBox">
               <div class="aboutItemTextBox">
                 <p class="aboutItemText text1">{{ post.title }}</p>
-                {% if request.user in post.like.all %}
-                  <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
-                {% else %}
-                  <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
-                {% endif %}
+                <span href="#" class = "like" name="{{post.id}}" value="Like" style="margin-right:1rem;">
+                  {% if request.user in post.like.all %}
+                      <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+                  {% else %}
+                      <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class = "blankHeart" style="margin-right:0.2rem;">
+                  {% endif %}
+              </span>
               </div>
               <div class="optionImgBox">
                 <img src="{% static 'images/optionImg.svg' %}" alt="optionImg" class="optionImg" onclick="showFunctionBox(this)">
@@ -111,8 +119,8 @@
               </div>
             </div>
           </div>
-        {% endfor %}
       </article>
+    {% endfor %}
 
     <div class="noFundTextBox">
       <p class="noFundText">내가 만든 작소펀딩이 없어요!</p>
@@ -153,6 +161,35 @@
       window.location.href = "{% url 'accounts:qrcode' %}";
     }
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(".like").click(function(){
+      var pk = $(this).attr('name')
+      var likeIcon = $(this).find('img');
+      $.ajax({
+          method : 'GET',
+          url:"{% url 'main:funding_like_toggle' %}",
+          data:{'pk':pk, 'csrfmiddlewaretoken':'{{csrf_token}}'},
+          dataType:'json',
+          success:function(response){
+              if(response.likes_cnt == null){
+                  alert('로그인이 필요합니다.');
+                  window.location.replace('/accounts/login/');
+              }
+              else{
+                  if (response.result === 'like') {
+                      likeIcon.attr('src', '{% static "images/fillHeart.svg" %}');  // 좋아요 이미지로 변경
+                  } else {
+                      likeIcon.attr('src', '{% static "images/blankHeart.svg" %}');  // 좋아요 취소 이미지로 변경
+                  }
+              }
+          },
+          error:function(request, status, error){
+              alert("로그인이 필요합니다.");
+          },
+      })
+  })
+      </script>
   {% endblock%}
 
 
