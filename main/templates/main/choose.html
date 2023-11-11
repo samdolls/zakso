@@ -9,7 +9,11 @@
 </a>
         <div id="enter">작소 펀딩 만들기</div>
     </div>
-    <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" style="padding-right:16.5px;"></a></span>
+    {% if user.is_authenticated %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    {% else %}
+        <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+    {% endif %}
    </header>
     <div class="fundChoose">
         <h1>만들고자 하는 작소 펀딩을</h1>

@@ -44,7 +44,7 @@
          </div>
 
          <div class="name">
-            <img src="{% static 'images/profile.svg' %}" style="height:26.84px; width:26.84px;">
+            <img src="{% static 'images/cah.png' %}" style="height:26.84px; width:26.84px;">
             <span>{{funding.writer.username}}</span>
             {% if funding.writer == request.user %}
             <button onclick="location.href='{% url 'main:before_update' funding.id %}'" class="editButton">수정하기</button>
