@@ -71,7 +71,7 @@
       <div class="imgUploadBox">
         <label for="imgUpload"><p class="uploadText">사진 업로드</p></label>
         <input type="file" name="img" multiple accept=".png, .jpg, .jpeg" class="imgUpload" id="imgUpload">
-        <div class="imgUploadField">
+        <div class="imgUploadField" style="display:flex; flex-direction: row;">
           <label for="imgUpload" style="width:150px;height:150px;">
             {% if funding.funding_image %}
                 <img src="{{funding.funding_image.url}}" alt="upload" class="uploadImg" style="width:100%; height:100%;">
@@ -99,7 +99,7 @@
   </script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
   <script src="{% static 'js/setDate.js' %}"></script>
-  <script src="{% static 'js/makingPage.js' %}"></script>
+  <script src="{% static 'js/editPage.js' %}"></script>
 <!-- 
     <div>
         <h1>선물 펀딩 만들기</h1>
