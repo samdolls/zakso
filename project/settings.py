@@ -34,6 +34,7 @@ DEBUG = True if os.getenv("DEBUG") == "True" else False
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = [
+    "127.0.0.1",
     ".ap-northeast-2.compute.amazonaws.com",
     ".zakso.shop",
 ]
@@ -146,7 +147,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.CustomUser"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "project/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "project", "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
