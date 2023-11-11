@@ -60,7 +60,7 @@ def before_create(request):
             is_private = request.POST.get("is_private")
             if is_private == "True":
                 is_private = True
-            elif is_private == "False":
+            else:
                 is_private = False
             print(is_private)
             request.session["post_info"] = {
