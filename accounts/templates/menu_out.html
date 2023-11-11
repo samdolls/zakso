@@ -17,7 +17,7 @@
               <p>로그인을 해주세요</p>
               <img src="{% static 'images/setting.svg' %}">
             </div>
-                <button><a href="{% url 'accounts:login_view' %}">로그인/회원가입</a></button>
+                <button><a href="{% url 'accounts:login_view' %}" style="text-decoration: none; color:#9E9E9E">로그인/회원가입</a></button>
           </div>
       </div>
 
@@ -25,7 +25,7 @@
           <p>작소펀딩</p>
           <div class="jaksoImg">
             <div>
-                <a href="{% url 'main:present' %}">
+                <a href="{% url 'main:present' %}" style="text-decoration: none;">
                     <img src="{% static 'images/present.svg' %}">
                     <p style="color: var(--gray, #1F1F1F);
                     font-family: Pretendard;
@@ -36,7 +36,7 @@
                 </a>
             </div>
           <div>
-            <a href="{% url 'main:soso' %}">
+            <a href="{% url 'main:soso' %}" style="text-decoration: none;">
                 <img src="{% static 'images/pen.svg' %}">
                 <p style="color: var(--gray, #1F1F1F);
                 font-family: Pretendard;
