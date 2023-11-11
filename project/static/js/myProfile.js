@@ -35,18 +35,18 @@ function showWishFund() {
   wishlistFundButton.style.border = "1px solid #F33D69";
   wishlistFundButton.style.color = "#F33D69";
   noFundText.style.display = "none";
+  let allArticleVisible = false;
 
   document.querySelectorAll(".blankHeart").forEach(fillHeart => {
     let article = fillHeart.closest("article");
     let listBox = article.querySelector(".listBox");
-    article.style.display = fillHeart.src.endsWith("fillHeart.svg") ? "block" : "none";
-    listBox.style.display = fillHeart.src.endsWith("fillHeart.svg") ? "flex" : "none";
-    if(article.style.display === "none") {
-      wishText.style.display = "block";
+    let isVisible = fillHeart.src.endsWith("fillHeart.svg");
+    article.style.display = isVisible ? "block" : "none";
+    listBox.style.display = isVisible ? "flex" : "none";
+    if(isVisible) {
+      allArticleVisible = true;
     }
-    else {
-      wishText.style.display = "none";
-    }
+    wishText.style.display = allArticleVisible ? "none" : "block";
   });
 }
 
