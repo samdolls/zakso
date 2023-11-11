@@ -8,9 +8,9 @@
       <a href="#" onclick="goBack()"><img src="{% static 'images/back.svg' %}" alt="back" class="goBack" style="padding-top:7px;"></a>
       <p class="makeFund">{{selected_type}} 만들기</p>
       {% if user.is_authenticated %}
-        <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+        <span class="hamburger"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
       {% else %}
-        <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+        <span class="hamburger"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
       {% endif %}
     </div>
   </header>

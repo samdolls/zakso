@@ -32,7 +32,7 @@ header {
   margin-left: 1.1rem;
 }
 .hamburger {
-  margin-left: 11.11rem;
+  margin-left: 10rem;
 }
 
 /* 입력 창 */
@@ -173,8 +173,8 @@ section input:focus, section select:focus {
   display: none;
 }
 .imgUploadField {
-  width: 22rem;
-  height: 10.125rem;
+  width: 352px;
+  height: 162px;
   flex-shrink: 0;
   border-radius: 0.4375rem;
   border: 1px solid var(--light_gray, #D6D6D6);
