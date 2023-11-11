@@ -96,11 +96,11 @@
             <div class="aboutItemBox">
               <div class="aboutItemTextBox">
                 <p class="aboutItemText text1">{{ post.title }}</p>
-                {{ if request.user in post.like.all }}
+                {% if request.user in post.like.all %}
                   <img src="{% static 'images/fillHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
-                {{ else }}
+                {% else %}
                   <img src="{% static 'images/blankHeart.svg' %}" alt="blankHeart" class="blankHeart" onclick="toggleImg(this)">
-                {{ endif }}
+                {% endif %}
               </div>
               <div class="optionImgBox">
                 <img src="{% static 'images/optionImg.svg' %}" alt="optionImg" class="optionImg" onclick="showFunctionBox(this)">
