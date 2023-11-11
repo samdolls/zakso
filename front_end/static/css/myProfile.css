@@ -10,7 +10,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative;
+ 
 }
 
 /* headerNav */
@@ -168,8 +168,11 @@ body {
   flex-direction: column;
 }
 .selectListFundButtonBox {
-  margin-top: 1.25rem;
+  
+  
   display: flex;
+  flex-direction: row;
+  margin-top: 30px;
   justify-content: space-around;
 }
 .selectListFundButtonBox button {

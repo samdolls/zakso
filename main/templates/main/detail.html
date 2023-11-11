@@ -31,7 +31,11 @@
             <a href="#" onclick="goBack()"><span class="vectorImg"><img src="{% static 'images/Vector.svg' %}" alt="vector"></span></a>
             <div class="divNavP">{{funding.type}}</div>
         </div>
-            <span class="hamburgerImg"><a href="#"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger" style="padding-right:16.5px;"></a></span>
+        {% if user.is_authenticated %}
+            <span class="hamburgerImg"><a href="{% url 'accounts:menu_log' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+        {% else %}
+            <span class="hamburgerImg"><a href="{% url 'accounts:menu_out' %}"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></a></span>
+        {% endif %}
         </div>
         </header>
         <div style="width: 290px; height: 234px; padding: 22px 50px 40px 50px;">

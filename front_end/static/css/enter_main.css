@@ -158,7 +158,6 @@ line-height: normal;
 
 .caution>p{
 margin-left: 20px;
-
  color: var(--gray, #1F1F1F);
 font-family: Pretendard;
 font-size: 13px;
@@ -183,6 +182,7 @@ li{
 }
 
 .go{
+
     border: none;
     width: 300px;
     height: 43px;
