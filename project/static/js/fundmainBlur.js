@@ -1,8 +1,12 @@
-let nowUrl = window.location.href;
+function copyUrl() {
+    var currentUrl = window.location.href;
 
-function copyUrl(){ 
-  //nowUrl 변수에 담긴 주소를
-  	navigator.clipboard.writeText(nowUrl).then(res=>{
-	  alert("주소가 복사되었습니다!");
-	})
+    var tempInput = document.createElement("input");
+    tempInput.value = currentUrl;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    alert('링크가 복사되었습니다: ' + currentUrl);
 }

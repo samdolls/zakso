@@ -27,12 +27,14 @@ body {
   margin-left: 1.1rem;
 }
 /* section */
+.buttonSection {
+  margin-top: 2rem;
+}
 .selectButtonBox {
   display: flex;
   justify-content: space-around;
 }
 .selectButtonBox button {
-  margin-top: 2.8rem;
   width: 10.5rem;
   height: 2.375rem;
   flex-shrink: 0;
@@ -55,7 +57,10 @@ body {
 .idSearchBox {
   margin-top: 2.06rem;
 }
-.idSearchText {
+.nickSearchBox {
+  margin-top: 1.55rem;
+}
+.idSearchText, .nickSearchText {
   margin: 0;
   margin-left: 1.44rem;
   color: var(--gray, #1F1F1F);
@@ -65,14 +70,14 @@ body {
   font-weight: 500;
   line-height: normal;
 }
-.idSearchFieldBox {
+.idSearchFieldBox, .nickSearchFieldBox {
   margin-left: 1.13rem;
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.95rem;
 }
-.idSearchField {
+.idSearchField, .nickSearchField {
   width: 16.5625rem;
   height: 2.4375rem;
   border-radius: 0.625rem;
@@ -80,7 +85,7 @@ body {
   padding: 1.27rem;
   border: none;
 }
-.idSearchField:focus {
+.idSearchField:focus, .nickSearchField:focus {
   outline: none;
 }
 .searchButton {
@@ -97,9 +102,67 @@ body {
 }
 .hr {
   margin-top: 1.55rem;
-  margin-bottom: 1.55rem;
   width: 24.375rem;
   height: 0.25rem;
   flex-shrink: 0;
   background: var(--light_gray2, #F6F6F6);
+}
+
+/* confirmSection */
+.confirmSection {
+  margin-top: 1.2rem;
+}
+.selectButtonBox .sendConfirmButton {
+  border: 1px solid #F33D69;
+  color: #F33D69;
+  font-weight: 600;
+}
+.friendListBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.friendListInfoBox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 2.6875rem;
+}
+.friendInfoBox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  height: 2.6875rem;
+  position: absolute;
+  left: 1.12rem;
+}
+.miniProfileImg {
+  width: 2.6875rem;
+  height: 2.6875rem;
+  flex-shrink: 0;
+}
+.friendNameText {
+  color: var(--gray, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+.cancelButton {
+  width: 4.625rem;
+  height: 2.4375rem;
+  position: absolute;
+  right: 1.12rem;
+  background-image: url(/front_end/static/images/buttonBackground.svg);
+  border: none;
+  color: var(--mid_gray, #9E9E9E);
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
