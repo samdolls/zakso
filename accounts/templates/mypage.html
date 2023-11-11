@@ -48,8 +48,8 @@
       <button class="wishlistFund" onclick="showWishFund()">찜한 펀딩</button>
   </div>
   <section class="forList">
+    {% for post in user_post %}
     <article class="myPostFund">
-      {% for post in user_post %}
         <div class="listBox">
           <div class="itemImgBox">
             <a href="{% url 'main:detail' post.id %}">
@@ -76,11 +76,10 @@
             </div>
           </div>
         </div>
-      {% endfor %}
     </article>
-
+    {% endfor %}
+    {% for post in user_like_post %}
     <article class="wishlistFund">
-        {% for post in user_like_post %}
           <div class="listBox">
             <div class="itemImgBox">
                 <a href="{% url 'main:detail' post.id %}">
@@ -107,8 +106,8 @@
               </div>
             </div>
           </div>
-        {% endfor %}
       </article>
+      {% endfor %}
 
     <div class="noFundTextBox">
       <p class="noFundText">내가 만든 작소펀딩이 없어요!</p>
