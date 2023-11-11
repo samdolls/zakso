@@ -13,11 +13,13 @@
       <p class="manageFriendText">친구 관리</p>
     </div>
   </header>
-  <section>
+  <section class="buttonSection">
     <div class="selectButtonBox">
       <button class="requestFriendButton">친구 신청</button>
       <button class="allFriendButton">모든 친구</button>
     </div>
+  </section>
+  <section class="requestSection">
     <div class="idSearchBox">
       <label for="id"><p class="idSearchText">아이디로 검색하기</p></label>
       <div class="idSearchFieldBox">
@@ -30,7 +32,23 @@
       <label for="nick"><p class="nickSearchText">닉네임으로 검색하기</p></label>
       <div class="nickSearchFieldBox">
         <input type="text" name="nick" class="nickSearchField" placeholder="닉네임을 입력해주세요.">
-        <button class="searchButton"></button>
+        <button class="searchButton">검색</button>
+      </div>
+    </div>
+    <div class="hr"></div>
+  </section>
+  <section class="confirmSection">
+    <div class="selectButtonBox">
+      <button class="sendConfirmButton">보낸 신청</button>
+      <button class="receiveConfirmButton">받은 신청</button>
+    </div>
+    <div class="friendListBox">
+      <div class="friendListInfoBox box1">
+        <div class="friendInfoBox">
+          <img src="/front_end/static/images/miniProfile.svg" alt="miniProfile" class="miniProfileImg">
+          <p class="freindNameText">여기에 잠들다..</p>
+        </div>
+          <button class="cancelButton">취소하기</button>
       </div>
     </div>
   </section>
