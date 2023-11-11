@@ -95,7 +95,9 @@ DATABASES = {
         "PASSWORD": os.getenv("DATABASE_PASSWORD"),
         "HOST": os.getenv("DATABASE_HOST"),
         "PORT": int(os.getenv("DATABASE_PORT")),
-        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+                    'charset':'utf8mb4',
+                   },
     }
 }
 

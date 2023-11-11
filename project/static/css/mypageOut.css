@@ -59,6 +59,7 @@ font-size: 15px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+text-decoration: none;
 }
 .jaksoImg{
     display: flex;
@@ -79,6 +80,7 @@ font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+text-decoration: none;
 }
 
 h1{
