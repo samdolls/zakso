@@ -72,14 +72,16 @@
         <label for="imgUpload"><p class="uploadText">사진 업로드</p></label>
         <input type="file" name="img" multiple accept=".png, .jpg, .jpeg" class="imgUpload" id="imgUpload">
         <div class="imgUploadField">
-          <label for="imgUpload">
+          <label for="imgUpload" style="width:150px;height:150px;">
             {% if funding.funding_image %}
-                <img src="{{funding.funding_image.url}}" alt="upload" class="uploadImg">
-            {% else %}
+                <img src="{{funding.funding_image.url}}" alt="upload" class="uploadImg" style="width:100%; height:100%;">
+            {% else %}  
                 <img src="{% static 'images/upload.svg' %}" alt="upload" class="uploadImg">
             {% endif %}
         </label>
+        {% if not funding.funding_image %}
           <label for="imgUpload"><p class="uploadImgText">최대 10장까지 추가 가능</p></label>
+        {% endif %}
         </div>
       </div>
       <div class="reselectBox">
@@ -95,10 +97,9 @@
             window.history.back();
         }
   </script>
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="{% static 'js/map.js' %}"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
   <script src="{% static 'js/setDate.js' %}"></script>
-  <script src="{% static 'js/makingPage.js' %}"></script>
+  <script src="{% static 'js/editPage.js' %}"></script>
 <!-- 
     <div>
         <h1>선물 펀딩 만들기</h1>

@@ -18,7 +18,7 @@
               <p>{{ user_profile.user.username }}</p>
               <img src="{% static 'images/setting.svg' %}">
             </div>
-                <button><a href="{% url 'accounts:mypage_view' %}">프로필 보기 ></a></button>
+                <button><a href="{% url 'accounts:mypage_view' %}" style="text-decoration: none; color:#9E9E9E">프로필 보기 ></a></button>
           </div>
       </div>
 
@@ -26,15 +26,25 @@
           <p>작소펀딩</p>
           <div class="jaksoImg">
             <div>
-                <a href="{% url 'main:present' %}">
+                <a href="{% url 'main:present' %}" style="text-decoration: none;">
                     <img src="{% static 'images/present.svg' %}">
-                    <p>선물펀딩</p>
+                    <p style="color: var(--gray, #1F1F1F);
+                    font-family: Pretendard;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;">선물펀딩</p>
                 </a>
             </div>
           <div>
-            <a href="{% url 'main:soso' %}">
+            <a href="{% url 'main:soso' %}" style="text-decoration: none;">
                 <img src="{% static 'images/pen.svg' %}">
-                <p>소소펀딩</p>
+                <p style="color: var(--gray, #1F1F1F);
+                font-family: Pretendard;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;">소소펀딩</p>
             </a>
           </div>
           <div>
