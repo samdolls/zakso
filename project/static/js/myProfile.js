@@ -8,22 +8,23 @@ function showMyFund() {
   wishlistFundButton.style.color = "#1F1F1F";
   myPostFundButton.style.border = "1px solid #F33D69";
   myPostFundButton.style.color = "#F33D69";
-
-  document.querySelectorAll(".myPostFund").forEach(article => {
-    article.style.display = "block";
-  });
-  document.querySelectorAll(".wishlistFund").forEach(article => {
-    article.style.display = "none";
-  });
-
-  if (document.querySelector(".myPostFund:empty")) {
-    noFundText.style.display = "block";
-  } else {
-    noFundText.style.display = "none";
-  }
   wishText.style.display = "none";
-}
 
+  document.querySelectorAll(".blankHeart").forEach(fillHeart => {
+    let article = fillHeart.closest("article");
+    let listBox = article.querySelector(".listBox");
+
+    article.style.display = fillHeart.classList.contains("blankHeart") ? "block" : "none";
+    listBox.style.display = fillHeart.classList.contains("blankHeart") ? "flex" : "none";
+
+    if(article.style.display === "none") {
+      noFundText.style.display = "block"
+    }
+    else {
+      noFundText.style.display = "none";
+    }
+  });
+}
 function showWishFund() {
   let myPostFundButton = document.querySelector(".myPostFund");
   let wishlistFundButton = document.querySelector(".wishlistFund");
@@ -33,21 +34,23 @@ function showWishFund() {
   myPostFundButton.style.color = "#1F1F1F";
   wishlistFundButton.style.border = "1px solid #F33D69";
   wishlistFundButton.style.color = "#F33D69";
-
-  document.querySelectorAll(".wishlistFund").forEach(article => {
-    article.style.display = "block";
-  });
-  document.querySelectorAll(".myPostFund").forEach(article => {
-    article.style.display = "none";
-  });
-
-  if (document.querySelector(".wishlistFund:empty")) {
-    wishText.style.display = "block";
-  } else {
-    wishText.style.display = "none";
-  }
   noFundText.style.display = "none";
+
+  document.querySelectorAll(".blankHeart").forEach(fillHeart => {
+    let article = fillHeart.closest("article");
+    let listBox = article.querySelector(".listBox");
+    article.style.display = fillHeart.src.endsWith("fillHeart.svg") ? "block" : "none";
+    listBox.style.display = fillHeart.src.endsWith("fillHeart.svg") ? "flex" : "none";
+    if(article.style.display === "none") {
+      wishText.style.display = "block";
+    }
+    else {
+      wishText.style.display = "none";
+    }
+  });
 }
+
+
 
 // 세팅 눌렀을 시
 let functionBox = document.querySelector(".functionBoxSection");
